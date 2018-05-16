@@ -23,12 +23,19 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const PATHS = {
   app: './src/index.js',
   htmlTemplate: './src/index.html',
+  
+  srcDir: path.resolve(__dirname, 'src'),
+  nodeModulesDir: path.resolve(__dirname, 'node_modules'),
+
   output: {
-    filenamePattern: '[name].[hash].js',
+    filenamePattern: 'static/js/[name].[hash].js',
     path: '/dist'
   },
-  srcDir: path.resolve(__dirname, 'src'),
-  nodeModulesDir: path.resolve(__dirname, 'node_modules')
+
+  css: {
+    filename: 'static/css/[name].[hash].css',
+    chunkFilename: 'static/css/[id].[hash].css'
+  }
 };
 
 const CSS_MODULE_NAME_PATTERN = '[name]__[local]___[hash:base64:5]';
@@ -50,7 +57,7 @@ module.exports = (env, argv) => {
 
     // https://webpack.js.org/configuration/devtool/
     // https://survivejs.com/webpack/building/source-maps/
-    devtool: shouldUseSourceMap ? 'cheap-eval-source-map' : false,
+    devtool: shouldUseSourceMap ? 'eval' : false,
 
     entry: {
       app: PATHS.app
@@ -151,10 +158,7 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: PATHS.htmlTemplate
       }),
-      new MiniCssExtractPlugin({
-        filename: isDevelopment ? '[name].css' : '[name].[hash].css',
-        chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css'
-      })
+      new MiniCssExtractPlugin(PATHS.css)
     ],
 
     optimization: {
@@ -162,7 +166,7 @@ module.exports = (env, argv) => {
         new UglifyJsPlugin({
           cache: true,
           parallel: true,
-          sourceMap: true, // set to true if you want JS source maps
+          sourceMap: true,
           uglifyOptions: {
             compress: {
               drop_console: true
