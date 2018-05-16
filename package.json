@@ -4,7 +4,8 @@
   "description": "a simple chat application that uses react.js, redux and socket.io",
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [
     "webpack4",
@@ -14,6 +15,9 @@
   ],
   "author": "Erko Bridee",
   "license": "MIT",
+  "engines": {
+    "node": ">=8"
+  },
   "dependencies": {
     "react": "^16.3.2",
     "react-dom": "^16.3.2"
@@ -26,6 +30,7 @@
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.11",
+    "gh-pages": "^1.1.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.1.0",
     "mini-css-extract-plugin": "^0.4.0",
