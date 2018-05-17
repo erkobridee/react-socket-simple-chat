@@ -1,6 +1,12 @@
 // global variables
 
-$html-font-size: 10px;
+// Understanding and Using rem Units in CSS — SitePoint
+// https://www.sitepoint.com/understanding-and-using-rem-units-in-css/
+
+$html-font-size: 62.5%;
+
+// the effective font-size used on the application
+$body-font-size: 1.5rem;
 
 //---
 
