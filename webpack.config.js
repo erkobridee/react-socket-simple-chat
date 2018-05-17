@@ -47,6 +47,43 @@ module.exports = (env, argv) => {
   const isDevelopment = !isProduction;
   const shouldUseSourceMap = isDevelopment;
 
+  // define the webpack config plugins to each environment case
+  let plugins;
+  if(isDevelopment){
+    plugins = [
+      new HtmlWebpackPlugin({
+        inject: true,
+        template: PATHS.htmlTemplate
+      })
+    ];
+  } else  {
+    plugins = [
+      new CleanWebpackPlugin(PATHS.output.dir, {}),
+      new HtmlWebpackPlugin({
+        inject: true,
+        template: PATHS.htmlTemplate,
+        minify: {
+          removeComments: true,
+          collapseWhitespace: true,
+          removeRedundantAttributes: true,
+          useShortDoctype: true,
+          removeEmptyAttributes: true,
+          removeStyleLinkTypeAttributes: true,
+          keepClosingSlash: true,
+          minifyJS: true,
+          minifyCSS: true,
+          minifyURLs: true,
+        }
+      }),
+      new MiniCssExtractPlugin(PATHS.css),
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: JSON.stringify('production')
+        }        
+      })
+    ];
+  }
+
   // https://webpack.js.org/configuration/#options
   return {
 
@@ -152,33 +189,7 @@ module.exports = (env, argv) => {
       ]
     },
 
-    plugins: [
-      new CleanWebpackPlugin(PATHS.output.dir, {}),
-      new HtmlWebpackPlugin({
-        inject: true,
-        template: PATHS.htmlTemplate,
-        minify: {
-          removeComments: true,
-          collapseWhitespace: true,
-          removeRedundantAttributes: true,
-          useShortDoctype: true,
-          removeEmptyAttributes: true,
-          removeStyleLinkTypeAttributes: true,
-          keepClosingSlash: true,
-          minifyJS: true,
-          minifyCSS: true,
-          minifyURLs: true,
-        }
-      }),
-      new MiniCssExtractPlugin(PATHS.css),
-      new webpack.DefinePlugin({
-        'process.env': {
-          NODE_ENV: JSON.stringify(
-            isProduction ? 'production' : 'development'
-          )
-        }        
-      })
-    ],
+    plugins,
 
     optimization: {
       minimizer: [
