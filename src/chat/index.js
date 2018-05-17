@@ -8,7 +8,7 @@ class Chat extends Component {
 
     return (
       <div className={styles.chat}>
-        <h1>My react app running over the webpack 4.</h1>
+        <h1>React webapp build with the Webpack v4.</h1>
       </div>
     );
   }
