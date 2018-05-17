@@ -59,3 +59,4 @@ I also keep the webpack configure to consider the file paths from the `./src` di
 
 * [Optimizing front-end delivery with Webpack 4 | Jasel Gadhia](https://jes.al/2018/04/optimizing-front-end-delivery-with-Webpack-4/)
 
+* Project architecture: [Scaling your Redux App with ducks | freeCodeCamp](https://medium.freecodecamp.org/scaling-your-redux-app-with-ducks-6115955638be)
