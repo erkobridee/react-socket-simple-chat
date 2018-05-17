@@ -1,25 +1,43 @@
 import React, { Component } from 'react';
 
+// using HashRouter that will make the routes work 
+// over a deployment that hasn't a backend with historyApiFallback support
 import {
-  BrowserRouter as Router, Route, Link
+  HashRouter, Route, NavLink
 } from 'react-router-dom';
 
 import styles from './styles.scss';
 
 //----------------------------------------------------------------------------//
 
+// TODO: move each component to it own .js file
+
 const ChatRoom = () => (
-  <div>TODO: define chat room component</div>
+  <div>
+    <br/>
+    <strong>TODO:</strong> define chat room component
+  </div>
 );
 
 const Settings = () => (
-  <div>TODO: define settings component</div>
+  <div>
+    <br/>
+    <strong>TODO:</strong> define settings component
+  </div>
 );
 
 const NavBar = () => (
   <div>
-    <Link to="/">Chat</Link> | 
-    <Link to="/settings">Settings</Link>
+    <NavLink 
+      to="/" 
+    >
+      Chat
+    </NavLink> | 
+    <NavLink 
+      to="/settings" 
+    >
+      Settings
+    </NavLink>
   </div>
 );
 
@@ -34,10 +52,12 @@ const Routes = () => (
 
 class Chat extends Component {
 
+  // TODO: define chat application layout
+
   render(){
 
     return (
-      <Router>
+      <HashRouter>
         <div className={styles.chat}>
           <h1>React webapp build with the Webpack v4.</h1>
           <p><strong>.env message:</strong> {process.env.MESSAGE}</p>
@@ -46,7 +66,7 @@ class Chat extends Component {
           <hr />
           <Routes />
         </div>
-      </Router>
+      </HashRouter>
     );
   }
 }
