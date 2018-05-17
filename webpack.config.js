@@ -16,8 +16,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // Optimizing front-end delivery with Webpack 4
 // https://jes.al/2018/04/optimizing-front-end-delivery-with-Webpack-4/
 
-// TODO: add react hot reload 
-
 //----------------------------------------------------------------------------//
 
 const PATHS = {
@@ -29,7 +27,7 @@ const PATHS = {
 
   output: {
     filenamePattern: 'static/js/[name].[hash].js',
-    path: '/dist'
+    dir: 'dist'
   },
 
   css: {
@@ -64,7 +62,7 @@ module.exports = (env, argv) => {
     },
     
     output: {
-      path: path.join(__dirname, PATHS.output.path),
+      path: path.join(__dirname, PATHS.output.dir),
       filename: PATHS.output.filenamePattern,
 
       // Point sourcemap entries to original disk location (format as URL on Windows)
@@ -91,7 +89,8 @@ module.exports = (env, argv) => {
           use: {
             loader: 'babel-loader',
             options: {
-              cacheDirectory: true
+              cacheDirectory: true,
+              sourceMap: shouldUseSourceMap
             }
           },
         },
@@ -154,11 +153,31 @@ module.exports = (env, argv) => {
     },
 
     plugins: [
-      new CleanWebpackPlugin('dist', {}),
+      new CleanWebpackPlugin(PATHS.output.dir, {}),
       new HtmlWebpackPlugin({
-        template: PATHS.htmlTemplate
+        inject: true,
+        template: PATHS.htmlTemplate,
+        minify: {
+          removeComments: true,
+          collapseWhitespace: true,
+          removeRedundantAttributes: true,
+          useShortDoctype: true,
+          removeEmptyAttributes: true,
+          removeStyleLinkTypeAttributes: true,
+          keepClosingSlash: true,
+          minifyJS: true,
+          minifyCSS: true,
+          minifyURLs: true,
+        }
       }),
-      new MiniCssExtractPlugin(PATHS.css)
+      new MiniCssExtractPlugin(PATHS.css),
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: JSON.stringify(
+            isProduction ? 'production' : 'development'
+          )
+        }        
+      })
     ],
 
     optimization: {
@@ -167,14 +186,26 @@ module.exports = (env, argv) => {
           cache: true,
           parallel: true,
           sourceMap: true,
+          // use the same configs from the production build of the create-react-app
+          // https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/config/webpack.config.prod.js#L293
           uglifyOptions: {
             compress: {
               drop_console: true
-            }
+            },
+            mangle: {
+              safari10: true
+            },
+            output: {
+              comments: false,
+              ascii_only: true
+            },
+            sourceMap: shouldUseSourceMap
           }
         }),
         new OptimizeCSSAssetsPlugin({})
       ],
+
+      // this will split the vendors to it own js file
       splitChunks: {
         cacheGroups: {
           vendor: {
