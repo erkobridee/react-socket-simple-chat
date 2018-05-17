@@ -1,12 +1,70 @@
+const fs = require('fs');
 const path = require('path');
 
 const webpack = require('webpack');
+
+const Dotenv = require('dotenv-webpack');
 
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+//----------------------------------------------------------------------------//
+
+const appDirectory = fs.realpathSync(process.cwd());
+const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
+
+function checkDotenv(file){
+  return fs.existsSync(resolveApp(file));
+}
+
+/*
+  get the Dotenv webpack plugin instance looking for
+  1. .env.(production|development)
+  2. .env.local
+  3. .env
+  4. .env.example
+  the last one is a fallback that will be present on the git repositoru
+  to show which variables must be defined
+*/
+function getDotenvPlugin(mode = 'not-defined'){
+  const dotenvFile = './.env';
+
+  let file = {
+    mode: `${dotenvFile}.${mode}`,
+    local: `${dotenvFile}.local`,
+    dot: dotenvFile,
+    example: `${dotenvFile}.example`
+  };
+
+  let isPresent = {
+    mode: checkDotenv(file.mode),
+    local: checkDotenv(file.local),
+    dot: checkDotenv(file.dot),
+    example: checkDotenv(file.example)
+  };
+
+  let loadDotenvFile;
+  Object.keys(isPresent).forEach(function(key){
+    if(isPresent[key] && !loadDotenvFile){
+      loadDotenvFile = file[key];
+    }
+  });
+
+  console.log(
+    '\n\n\n',
+    loadDotenvFile,
+    '\n\n\n'
+  );
+
+  return (
+    new Dotenv({
+      path: loadDotenvFile
+    })
+  );
+}
 
 //----------------------------------------------------------------------------//
 
@@ -46,11 +104,16 @@ module.exports = (env, argv) => {
   const isProduction = (argv.mode === 'production');
   const isDevelopment = !isProduction;
   const shouldUseSourceMap = isDevelopment;
+  
+  const dotenvFile = './.env';
+  const isDotenvPresent = checkDotenv(dotenvFile);
+  const dotenvPlugin = getDotenvPlugin(argv.mode);
 
   // define the webpack config plugins to each environment case
   let plugins;
   if(isDevelopment){
     plugins = [
+      dotenvPlugin,
       new HtmlWebpackPlugin({
         inject: true,
         template: PATHS.htmlTemplate
@@ -58,6 +121,7 @@ module.exports = (env, argv) => {
     ];
   } else  {
     plugins = [
+      dotenvPlugin,
       new CleanWebpackPlugin(PATHS.output.dir, {}),
       new HtmlWebpackPlugin({
         inject: true,

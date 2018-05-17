@@ -9,6 +9,7 @@ class Chat extends Component {
     return (
       <div className={styles.chat}>
         <h1>React webapp build with the Webpack v4.</h1>
+        <p><strong>.env message:</strong> {process.env.MESSAGE}</p>
       </div>
     );
   }
