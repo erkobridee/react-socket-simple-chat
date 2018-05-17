@@ -62,3 +62,5 @@ I also keep the webpack configure to consider the file paths from the `./src` di
 * Project architecture re-ducks: [Scaling your Redux App with ducks | freeCodeCamp](https://medium.freecodecamp.org/scaling-your-redux-app-with-ducks-6115955638be)
 
   * [[GitHub] alexnm / re-ducks](https://github.com/alexnm/re-ducks) - An attempt to extend the original proposal for redux modular architecture
+
+  * [[GitHub] FortechRomania / react-redux-complete-example](https://github.com/FortechRomania/react-redux-complete-example) - A react+redux example project based on the re-ducks folder structure
