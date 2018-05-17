@@ -1,7 +1,9 @@
 [production staging]
 > 1%
 ie 10
+safari >= 9
 
 [development]
 last 2 chrome version
 last 2 firefox version
+safari >= 9
