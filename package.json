@@ -1,6 +1,6 @@
 {
   "name": "react-socket-simple-chat",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "a simple chat application that uses react.js, redux and socket.io",
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot",
