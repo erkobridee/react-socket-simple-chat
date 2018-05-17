@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 
 import styles from 'styles/main.scss';
 
-import Chat from 'chat';
+import App from 'app';
+
+console.log(process.env);
 
 ReactDOM.render(
-  <Chat />,
+  <App />,
   document.getElementById('app')
 );
