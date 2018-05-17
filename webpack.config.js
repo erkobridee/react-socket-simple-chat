@@ -305,7 +305,8 @@ module.exports = (env, argv) => {
 
     devServer: {
       host: ipAddress,
-      port: process.env.PORT || 3000
+      port: (process.env.PORT || 3000),
+      compress: true
     }
   };
 };
