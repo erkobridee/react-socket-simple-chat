@@ -12,6 +12,20 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 //----------------------------------------------------------------------------//
+// important to be possible to use the local network ip address on the
+// webpack-dev-server and with that access the application through the
+// cellphone or/and tablet
+
+const ip = require('ip');
+
+let ipAddress = 'localhost';
+try {
+  ipAddress = ip.address();
+} catch(err){
+  console.err(err);
+}
+
+//----------------------------------------------------------------------------//
 
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
@@ -53,11 +67,7 @@ function getDotenvPlugin(mode = 'not-defined'){
     }
   });
 
-  console.log(
-    '\n\n\n',
-    loadDotenvFile,
-    '\n\n\n'
-  );
+  console.log(`\ndotenv file: ${loadDotenvFile} loaded\n`);
 
   return (
     new Dotenv({
@@ -294,6 +304,7 @@ module.exports = (env, argv) => {
     },
 
     devServer: {
+      host: ipAddress,
       port: process.env.PORT || 3000
     }
   };
