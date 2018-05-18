@@ -166,7 +166,7 @@ module.exports = (env, argv) => {
 
     // https://webpack.js.org/configuration/devtool/
     // https://survivejs.com/webpack/building/source-maps/
-    devtool: shouldUseSourceMap ? 'eval' : false,
+    devtool: shouldUseSourceMap ? 'eval-source-map' : false,
 
     entry: {
       app: PATHS.app
@@ -231,9 +231,14 @@ module.exports = (env, argv) => {
               // https://blog.pusher.com/css-modules-react/
               loader: 'css-loader',
               options: {
-                importLoaders: 1,
-                modules: true,
-                localIdentName: CSS_MODULE_NAME_PATTERN,
+                /*
+                  generates css modules, but that turns each css module 
+                  in one isolated scope, where the local component (HTML DOM element)
+                  doesn't have access to one style class defined in one parent above 
+                */
+                // importLoaders: 1,
+                // modules: true,
+                // localIdentName: CSS_MODULE_NAME_PATTERN,
                 sourceMap: shouldUseSourceMap
               }
             },
@@ -252,7 +257,7 @@ module.exports = (env, argv) => {
             {
               loader: 'sass-loader',
               options: {
-                sourceMap: true,
+                // sourceMap: true,
                 includePaths: [
                   PATHS.srcDir
                 ]
