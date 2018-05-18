@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
+import Layout from 'chat/components/layout';
+
 // using HashRouter that will make the routes work 
 // over a deployment that hasn't a backend with historyApiFallback support
 import {
@@ -15,10 +17,10 @@ const ContentLayout = ({
   footer = <Fragment></Fragment>
 }) => (
   <Fragment>
-    <div className={'layout__body__content'}>
+    <div className={'container__body__content'}>
       {content}
     </div>
-    <div className={'layout__body__footer'}>
+    <div className={'container__body__footer'}>
       {footer}
     </div>
   </Fragment>
@@ -29,6 +31,12 @@ const ContentLayout = ({
 const ChatRoomContent = () => (
   <Fragment>
     <strong>TODO:</strong> define chat room component
+
+    <br />
+
+    <Layout>
+      <Layout.Container />
+    </Layout>
   </Fragment>
 );
 
@@ -89,7 +97,7 @@ const NavBar = () => (
 );
 
 const Routes = () => (
-  <div className={'layout__body'}>
+  <div className={'container__body'}>
     <Route exact path="/" component={ChatRoom} />
     <Route path="/settings" component={Settings} />
   </div>
@@ -99,19 +107,24 @@ const Routes = () => (
 
 /*
   <Layout>
-    <Content>
-      <ContentHeader>
-        {children}
-      </ContentHeader>
+
+    // navbar
+    <LayoutHeader>
+      {children}
+    </LayoutHeader>
+
+    // chat or settings
+    <LayoutBody>
+
       <ContentBody>
-        <BodyContent>
-          {children}
-        </BodyContent>
-        <BodyFooter>
-          {children}
-        </BodyFooter>
-      </ContentBody>
-    </Content>
+        {children}
+      </BodyContent>
+
+      <ContentFooter>
+        {children}
+      </ContentFooter>
+
+    </LayoutBody>
   </Layout>
 */
 
@@ -120,9 +133,9 @@ class Chat extends Component {
   render(){
     return (
       <HashRouter>
-        <div className={'layout'}>
-          <div className={'layout__content'}>
-            <div className={'layout__header'}>
+        <div className={'main'}>
+          <div className={'container'}>
+            <div className={'container__header'}>
               <NavBar />
             </div>
             <Routes />

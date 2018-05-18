@@ -7,28 +7,26 @@
 }
 
 //---------------------------------------------------------------------------//
-
 // defines the application layout using the flexbox
-.layout {
+
+.main {
   @include fix-content-position;
 
   // TODO: review and define color schemes support
   color: $body-color;
   background-color: $body-background-color;
+}
 
-  &__content {
-    display: flex;
-    flex-direction: column;
+.container {
+  display: flex;
+  flex-direction: column;
 
-    @include fix-content-position($default-unit-value);
+  @include fix-content-position($default-unit-value);
 
-    /* Larger than tablet */
-    @media (min-width: $screen-tablet){
-      margin: auto;
-      max-width: $desktop-body-max-width;
-  
-      // @include fix-content-position($default-unit-value);
-    }
+  /* Larger than tablet */
+  @media (min-width: $screen-tablet){
+    margin: auto;
+    max-width: $desktop-body-max-width;
   }
 
   &__header {
@@ -61,7 +59,7 @@
   }
 }
 
-//---
+//---------------------------------------------------------------------------//
 
 // TODO: move to it own .scss file related to navbar component
 .navbar > a {
@@ -78,7 +76,7 @@
   }
 }
 
-//---
+//---------------------------------------------------------------------------//
 
 // TODO: move to it own .scss file related to settings component
 .btn-reset {
@@ -97,7 +95,7 @@
   @extend %border;
 }
 
-//---
+//---------------------------------------------------------------------------//
 
 // TODO: move to it own .scss file related to the same component
 .chatroom {
