@@ -31,7 +31,7 @@ const ChatRoom = () => (
 const Settings = () => (
   <Fragment>
     <div className={'chat__body__content'}>
-      <strong>TODO:</strong> define settings component 123
+      <strong>TODO:</strong> define settings component
     </div>
     <div className={'chat__body__footer'}>
       <button className={'btn-reset'}>Reset to Default</button>
