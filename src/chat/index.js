@@ -15,10 +15,10 @@ const ContentLayout = ({
   footer = <Fragment></Fragment>
 }) => (
   <Fragment>
-    <div className={'chat__body__content'}>
+    <div className={'layout__body__content'}>
       {content}
     </div>
-    <div className={'chat__body__footer'}>
+    <div className={'layout__body__footer'}>
       {footer}
     </div>
   </Fragment>
@@ -89,7 +89,7 @@ const NavBar = () => (
 );
 
 const Routes = () => (
-  <div className={'chat__body'}>
+  <div className={'layout__body'}>
     <Route exact path="/" component={ChatRoom} />
     <Route path="/settings" component={Settings} />
   </div>
@@ -97,17 +97,36 @@ const Routes = () => (
 
 //----------------------------------------------------------------------------//
 
+/*
+  <Layout>
+    <Content>
+      <ContentHeader>
+        {children}
+      </ContentHeader>
+      <ContentBody>
+        <BodyContent>
+          {children}
+        </BodyContent>
+        <BodyFooter>
+          {children}
+        </BodyFooter>
+      </ContentBody>
+    </Content>
+  </Layout>
+*/
+
 class Chat extends Component {
 
   render(){
     return (
       <HashRouter>
-        <div className={'chat'}>
-
-          <div className={'chat__header'}>
-            <NavBar />
+        <div className={'layout'}>
+          <div className={'layout__content'}>
+            <div className={'layout__header'}>
+              <NavBar />
+            </div>
+            <Routes />
           </div>
-          <Routes />
         </div>
       </HashRouter>
     );

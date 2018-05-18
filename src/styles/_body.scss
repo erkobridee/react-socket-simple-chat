@@ -6,18 +6,4 @@ body {
   line-height:$body-line-height;
   
   margin: $body-margin;
-
-  @include fix-content-position(0.2rem);
-
-  /* Larger than tablet */
-  @media (min-width: $screen-tablet){
-    margin: auto;
-    max-width: $desktop-body-max-width;
-
-    @include fix-content-position($default-unit-value);
-  }
-
-  // TODO: review and define color schemes support
-  color: $body-color;
-  background-color: $body-background-color;
 }

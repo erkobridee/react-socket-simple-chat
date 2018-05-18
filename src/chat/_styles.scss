@@ -9,11 +9,27 @@
 //---------------------------------------------------------------------------//
 
 // defines the application layout using the flexbox
-.chat {
-  display: flex;
-  flex-direction: column;
-
+.layout {
   @include fix-content-position;
+
+  // TODO: review and define color schemes support
+  color: $body-color;
+  background-color: $body-background-color;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    @include fix-content-position($default-unit-value);
+
+    /* Larger than tablet */
+    @media (min-width: $screen-tablet){
+      margin: auto;
+      max-width: $desktop-body-max-width;
+  
+      // @include fix-content-position($default-unit-value);
+    }
+  }
 
   &__header {
     flex: none;
