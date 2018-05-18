@@ -1,0 +1,21 @@
+/*
+useful links
+
+CSS Selectors Reference | w3schools
+https://www.w3schools.com/cssref/css_selectors.asp
+
+[attribute] | CSS-Tricks
+https://css-tricks.com/almanac/selectors/a/attribute/
+*/
+
+
+@import 'styles/all';
+@import 'chat/styles';
+
+//---------------------------------------------------------------------------//
+
+// main application div where the react will be injected
+// defined on the index.html file
+#app {
+  @include fix-content-position;
+}

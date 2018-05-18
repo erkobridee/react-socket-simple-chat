@@ -1,0 +1,9 @@
+
+// mixin to fix the application content to fit in all available space
+@mixin fix-content-position($unit: 0rem){
+  position: absolute;
+  top: $unit;
+  bottom: $unit;
+  left: $unit;
+  right: $unit;
+}

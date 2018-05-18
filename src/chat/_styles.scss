@@ -1,0 +1,134 @@
+%border {
+  border: 0.1rem solid #cccccc;
+}
+
+%margin-bottom {
+  margin-bottom: $default-unit-value;
+}
+
+//---------------------------------------------------------------------------//
+
+// defines the application layout using the flexbox
+.chat {
+  display: flex;
+  flex-direction: column;
+
+  @include fix-content-position;
+
+  &__header {
+    flex: none;
+    padding: 0.5rem 2rem;
+    
+    @extend %margin-bottom;
+    @extend %border;
+
+    // TODO: remove
+    // background-color: #ffffff;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+
+    &__content {
+      flex: auto;
+      padding: $default-unit-value;
+
+      @extend %margin-bottom;
+      @extend %border;
+
+      background-color: lighten($body-background-color, 5%);
+    }
+  
+    &__footer {
+      flex: none;
+
+      // TODO: remove
+      // background-color: lightblue;
+      min-height: 3rem;
+    }
+  }
+}
+
+//---
+
+// TODO: move to it own .scss file related to navbar component
+.navbar > a {
+  color: #222222;
+  text-decoration: none;
+
+  &:first-child {
+    margin-right: $default-unit-value;
+  }
+
+  &.active {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}
+
+//---
+
+// TODO: move to it own .scss file related to settings component
+.btn-reset {
+  font-family: $body-font-family;
+  font-size: $body-font-size;
+
+  line-height: $body-line-height;
+
+  padding: 0.5rem 2rem;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: darken($body-background-color, 10%);
+
+  @extend %border;
+}
+
+//---
+
+// TODO: move to it own .scss file related to the same component
+.chatroom {
+
+  &__input {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+    &__field {
+      flex: auto;
+      margin-right: 0.5rem;
+
+      display: flex;
+
+      & > input[type="text"] {
+        flex: auto;
+
+        padding: 0.5rem 1rem;
+
+        font-family: $body-font-family;
+        font-size: $body-font-size;
+        line-height: $body-line-height;
+
+        @extend %border;
+      }
+    }
+
+    &__submit {
+      flex: none;
+
+      & > button {
+        background-color: unset;
+        padding: 0.5rem 1rem;
+
+        font-family: $body-font-family;
+        font-size: $body-font-size;
+        line-height: $body-line-height;
+
+        @extend %border;
+      }
+    }
+  }
+}

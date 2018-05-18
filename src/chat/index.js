@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 // using HashRouter that will make the routes work 
 // over a deployment that hasn't a backend with historyApiFallback support
@@ -6,33 +6,47 @@ import {
   HashRouter, Route, NavLink
 } from 'react-router-dom';
 
-import styles from './styles.scss';
-
 //----------------------------------------------------------------------------//
 
 // TODO: move each component to it own .js file
 
 const ChatRoom = () => (
-  <div>
-    <br/>
-    <strong>TODO:</strong> define chat room component
-  </div>
+  <Fragment>
+    <div className={'chat__body__content'}>
+      <strong>TODO:</strong> define chat room component
+    </div>
+    <div className={'chat__body__footer'}>
+      <div className={'chatroom__input'}>
+        <div className={'chatroom__input__field'}>
+          <input type="text" placeholder="Enter a message"></input>
+        </div>
+        <div className={'chatroom__input__submit'}>
+          <button>send</button>
+        </div>
+      </div>
+    </div>
+  </Fragment>
 );
 
 const Settings = () => (
-  <div>
-    <br/>
-    <strong>TODO:</strong> define settings component
-  </div>
+  <Fragment>
+    <div className={'chat__body__content'}>
+      <strong>TODO:</strong> define settings component 123
+    </div>
+    <div className={'chat__body__footer'}>
+      <button className={'btn-reset'}>Reset to Default</button>
+    </div>
+  </Fragment>
 );
 
 const NavBar = () => (
-  <div>
+  <div className={'navbar'}>
     <NavLink 
+      exact
       to="/" 
     >
       Chat
-    </NavLink> | 
+    </NavLink>
     <NavLink 
       to="/settings" 
     >
@@ -42,7 +56,7 @@ const NavBar = () => (
 );
 
 const Routes = () => (
-  <div>
+  <div className={'chat__body'}>
     <Route exact path="/" component={ChatRoom} />
     <Route path="/settings" component={Settings} />
   </div>
@@ -52,18 +66,14 @@ const Routes = () => (
 
 class Chat extends Component {
 
-  // TODO: define chat application layout
-
   render(){
-
     return (
       <HashRouter>
-        <div className={styles.chat}>
-          <h1>React webapp build with the Webpack v4.</h1>
-          <p><strong>.env message:</strong> {process.env.MESSAGE}</p>
-          <br/>
-          <NavBar />
-          <hr />
+        <div className={'chat'}>
+
+          <div className={'chat__header'}>
+            <NavBar />
+          </div>
           <Routes />
         </div>
       </HashRouter>
