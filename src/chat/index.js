@@ -10,34 +10,67 @@ import {
 
 // TODO: move each component to it own .js file
 
-const ChatRoom = () => (
+const ContentLayout = ({ 
+  content = <Fragment></Fragment>, 
+  footer = <Fragment></Fragment>
+}) => (
   <Fragment>
     <div className={'chat__body__content'}>
-      <strong>TODO:</strong> define chat room component
+      {content}
     </div>
     <div className={'chat__body__footer'}>
-      <div className={'chatroom__input'}>
-        <div className={'chatroom__input__field'}>
-          <input type="text" placeholder="Enter a message"></input>
-        </div>
-        <div className={'chatroom__input__submit'}>
-          <button>send</button>
-        </div>
-      </div>
+      {footer}
     </div>
   </Fragment>
 );
 
-const Settings = () => (
+//---
+
+const ChatRoomContent = () => (
   <Fragment>
-    <div className={'chat__body__content'}>
-      <strong>TODO:</strong> define settings component
-    </div>
-    <div className={'chat__body__footer'}>
-      <button className={'btn-reset'}>Reset to Default</button>
-    </div>
+    <strong>TODO:</strong> define chat room component
   </Fragment>
 );
+
+const ChatRoomFooter = () => (
+  <Fragment>
+    <div className={'chatroom__input'}>
+      <div className={'chatroom__input__field'}>
+        <input type="text" placeholder="Enter a message"></input>
+      </div>
+      <div className={'chatroom__input__submit'}>
+        <button>send</button>
+      </div>
+    </div>
+  </Fragment>
+); 
+
+const ChatRoom = () => ContentLayout({
+  content: ChatRoomContent(),
+  footer: ChatRoomFooter()
+});
+
+
+//---
+
+const SettingsContent = () => (
+  <Fragment>
+    <strong>TODO:</strong> define settings component
+  </Fragment>
+);
+
+const SettingsFooter = () => (
+  <Fragment>
+    <button className={'btn-reset'}>Reset to Default</button>
+  </Fragment>
+);
+
+const Settings = () => ContentLayout({
+  content: SettingsContent(),
+  footer: SettingsFooter()
+});
+
+//---
 
 const NavBar = () => (
   <div className={'navbar'}>
