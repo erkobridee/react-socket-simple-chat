@@ -20,10 +20,8 @@
     padding: 0.5rem 2rem;
     
     @extend %margin-bottom;
-    @extend %border;
 
-    // TODO: remove
-    // background-color: #ffffff;
+    @extend %border;
   }
 
   &__body {
