@@ -12,55 +12,35 @@
     <LayoutBody>
       
       // chat or settings
-      <Content>
+      <Container>
 
-        <ContentBody>
+        <ContainerBody>
           {children}
-        </BodyContent>
+        </ContainerBody>
 
-        <ContentFooter>
+        <ContainerFooter>
           {children}
-        </ContentFooter>
-      </Content>
+        </ContainerFooter>
+      </Container>
     </LayoutBody>
   </Layout>
 */
 
-import React, { Component, Fragment } from 'react';
+// TODO: implement coumpound & context api support (the second one to color themes support)
+// https://itnext.io/using-advanced-design-patterns-to-create-flexible-and-reusable-react-components-part-1-dd495fa1823
+// https://itnext.io/using-advanced-design-patterns-to-create-flexible-and-reusable-react-components-part-2-react-3c5662b997ab
 
-// TODO: remove
-const Container = () => (
-  <div>Hello from the container</div>
-);
-
-
-/*
-  <Layout>
-  </Layout>
-*/
-class Layout extends Component {
-  
-  render() {
-    const { children } = this.props;
-
-    return (
-      <Fragment>
-        <div>Hello World!</div>
-        { children && children }
-      </Fragment>
-    );
-  }
-}
-
-// export default {
-//   Layout: <Fragment />,
-//   LayoutHeader: <Fragment />,
-//   LayoutBody: <Fragment />,
-//   Container: <Fragment />,
-//   ContainerBody: <Fragment />,
-//   ContainerFooter: <Fragment />
-// };
+import Layout from './Layout';
+import LayoutHeader from './LayoutHeader';
+import LayoutBody from './LayoutBody';
+import Container from './Container';
+import ContainerBody from './ContainerBody';
+import ContainerFooter from './ContainerFooter';
 
 export default Object.assign(Layout, {
-  Container
-})
+  LayoutHeader,
+  LayoutBody,
+  Container,
+  ContainerBody,
+  ContainerFooter
+});

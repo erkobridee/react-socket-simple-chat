@@ -7,57 +7,8 @@
 }
 
 //---------------------------------------------------------------------------//
-// defines the application layout using the flexbox
 
-.main {
-  @include fix-content-position;
-
-  // TODO: review and define color schemes support
-  color: $body-color;
-  background-color: $body-background-color;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-
-  @include fix-content-position($default-unit-value);
-
-  /* Larger than tablet */
-  @media (min-width: $screen-tablet){
-    margin: auto;
-    max-width: $desktop-body-max-width;
-  }
-
-  &__header {
-    flex: none;
-    padding: 0.5rem 2rem;
-    
-    @extend %margin-bottom;
-
-    @extend %border;
-  }
-
-  &__body {
-    display: flex;
-    flex-direction: column;
-    flex: auto;
-
-    &__content {
-      flex: auto;
-      padding: $default-unit-value;
-
-      @extend %margin-bottom;
-      @extend %border;
-
-      background-color: lighten($body-background-color, 5%);
-    }
-  
-    &__footer {
-      flex: none;
-    }
-  }
-}
+@import 'components/styles';
 
 //---------------------------------------------------------------------------//
 

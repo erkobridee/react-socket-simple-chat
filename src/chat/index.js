@@ -31,12 +31,6 @@ const ContentLayout = ({
 const ChatRoomContent = () => (
   <Fragment>
     <strong>TODO:</strong> define chat room component
-
-    <br />
-
-    <Layout>
-      <Layout.Container />
-    </Layout>
   </Fragment>
 );
 
