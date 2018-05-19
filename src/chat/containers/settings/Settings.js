@@ -21,7 +21,7 @@ class Settings extends Component {
         <ContainerFooter>
           <button 
             className={buttonClass}>
-            Reset to Default
+            <i className="fas fa-undo fa-fw"></i> Reset to Default
           </button>
         </ContainerFooter>
       </Fragment>

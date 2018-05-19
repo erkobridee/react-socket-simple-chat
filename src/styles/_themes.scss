@@ -2,14 +2,17 @@
 $light-theme-background-color: #f0f0f0;
 $light-theme-color: #555555;
 $light-theme-border-color: #cccccc;
+$light-theme-sup-color: #FF0000;
 
 $dark-theme-background-color: #333333;
 $dark-theme-color: #9ab9b9;
 $dark-theme-border-color: #5a5959;
+$dark-theme-sup-color: #ff9876;
 
 $base-background-color: $light-theme-background-color;
 $base-color: $light-theme-color;
 $base-border-color: $light-theme-border-color;
+$base-sup-color: $light-theme-sup-color;
 
 //----------------------------------------------------------------------------//
 
@@ -35,13 +38,15 @@ $themesColors: (
     'background-color': $light-theme-background-color,
     'color': $light-theme-color,
     'placeholder-color': lighten(desaturate($light-theme-color, $lightColorOffset), $lightColorOffset),
-    'border-color': $light-theme-border-color
+    'border-color': $light-theme-border-color,
+    'sup-color': $light-theme-sup-color
   ),
   'dark': (
     'background-color': $dark-theme-background-color,
     'color': $dark-theme-color,
     'placeholder-color': darken(desaturate($dark-theme-color, $darkColorOffSet), $darkColorOffSet),
-    'border-color': $dark-theme-border-color
+    'border-color': $dark-theme-border-color,
+    'sup-color': $dark-theme-sup-color
   )
 );
 
@@ -115,6 +120,14 @@ $themesColors: (
 }
 
 //---
+
+@mixin theme-navbar-sup-color(){
+  @each $theme, $map in $themesColors {
+    @include modifier($theme){
+      color: map-get($map, 'sup-color');
+    }
+  }
+}
 
 @mixin theme-color(){
   @each $theme, $map in $themesColors {

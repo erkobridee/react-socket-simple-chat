@@ -6,6 +6,9 @@
 
   padding: 0.5rem 2rem;
 
+  display: inline-block;
+  white-space: nowrap;
+
   &:hover {
     cursor: pointer;
   }

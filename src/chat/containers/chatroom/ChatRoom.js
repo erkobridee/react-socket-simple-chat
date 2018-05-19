@@ -32,7 +32,9 @@ class ChatRoom extends Component {
                 placeholder="Enter a message"></input>
             </div>
             <div className={'chatroom__input__submit'}>
-              <button className={buttonClass}>send</button>
+              <button className={buttonClass} title="send">
+                <i className="fas fa-paper-plane fa-fw"></i>
+              </button>
             </div>
           </div>
         </ContainerFooter>
