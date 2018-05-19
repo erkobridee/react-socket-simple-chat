@@ -37,6 +37,11 @@
     flex: auto;
 
     &__content {
+      
+      // TODO: review
+      // display: flex;
+      // flex-direction: column;
+
       flex: auto;
       padding: $default-unit-value;
 
