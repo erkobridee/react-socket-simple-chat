@@ -1,0 +1,28 @@
+.btn {
+  font-family: $body-font-family;
+  font-size: $body-font-size;
+
+  line-height: $body-line-height;
+
+  padding: 0.5rem 2rem;
+
+  // add color theme support
+  // @extend %border;
+  background-color: darken($body-background-color, 2%);
+  &:active {
+    background-color: darken($body-background-color, 6%);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &-expand {
+    width: 100%;
+    height: 100%;
+  }
+}

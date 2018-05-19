@@ -1,0 +1,9 @@
+.settings {
+
+  &__btn {
+  
+    // TODO: define color theme support
+    @extend %border;
+    // background-color: unset;
+  }
+}

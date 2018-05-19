@@ -19,19 +19,21 @@ $body-margin: $default-unit-value;
 
 $body-line-height: 1.6;
 
-// default colors
-$body-color: #222222;
-$body-background-color: #f0f0f0;
-
 //----------------------------------------------------------------------------//
 
 $screen-tablet: 750px;
 
 //---
 
-$desktop-body-max-width: 700px;
+$desktop-use-max-width: 700px;
 
 //----------------------------------------------------------------------------//
 
+// default colors
+$body-color: #222222;
+$body-background-color: #f0f0f0;
+
 // $custom-color: #792c2c;
 $custom-color: #0735cc;
+
+//----------------------------------------------------------------------------//

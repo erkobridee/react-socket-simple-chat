@@ -1,0 +1,42 @@
+.chatroom {
+
+  &__input {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+    &__field {
+      flex: auto;
+      margin-right: 0.5rem;
+
+      display: flex;
+
+      & > input[type="text"] {
+        flex: auto;
+      }
+    }
+
+    &__submit {
+      flex: none;
+    }
+  }
+
+  &__field {
+    padding: 0.5rem 1rem;
+
+    font-family: $body-font-family;
+    font-size: $body-font-size;
+    line-height: $body-line-height;
+
+    // TODO: define color theme support
+    @extend %border;
+  }
+
+  &__btn {
+    padding: 0.5rem 1rem;
+
+    // TODO: define color theme support
+    @extend %border;
+    background-color: unset;
+  }
+}

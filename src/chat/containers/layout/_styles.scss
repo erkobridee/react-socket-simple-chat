@@ -1,3 +1,7 @@
+%margin-bottom {
+  margin-bottom: $default-unit-value;
+}
+
 .main {
   @include fix-content-position;
 
@@ -15,7 +19,7 @@
   /* Larger than tablet */
   @media (min-width: $screen-tablet){
     margin: auto;
-    max-width: $desktop-body-max-width;
+    max-width: $desktop-use-max-width;
   }
 
   &__header {
@@ -24,6 +28,7 @@
     
     @extend %margin-bottom;
 
+    // TODO: review and define color schemes support
     @extend %border;
   }
 
@@ -37,9 +42,9 @@
       padding: $default-unit-value;
 
       @extend %margin-bottom;
-      @extend %border;
 
       // TODO: review and define color schemes support
+      @extend %border;
       background-color: lighten($body-background-color, 5%);
     }
   

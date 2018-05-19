@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styles from './stylesClassNames';
 
 /*
@@ -11,14 +11,9 @@ class Layout extends Component {
   render() {
     const { children } = this.props;
 
-    const mainStyles = [
-      styles.main
-      // TODO: add color theme support
-    ];
-
     return (
-      <div className={mainStyles}>
-        <div className={styles.layout}>
+      <div className={styles.main}>
+        <div className={styles.container}>
         { children && children }
         </div>
       </div>

@@ -1,5 +1,5 @@
 /*
-  this file exposes the application layout components 
+  exposes the application layout components 
 
   <Layout>
 
@@ -37,10 +37,13 @@ import Container from './Container';
 import ContainerBody from './ContainerBody';
 import ContainerFooter from './ContainerFooter';
 
-export default Object.assign(Layout, {
+export {
+  Layout,
   LayoutHeader,
   LayoutBody,
   Container,
   ContainerBody,
   ContainerFooter
-});
+};
+
+export default Layout;
