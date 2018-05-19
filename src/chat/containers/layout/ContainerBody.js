@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
+
 import styles from './stylesClassNames';
 
 /*
@@ -20,10 +22,15 @@ import styles from './stylesClassNames';
 class ContainerBody extends Component {
   
   render() {
+    const containerBodyClass = classNames(
+      styles.containerBody,
+      `${styles.containerBody}--${this.props.theme || 'light'}`
+    );
+
     const { children } = this.props;
 
     return (
-      <div className={styles.containerBody}>
+      <div className={containerBodyClass}>
       { children && children }
       </div>
     );

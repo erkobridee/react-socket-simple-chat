@@ -1,9 +1,15 @@
 import React, { Component, Fragment } from 'react';
+import classNames from 'classnames';
 import { ContainerBody, ContainerFooter } from 'chat/containers/layout';
 
 class Settings extends Component {
 
   render() {
+    const buttonClass = classNames(
+      'btn', 'btn-expand',
+      `btn--${this.props.theme || 'light'}`,
+      'settings__btn' // TODO: remove
+    );
 
     return (
       <Fragment>
@@ -14,7 +20,7 @@ class Settings extends Component {
         
         <ContainerFooter>
           <button 
-            className={'btn btn-expand settings__btn'}>
+            className={buttonClass}>
             Reset to Default
           </button>
         </ContainerFooter>

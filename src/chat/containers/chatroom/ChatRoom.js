@@ -1,9 +1,20 @@
 import React, { Component, Fragment } from 'react';
+import classNames from 'classnames';
 import { ContainerBody, ContainerFooter } from 'chat/containers/layout';
 
 class ChatRoom extends Component {
 
   render() {
+    const fieldClass = classNames(
+      'chatroom__field',
+      `chatroom__field--${this.props.theme || 'light'}`
+    );
+
+    const buttonClass = classNames(
+      'btn',
+      `btn--${this.props.theme || 'light'}`,
+      'chatroom__btn'
+    )
 
     return (
       <Fragment>
@@ -17,11 +28,11 @@ class ChatRoom extends Component {
             <div className={'chatroom__input__field'}>
               <input 
                 type="text"   
-                className={'chatroom__field'} 
+                className={fieldClass} 
                 placeholder="Enter a message"></input>
             </div>
             <div className={'chatroom__input__submit'}>
-              <button className={'btn chatroom__btn'}>send</button>
+              <button className={buttonClass}>send</button>
             </div>
           </div>
         </ContainerFooter>
