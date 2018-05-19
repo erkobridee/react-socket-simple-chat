@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from './stylesClassNames';
 
 /*
   <Layout>
@@ -22,7 +23,7 @@ class ContainerBody extends Component {
     const { children } = this.props;
 
     return (
-      <div className={'container__body__content'}>
+      <div className={styles.containerBody}>
       { children && children }
       </div>
     );
