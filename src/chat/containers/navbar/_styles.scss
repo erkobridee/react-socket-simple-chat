@@ -1,7 +1,7 @@
 .navbar {
 
-  & > a {
-    color: #222222;
+  a {
+    color: $base-color;
     text-decoration: none;
   
     &:first-child {
@@ -13,4 +13,6 @@
       text-decoration: underline;
     }
   }
+
+  @include theme-navbar-colors;
 }

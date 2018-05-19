@@ -1,0 +1,138 @@
+
+// light background-color: #FAFAFA
+
+$light-theme-background-color: #f0f0f0;
+// $light-theme-color: #222222;
+$light-theme-color: #555555;
+$light-theme-border-color: #cccccc;
+
+$dark-theme-background-color: #333333;
+$dark-theme-color: #9ab9b9;
+$dark-theme-border-color: #5a5959;
+
+$base-background-color: $light-theme-background-color;
+$base-color: $light-theme-color;
+$base-border-color: $light-theme-border-color;
+
+//----------------------------------------------------------------------------//
+
+@mixin apply-border($applyColor: $base-border-color){
+  border: 0.1rem solid $applyColor;
+}
+
+@mixin base-border() {
+  @include apply-border();
+}
+
+@mixin base-colors(){
+  background-color: $base-background-color;
+  color: $base-color;
+}
+
+//----------------------------------------------------------------------------//
+
+$lightColorOffset: 35;
+$darkColorOffSet: 20;
+$themesColors: (
+  'light': (
+    'background-color': $light-theme-background-color,
+    'color': $light-theme-color,
+    'placeholder-color': lighten(desaturate($light-theme-color, $lightColorOffset), $lightColorOffset),
+    'border-color': $light-theme-border-color
+  ),
+  'dark': (
+    'background-color': $dark-theme-background-color,
+    'color': $dark-theme-color,
+    'placeholder-color': darken(desaturate($dark-theme-color, $darkColorOffSet), $darkColorOffSet),
+    'border-color': $dark-theme-border-color
+  )
+);
+
+//---
+
+@mixin theme-border(){
+  @each $theme, $map in $themesColors {
+    @include modifier($theme){
+      @include apply-border(map-get($map, 'border-color'));
+    }
+  }
+}
+
+@mixin theme-colors(){
+  @each $theme, $map in $themesColors {
+    @include modifier($theme){
+      color: map-get($map, 'color');
+      background-color: map-get($map, 'background-color');
+    }
+  }
+}
+
+@mixin theme-content-colors($lightenBy: 5%){
+  @each $theme, $map in $themesColors {
+    @include modifier($theme){
+      @include apply-border(map-get($map, 'border-color'));
+      color: map-get($map, 'color');
+      background-color: lighten(map-get($map, 'background-color'), $lightenBy);
+    }
+  }
+}
+
+@mixin theme-button-colors($defaultBy: 1%, $activeBy: 3%){
+  @each $theme, $map in $themesColors {
+    @include modifier($theme){
+      @include apply-border(map-get($map, 'border-color'));
+      color: map-get($map, 'color');
+      background-color: lighten(map-get($map, 'background-color'), $defaultBy);
+      &:active {
+        background-color: darken(map-get($map, 'background-color'), $activeBy);
+      }
+    }
+  }
+}
+
+@mixin theme-form-control-colors($lightenBy: 5%){
+  @each $theme, $map in $themesColors {
+    @include modifier($theme){
+      @include apply-border(map-get($map, 'border-color'));
+      color: map-get($map, 'color');
+      background-color: lighten(map-get($map, 'background-color'), $lightenBy);
+      &::placeholder {
+        color: map-get($map, 'placeholder-color');
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@mixin theme-navbar-colors(){
+  @each $theme, $map in $themesColors {
+    @include modifier($theme){
+      color: map-get($map, 'color');
+      background-color: map-get($map, 'background-color');
+
+      a {
+        color: map-get($map, 'color');
+      }
+    }
+  }
+}
+
+//---
+
+@mixin theme-color(){
+  @each $theme, $map in $themesColors {
+    @include modifier($theme){
+      color: map-get($map, 'color');
+    }
+  }
+}
+
+@mixin theme-background-color(){
+  @each $theme, $map in $themesColors {
+    @include modifier($theme){
+      background-color: map-get($map, 'background-color');
+    }
+  }
+}
+
+//----------------------------------------------------------------------------//

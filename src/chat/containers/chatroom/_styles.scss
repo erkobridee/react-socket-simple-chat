@@ -11,7 +11,7 @@
 
       display: flex;
 
-      & > input[type="text"] {
+      input[type="text"] {
         flex: auto;
       }
     }
@@ -21,22 +21,7 @@
     }
   }
 
-  &__field {
-    padding: 0.5rem 1rem;
-
-    font-family: $body-font-family;
-    font-size: $body-font-size;
-    line-height: $body-line-height;
-
-    // TODO: define color theme support
-    @extend %border;
-  }
-
   &__btn {
     padding: 0.5rem 1rem;
-
-    // TODO: define color theme support
-    @extend %border;
-    background-color: unset;
   }
 }

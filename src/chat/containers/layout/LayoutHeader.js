@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
+
 import styles from './stylesClassNames';
 
 /*
@@ -13,10 +15,15 @@ import styles from './stylesClassNames';
 class LayoutHeader extends Component {
   
   render() {
+    const layoutHeaderClass = classNames(
+      styles.layoutHeader,
+      `${styles.layoutHeader}--${this.props.theme || 'light'}`
+    );
+
     const { children } = this.props;
 
     return (
-      <div className={styles.layoutHeader}>
+      <div className={layoutHeaderClass}>
       { children && children }
       </div>
     );

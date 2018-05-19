@@ -1,4 +1,24 @@
 
+//----------------------------------------------------------------------------//
+// BEM mixins
+
+// Sass's `@content` Directive Use Cases
+// https://robots.thoughtbot.com/sasss-content-directive
+
+@mixin element($name) {
+  @at-root #{&}__#{$name} {
+    @content;
+  }
+}
+
+@mixin modifier($name){
+  @at-root #{&}--#{$name} {
+    @content;
+  }
+}
+
+//----------------------------------------------------------------------------//
+
 // mixin to fix the application content to fit in all available space
 @mixin fix-content-position($unit: 0rem){
   position: absolute;
@@ -7,3 +27,14 @@
   left: $unit;
   right: $unit;
 }
+
+//----------------------------------------------------------------------------//
+
+// removes that blue outline color 
+@mixin remove-outline(){
+  &:focus {
+    outline: none;
+  }
+}
+
+//----------------------------------------------------------------------------//

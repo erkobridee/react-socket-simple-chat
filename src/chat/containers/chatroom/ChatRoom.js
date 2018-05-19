@@ -6,8 +6,8 @@ class ChatRoom extends Component {
 
   render() {
     const fieldClass = classNames(
-      'chatroom__field',
-      `chatroom__field--${this.props.theme || 'light'}`
+      'form-control',
+      `form-control--${this.props.theme || 'light'}`
     );
 
     const buttonClass = classNames(

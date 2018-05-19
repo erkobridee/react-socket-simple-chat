@@ -5,9 +5,8 @@
 .main {
   @include fix-content-position;
 
-  // TODO: review and define color schemes support
-  color: $body-color;
-  background-color: $body-background-color;
+  @include base-colors;
+  @include theme-colors;
 }
 
 .container {
@@ -28,8 +27,8 @@
     
     @extend %margin-bottom;
 
-    // TODO: review and define color schemes support
-    @extend %border;
+    @include base-border;
+    @include theme-border;
   }
 
   &__body {
@@ -43,9 +42,10 @@
 
       @extend %margin-bottom;
 
-      // TODO: review and define color schemes support
-      @extend %border;
-      background-color: lighten($body-background-color, 5%);
+      background-color: lighten($base-background-color, 5%);
+      @include base-border();
+
+      @include theme-content-colors;
     }
   
     &__footer {
