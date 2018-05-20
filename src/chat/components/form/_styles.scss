@@ -29,8 +29,8 @@
   }
 
   &-select {
-    min-height: 30rem;
     min-width: 20rem;
+    height: 3rem;
     @extend %form-control;
 
     @include theme-form-control-colors;
