@@ -4,10 +4,6 @@ import { ContainerBody, ContainerFooter } from 'chat/components/layout';
 
 class ChatRoom extends Component {
 
-  componentDidMount() {
-    console.log('ChatRoom');
-  }
-
   render() {
     const theme = this.props.theme || 'light';
 

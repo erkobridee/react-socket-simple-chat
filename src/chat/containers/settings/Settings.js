@@ -4,15 +4,12 @@ import { ContainerBody, ContainerFooter } from 'chat/components/layout';
 
 class Settings extends Component {
 
-  componentDidMount() {
-    console.log('Settings');
-  }
-
   render() {
+    const theme = this.props.theme || 'light';
+    
     const buttonClass = classNames(
       'btn', 'btn-expand',
-      `btn--${this.props.theme || 'light'}`,
-      'settings__btn' // TODO: remove
+      `btn--${theme}`
     );
 
     return (
