@@ -1,4 +1,6 @@
-import checkIsMobile from 'chat/services/is-mobile';
+// import checkIsMobile from 'chat/services/is-mobile';
+
+import { hash, checkIsMobile } from 'chat/services';
 
 //----------------------------------------------------------------------------//
 
@@ -7,8 +9,11 @@ export const isMobile = checkIsMobile.any();
 //----------------------------------------------------------------------------//
 // default settings
 
+const localTime = new Date().getTime();
+const buildUserName = () => ( `Guest_${ hash(localTime).hashSum }` )
+
 export const defaultSettings = {
-  userName: process.env.USER_NAME || 'Guest0001',
+  userName: buildUserName(),
   theme: process.env.THEME || 'light',
   clockDisplay: process.env.CLOCK_DISPLAY || '12',
   listenSendKeys: process.env.LISTEN_SEND_KEYS || 'off',
