@@ -34,28 +34,43 @@ class InputRadio extends Component {
     theme: 'light'
   }
 
+  handleClick = (event) => {
+    event.preventDefault();
+    const { onChange, name, value } = this.props;
+    if( onChange ) {
+      onChange({ target: { name, value } });
+    }
+  }
+
   render() {
     const { 
         theme, label, 
         className, 
-        value, selected,
+        name, value, 
+        selected,
         ...rest 
     } = this.props;
 
     const inputRadioClass = classNames(
-      'form-radio',
-      `form-radio--${theme}`,
+      'form-check',
+      `form-check--${theme}`,
       className
     );
 
     return (
-      <div className={ inputRadioClass }>
-        <label>
-          <input 
-            type="radio" 
-            checked={ value === selected }
-            { ...{ value, ...rest } }
-          />
+      <div 
+        className={ inputRadioClass }
+        onClick={ this.handleClick  }>
+        <input 
+          className="form-check-input"
+          type="radio" 
+          id={ name }
+          checked={ value === selected }
+          { ...{ name, value, ...rest } }
+        />
+        <label 
+          className="form-check-label" 
+          htmlFor={ name }>
           { label }
         </label>
       </div>

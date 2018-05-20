@@ -15,13 +15,62 @@
     @include theme-form-control-colors;
   }
 
-  &-radio {
-    display: inline-block;
-    
-    &:not(:last-child){
-      margin-right: 1rem;
+  // &-group {}
+
+  &-check-group {
+    display: flex;
+  }
+
+  &-check {
+    display: relative;
+
+    &-input {
+      display: none;
+
+      &:checked + label {
+        font-weight: bold;
+
+        &:before {
+          content: "\2022";
+          
+          color: $base-color; 
+
+          top: 0.4rem;
+
+          text-align: center;  
+
+          font-weight: bold;
+          font-size: 2.5rem;
+        }
+      }
     }
 
-    // &-group {}
+    &-label {
+
+      &:before {
+        content: " ";
+        display: inline-block;
+        
+        width: 1.3rem;
+        height: 1.3rem;
+        line-height: 1.3rem;
+        
+        position: relative;
+
+        top: 0.3rem;
+        margin-right: 0.5rem;
+
+        border-radius: 0.8rem;
+
+        border: 0.1rem solid $base-border-color;
+        background-color: $base-background-color;
+      }
+    }
+
+    @include theme-check-colors;
+    
+    &:not(:last-child){
+      margin-right: 2rem;
+    }
   }
 }

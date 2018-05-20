@@ -61,8 +61,8 @@ class InputRadioGroup extends Component {
     const { theme, className } = this.props;
 
     const inputRadioGroupClass = classNames(
-      'form-radio-group',
-      `form-radio-group--${theme}`,
+      'form-check-group',
+      `form-check-group--${theme}`,
       className
     );
 

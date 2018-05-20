@@ -92,6 +92,24 @@ $themesColors: (
   }
 }
 
+@mixin theme-check-colors(){
+  $parent: &;
+  
+  @each $theme, $map in $themesColors {
+    @include modifier($theme){
+      
+      #{$parent}-input:checked + label:before {
+        color: map-get($map, 'color');
+      }
+  
+      #{$parent}-label:before {
+        @include apply-border(map-get($map, 'border-color'));
+        background-color: map-get($map, 'background-color');
+      }
+    }
+  }
+}
+
 @mixin theme-form-control-colors($lightenBy: 5%){
   @each $theme, $map in $themesColors {
     @include modifier($theme){
@@ -118,8 +136,6 @@ $themesColors: (
     }
   }
 }
-
-//---
 
 @mixin theme-navbar-sup-color(){
   @each $theme, $map in $themesColors {
