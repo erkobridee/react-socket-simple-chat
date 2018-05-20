@@ -1,3 +1,5 @@
+// presentation component
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -37,11 +39,14 @@ class ChatRoomFooter extends Component {
     this.setState({ message: '' });
   }
 
+  // TODO: remove the event
   submit = ( event ) => {
     if(
-      this.props.onSubmit //&& 
-      // this.state.message.length > 0
+      this.props.onSubmit && 
+      this.state.message.length > 0
     ){
+      
+      // TODO: do not send the event
       this.props.onSubmit(
         this.state.message, event
       );
@@ -49,16 +54,17 @@ class ChatRoomFooter extends Component {
     }
   }
 
-  handleChange = (event) => {
+  handleChange = ( event ) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [ event.target.name ]: event.target.value
     });
   }
 
   // https://reactjs.org/docs/events.html#keyboard-events
-  handleKeyPress = (event) => {
+  handleKeyPress = ( event ) => {
+    const { listenSendKeys, isMobile } = this.props;
     if(
-      this.props.listenSendKeys && 
+      listenSendKeys && 
       (
         isMobile || event.ctrlKey 
       ) &&
@@ -69,13 +75,13 @@ class ChatRoomFooter extends Component {
     }
   }
 
-  handleButtonClick = (event) => {
+  handleButtonClick = ( event ) => {
     event.preventDefault();
     this.submit();
   }
 
   render() {
-    const theme = this.props.theme || 'light';
+    const { theme } = this.props;
 
     const fieldClass = classNames(
       'form-control',
