@@ -1,2 +1,18 @@
-// TODO: define if needed
-// .settings {}
+$element-space-height: 1.5rem;
+
+.settings {
+
+  &__body {
+
+    > * {
+
+      &:first-child {
+        margin-top: $element-space-height;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: $element-space-height;
+      }
+    }
+  }
+}
