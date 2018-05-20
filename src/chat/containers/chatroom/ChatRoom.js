@@ -1,13 +1,28 @@
+// container component
+
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
+
 import { ContainerBody, ContainerFooter } from 'chat/components/layout';
 
 import ChatRoomFooter from './ChatRoomFooter';
 
 import checkIsMobile from 'chat/services/is-mobile';
-const isMobile = checkIsMobile.any();
 
 class ChatRoom extends Component {
+
+  // https://reactjs.org/docs/typechecking-with-proptypes.html
+  static propTypes = {
+    theme: PropTypes.string, // change to .isRequired
+    isMobile: PropTypes.bool
+  };
+
+  // https://reactjs.org/docs/react-without-es6.html#declaring-default-props
+  static defaultProps = {
+    theme: 'light', 
+    isMobile: checkIsMobile.any()
+  };
 
   state = {
     message: '',
@@ -34,8 +49,9 @@ class ChatRoom extends Component {
   }
 
   render() {
-    const theme = this.props.theme || 'light';
+    const { theme, isMobile } = this.props;
 
+    // TODO: define ContainerBody content to display the messages
     return (
       <Fragment>
         
