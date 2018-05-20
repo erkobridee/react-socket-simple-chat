@@ -13,7 +13,7 @@
   display: flex;
   flex-direction: column;
 
-  @include fix-content-position($default-unit-value);
+  @include fix-content-position(absolute, $default-unit-value);
 
   @include larger-than-tablet {
     margin: auto;
@@ -40,15 +40,8 @@
     flex: auto;
 
     &__content {
+      position: relative;
       
-      // TODO: review - define a ScrollArea component
-      // display: flex;
-      // flex-direction: column;
-      // overflow: auto;
-      // > *:not(:last-child){
-      //   margin-bottom: 0.5rem;
-      // }
-
       flex: auto;
       
       padding: $default-unit-value;
@@ -56,10 +49,14 @@
         padding: $default-unit-value 2rem;
       }
 
+      @include modifier(no-padding){
+        padding: 0;
+      }
+
       @extend %margin-bottom;
 
       background-color: lighten($base-background-color, 5%);
-      @include base-border();
+      @include base-border;
 
       @include theme-content-colors;
     }
