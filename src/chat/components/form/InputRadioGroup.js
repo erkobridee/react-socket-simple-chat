@@ -2,6 +2,30 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+/*
+  usage:
+
+  <InputRadioGroup
+    theme={ theme }
+    name="sameAttributeNameFromState"
+    selected={ this.state.sameAttributeNameFromState }
+    onChange={ this.handleChange }
+  >
+
+    <InputRadio 
+      label="Radio 1"
+      value="radio_1"
+    />
+
+    <InputRadio 
+      label="Radio 2"
+      value="radio_2"
+    />
+
+    ...
+
+  </InputRadioGroup>
+*/
 class InputRadioGroup extends Component {
 
   // https://reactjs.org/docs/typechecking-with-proptypes.html

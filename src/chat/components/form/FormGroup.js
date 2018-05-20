@@ -1,6 +1,18 @@
 import React,  { Component } from 'react';
 import PropTypes from 'prop-types';
 
+/*
+  usage:
+
+  <FormGroup
+    theme={ theme }
+    label="labelToTheField"
+  >
+
+    < InputField, InputRadioGroup />
+
+  </FormGroup>
+*/
 class FormGroup extends Component {
 
   // https://reactjs.org/docs/typechecking-with-proptypes.html
@@ -8,12 +20,12 @@ class FormGroup extends Component {
     theme: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     children: PropTypes.element.isRequired
-  };
+  }
 
    // https://reactjs.org/docs/react-without-es6.html#declaring-default-props
    static defaultProps = {
     theme: 'light'
-  };
+  }
 
   // https://jaketrent.com/post/send-props-to-children-react/
   // https://reactjs.org/docs/react-api.html#reactchildren
