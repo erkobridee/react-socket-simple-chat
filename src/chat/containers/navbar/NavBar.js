@@ -25,7 +25,7 @@ class NavBar extends Component {
               Chat
             </SafeNavLink>
             <div className={navbarSupClass}>
-              <span className={'navbar__sup__text'}>10</span>
+              <span className="navbar__sup__text">10</span>
             </div>
           </li>
           <li>
