@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { ContainerFooter } from 'chat/components/layout';
 
@@ -7,12 +8,31 @@ import { ContainerFooter } from 'chat/components/layout';
 // https://reactjs.org/docs/forms.html
 class ChatRoomFooter extends Component {
   
-  state = {
-    message : ''
+  // https://reactjs.org/docs/typechecking-with-proptypes.html
+  static propTypes = {
+    theme: PropTypes.string.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+    listenCtrlEnter: PropTypes.bool
   };
 
+  // https://reactjs.org/docs/react-without-es6.html#declaring-default-props
+  static defaultProps = {
+    listenCtrlEnter: true
+  };
+
+  state = {
+    message: ''
+  };
+
+  // https://reactjs.org/docs/refs-and-the-dom.html
+  messageField = React.createRef();
+
+  componentDidMount() {
+    this.messageField.current.focus();
+  }
+
   resetMessage = () => {
-    this.setState({ message : '' });
+    this.setState({ message: '' });
   }
 
   submit = () => {
@@ -36,6 +56,7 @@ class ChatRoomFooter extends Component {
   // https://reactjs.org/docs/events.html#keyboard-events
   handleKeyPress = (event) => {
     if(
+      this.props.listenCtrlEnter && 
       event.ctrlKey &&
       event.key === 'Enter'
     ){
@@ -68,6 +89,7 @@ class ChatRoomFooter extends Component {
         <div className={ 'chatroom__input' }>
           <div className={ 'chatroom__input__field' }>
             <input 
+              ref={ this.messageField }
               type="text"
               name="message"
               className={ fieldClass } 
