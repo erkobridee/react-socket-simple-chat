@@ -12,6 +12,8 @@ import constants from 'chat/constants'
 
 // TODO: add i18n support
 
+console.log(constants.defaultSettings);
+
 // https://reactjs.org/docs/forms.html
 class Settings extends Component {
 
@@ -40,16 +42,26 @@ class Settings extends Component {
   }
 
   handleChange = ( event ) => {
-    const { name, value } = event.target;
+    const { name } = event.target;
+    let { value } = event.target;
 
-    // TODO: remove
-    console.log( `Settings: radio ${name} changed, new value ${value}` );
+    // map listenSendKeys value to boolean
+    if( name === 'listenSendKeys' ) {
+      value = ( value === 'on' );
+    }
 
-    this.setState({
-      [name]: value
-    });
+    // only do the updates if the value is different from the previous one
+    if( this.state[name] !== value ){
 
-    // TODO: trigger events
+      // TODO: remove
+      console.log( `Settings: radio ${name} changed, new value ${value}` );
+
+      this.setState({
+        [name]: value
+      });
+  
+      // TODO: trigger events
+    }
   }
 
   render() {
@@ -122,7 +134,7 @@ class Settings extends Component {
               label={ `Send messages on ${ constants.keysToListenLabel /*isMobile ? 'ENTER' : 'CTRL + ENTER'*/ }` }>  
               <InputRadioGroup 
                 name="listenSendKeys"
-                selected={ this.state.listenSendKeys } 
+                selected={ this.state.listenSendKeys ? 'on' : 'off' } 
                 onChange={ this.handleChange }>
                 <InputRadio 
                   label="On" 

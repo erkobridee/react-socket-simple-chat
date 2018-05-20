@@ -16,7 +16,7 @@ export const defaultSettings = {
   userName: buildUserName(),
   theme: process.env.THEME || 'light',
   clockDisplay: process.env.CLOCK_DISPLAY || '12',
-  listenSendKeys: process.env.LISTEN_SEND_KEYS || 'off',
+  listenSendKeys: (process.env.LISTEN_SEND_KEYS === 'on'),
   locale: process.env.LOCALE || 'en' // i18n default language  
 };
 
