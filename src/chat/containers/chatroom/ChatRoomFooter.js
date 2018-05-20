@@ -12,12 +12,14 @@ class ChatRoomFooter extends Component {
   static propTypes = {
     theme: PropTypes.string.isRequired,
     onSubmit: PropTypes.func.isRequired,
-    listenCtrlEnter: PropTypes.bool
+    listenSendKeys: PropTypes.bool,
+    isMobile: PropTypes.bool
   };
 
   // https://reactjs.org/docs/react-without-es6.html#declaring-default-props
   static defaultProps = {
-    listenCtrlEnter: true
+    listenSendKeys: true, // TODO: change to false
+    isMobile: false
   };
 
   state = {
@@ -35,13 +37,13 @@ class ChatRoomFooter extends Component {
     this.setState({ message: '' });
   }
 
-  submit = () => {
+  submit = ( event ) => {
     if(
-      this.props.onSubmit && 
-      this.state.message.length > 0
+      this.props.onSubmit //&& 
+      // this.state.message.length > 0
     ){
       this.props.onSubmit(
-        this.state.message
+        this.state.message, event
       );
       this.resetMessage();
     }
@@ -56,12 +58,14 @@ class ChatRoomFooter extends Component {
   // https://reactjs.org/docs/events.html#keyboard-events
   handleKeyPress = (event) => {
     if(
-      this.props.listenCtrlEnter && 
-      event.ctrlKey &&
+      this.props.listenSendKeys && 
+      (
+        isMobile || event.ctrlKey 
+      ) &&
       event.key === 'Enter'
     ){
       event.preventDefault();
-      this.submit();
+      this.submit( event );
     }
   }
 

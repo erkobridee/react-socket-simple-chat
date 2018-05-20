@@ -1,4 +1,9 @@
 .btn {
+
+  // required to be able to trigger a button click over a mobile web browser
+  // https://github.com/facebook/react/issues/2055
+  cursor: pointer;
+
   font-family: $body-font-family;
   font-size: $body-font-size;
 
@@ -8,10 +13,6 @@
 
   display: inline-block;
   white-space: nowrap;
-
-  &:hover {
-    cursor: pointer;
-  }
 
   &-expand {
     width: 100%;
