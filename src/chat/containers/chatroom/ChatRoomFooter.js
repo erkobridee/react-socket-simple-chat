@@ -12,6 +12,7 @@ class ChatRoomFooter extends Component {
   
   // https://reactjs.org/docs/typechecking-with-proptypes.html
   static propTypes = {
+    locale: PropTypes.string.isRequired,
     theme: PropTypes.string.isRequired,
     onSubmit: PropTypes.func.isRequired,
     listenSendKeys: PropTypes.bool,
@@ -20,6 +21,7 @@ class ChatRoomFooter extends Component {
 
   // https://reactjs.org/docs/react-without-es6.html#declaring-default-props
   static defaultProps = {
+    locale: 'en',
     listenSendKeys: true, // TODO: change to false
     isMobile: false
   };
@@ -66,6 +68,8 @@ class ChatRoomFooter extends Component {
     if(
       listenSendKeys && 
       (
+        // when its running under the mobile web browser
+        // only check the enter key
         isMobile || event.ctrlKey 
       ) &&
       event.key === 'Enter'

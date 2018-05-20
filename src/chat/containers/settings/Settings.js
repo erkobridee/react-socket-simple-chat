@@ -8,17 +8,9 @@ import { ContainerBody, ContainerFooter } from 'chat/components/layout';
 
 import { FormGroup, InputField, InputRadioGroup, InputRadio } from 'chat/components/form';
 
-import checkIsMobile from 'chat/services/is-mobile';
+import constants from 'chat/constants'
 
 // TODO: add i18n support
-
-const DEFAULT_CONFIG = {
-  userName: 'Guest0001',
-  theme: 'light',
-  clickDisplay: '12',
-  listenSendKeys: 'off',
-  locale: 'en' // used to the i18n  
-}
 
 // https://reactjs.org/docs/forms.html
 class Settings extends Component {
@@ -32,23 +24,17 @@ class Settings extends Component {
   // https://reactjs.org/docs/react-without-es6.html#declaring-default-props
   static defaultProps = {
     theme: 'light',
-    isMobile: checkIsMobile.any()
+    isMobile: constants.isMobile
   }
 
-  state = {
-    userName: 'Guest0001',
-    theme: this.props.theme,
-    clickDisplay: '12',
-    listenSendKeys: 'off',
-    locale: 'en' // used to the i18n 
-  }
+  state = Object.assign({}, constants.defaultSettings);
 
   handleResetClick = ( event ) => {
     
     // TODO: remove
     console.log( 'Settings: clicked on reset to default button' );
 
-    this.setState(DEFAULT_CONFIG);
+    this.setState(Object.assign({}, constants.defaultSettings));
 
     // TODO: trigger events
   }
@@ -73,9 +59,6 @@ class Settings extends Component {
       'btn', 'btn-expand',
       `btn--${theme}`
     );
-
-    // useful reference about how to define input radio
-    // http://react.tips/radio-buttons-in-reactjs/
 
     return (
       <Fragment>
@@ -115,8 +98,8 @@ class Settings extends Component {
               theme={ theme } 
               label={ 'Clock display' }>  
               <InputRadioGroup 
-                name="clickDisplay"
-                selected={ this.state.clickDisplay } 
+                name="clockDisplay"
+                selected={ this.state.clockDisplay } 
                 onChange={ this.handleChange }>
                 <InputRadio 
                   label="12 Hours" 
@@ -131,7 +114,7 @@ class Settings extends Component {
 
             <FormGroup
               theme={ theme } 
-              label={ `Send messages on ${ isMobile ? 'ENTER' : 'CTRL + ENTER' }` }>  
+              label={ `Send messages on ${ constants.keysToListenLabel /*isMobile ? 'ENTER' : 'CTRL + ENTER'*/ }` }>  
               <InputRadioGroup 
                 name="listenSendKeys"
                 selected={ this.state.listenSendKeys } 

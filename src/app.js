@@ -7,7 +7,4 @@ import { hot } from 'react-hot-loader';
 
 import Chat from 'chat';
 
-// will be displayed only on the development environment
-console.log(process.env.MESSAGE);
-
 export default hot(module)(Chat);
