@@ -14,7 +14,7 @@ class ChatRoom extends Component {
 
     const buttonClass = classNames(
       'btn',
-      `btn--${this.props.theme || 'light'}`,
+      `btn--${theme}`,
       'chatroom__btn'
     )
 
