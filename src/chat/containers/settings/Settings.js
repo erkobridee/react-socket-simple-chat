@@ -1,8 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import classNames from 'classnames';
-import { ContainerBody, ContainerFooter } from 'chat/containers/layout';
+import { ContainerBody, ContainerFooter } from 'chat/components/layout';
 
 class Settings extends Component {
+
+  componentDidMount() {
+    console.log('Settings');
+  }
 
   render() {
     const buttonClass = classNames(

@@ -1,5 +1,9 @@
-// exposes the presentation (dumb) components from the components directory
+// exposes the presentation components from the components directory
 
-// TODO: define the imports
+import Layout from './layout';
+import NavLink from './navlink';
 
-export default {};
+export {
+  Layout,
+  NavLink
+};

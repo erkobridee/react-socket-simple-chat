@@ -1,13 +1,19 @@
 import React, { Component, Fragment } from 'react';
 import classNames from 'classnames';
-import { ContainerBody, ContainerFooter } from 'chat/containers/layout';
+import { ContainerBody, ContainerFooter } from 'chat/components/layout';
 
 class ChatRoom extends Component {
 
+  componentDidMount() {
+    console.log('ChatRoom');
+  }
+
   render() {
+    const theme = this.props.theme || 'light';
+
     const fieldClass = classNames(
       'form-control',
-      `form-control--${this.props.theme || 'light'}`
+      `form-control--${theme}`
     );
 
     const buttonClass = classNames(

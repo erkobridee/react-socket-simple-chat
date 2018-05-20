@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { HashRouter } from 'react-router-dom';
 
 import { NavBar } from './containers';
-import { Layout, LayoutHeader, LayoutBody } from './containers/layout';
+import { Layout, LayoutHeader, LayoutBody } from './components/layout';
 
 import Routes from './Routes';
 
