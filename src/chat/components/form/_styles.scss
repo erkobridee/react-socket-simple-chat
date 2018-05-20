@@ -7,20 +7,32 @@
   
 */
 
+%form-control {
+  padding: 0.5rem 1rem;
+  
+  font-family: $body-font-family;
+  font-size: $body-font-size;
+
+  @include remove-outline;
+
+  @include base-border;
+}
+
 .form {
 
   // &-group {}
 
   &-control {
-    padding: 0.5rem 1rem;
-  
-    font-family: $body-font-family;
-    font-size: $body-font-size;
-  
-    @include remove-outline;
-  
-    @include base-border;
-  
+    @extend %form-control;
+
+    @include theme-form-control-colors;
+  }
+
+  &-select {
+    min-height: 30rem;
+    min-width: 20rem;
+    @extend %form-control;
+
     @include theme-form-control-colors;
   }
 

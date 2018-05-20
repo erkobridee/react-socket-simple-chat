@@ -55,6 +55,11 @@ class Settings extends Component {
   render() {
     const { theme, isMobile } = this.props;
     
+    const selectClass = classNames(
+      'form-select',
+      `form-select--${theme}`
+    );
+
     const buttonClass = classNames(
       'btn', 'btn-expand',
       `btn--${theme}`
@@ -135,6 +140,7 @@ class Settings extends Component {
               <div>
                 <select 
                   name="locale" 
+                  className={ selectClass }
                   value={ this.state.locale } 
                   onChange={ this.handleChange }>
                   <option value="en">English</option>
