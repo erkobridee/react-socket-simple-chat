@@ -1,13 +1,24 @@
-.form-control {
-  padding: 0.5rem 1rem;
+.form {
 
-  font-family: $body-font-family;
-  font-size: $body-font-size;
-  line-height: $body-line-height;
 
-  @include remove-outline;
+  &-control {
+    padding: 0.5rem 1rem;
+  
+    font-family: $body-font-family;
+    font-size: $body-font-size;
+  
+    @include remove-outline;
+  
+    @include base-border;
+  
+    @include theme-form-control-colors;
+  }
 
-  @include base-border;
-
-  @include theme-form-control-colors;
+  &-radio {
+    display: inline-block;
+    
+    &:not(:last-child){
+      margin-right: 1rem;
+    }
+  }
 }
