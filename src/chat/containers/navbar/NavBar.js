@@ -1,3 +1,5 @@
+// container component
+
 import React, { Component } from 'react'
 import { SafeNavLink } from 'chat/components/navlink';
 import classNames from 'classnames';
