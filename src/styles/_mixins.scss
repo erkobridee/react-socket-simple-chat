@@ -30,6 +30,15 @@
 
 //----------------------------------------------------------------------------//
 
+// media query to screens that are larger than a tablet screen
+@mixin larger-than-tablet() {
+  @media (min-width: $screen-tablet){
+    @content; 
+  }
+}
+
+//----------------------------------------------------------------------------//
+
 // removes that blue outline color 
 @mixin remove-outline(){
   &:focus {

@@ -15,15 +15,18 @@
 
   @include fix-content-position($default-unit-value);
 
-  /* Larger than tablet */
-  @media (min-width: $screen-tablet){
+  @include larger-than-tablet {
     margin: auto;
     max-width: $desktop-use-max-width;
   }
 
   &__header {
     flex: none;
-    padding: 0 2rem;
+
+    padding: 0 $default-unit-value;
+    @include larger-than-tablet {
+      padding: 0 2rem;
+    }
     
     @extend %margin-bottom;
 
@@ -38,12 +41,20 @@
 
     &__content {
       
-      // TODO: review
+      // TODO: review - define a ScrollArea component
       // display: flex;
       // flex-direction: column;
+      // overflow: auto;
+      // > *:not(:last-child){
+      //   margin-bottom: 0.5rem;
+      // }
 
       flex: auto;
+      
       padding: $default-unit-value;
+      @include larger-than-tablet {
+        padding: $default-unit-value 2rem;
+      }
 
       @extend %margin-bottom;
 
