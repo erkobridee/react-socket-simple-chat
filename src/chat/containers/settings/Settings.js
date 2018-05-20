@@ -66,7 +66,7 @@ class Settings extends Component {
           <div className={'settings__body'}>
             <div>
               <div>User Name</div>
-              <div><input className={'form-control'} type="text" value={'Guest0001'}/></div>
+              <div><input className={'form-control'} type="text" value={'Guest0001'} onChange={ () => '' }/></div>
             </div>
 
             <div>
