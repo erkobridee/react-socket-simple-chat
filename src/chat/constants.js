@@ -19,10 +19,8 @@ export const keysToListenLabel = isMobile ? 'ENTER' : 'CTRL + ENTER';
 
 //----------------------------------------------------------------------------//
 
-const defaultOuput = {
+export default {
   isMobile,
   defaultSettings,
   keysToListenLabel
 };
-
-export default defaultOuput;
