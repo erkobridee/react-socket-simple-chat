@@ -5,46 +5,46 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { ContainerBody, ContainerFooter } from 'chat/components/layout';
+import { Messages } from 'chat/components/message';
 
 import ChatRoomFooter from './ChatRoomFooter';
 
-import checkIsMobile from 'chat/services/is-mobile';
+import constants from 'chat/constants'
 
 class ChatRoom extends Component {
 
   // https://reactjs.org/docs/typechecking-with-proptypes.html
   static propTypes = {
-    theme: PropTypes.string, // change to .isRequired
+    theme: PropTypes.string,
     isMobile: PropTypes.bool
   };
 
   // https://reactjs.org/docs/react-without-es6.html#declaring-default-props
   static defaultProps = {
     theme: 'light', 
-    isMobile: checkIsMobile.any()
+    isMobile: constants.isMobile
   };
 
   state = {
-    message: '',
-    keyPressed: ''
+    messages: [
+      { message: 'Hello World', user: 'app', time: 'just now' }
+    ]
   };
 
-  handleSubmit = (message, keyPressed) => {
+  handleSubmit = ( message, keyPressed ) => {
     
+    message = {
+      user: 'Guest0001',
+      time: new Date().toISOString(),
+      message
+    }
+
+    // TODO: remove to use redux to handle the messages data
     this.setState({
-      message: message,
-      keyPressed: (
-        keyPressed ?
-        [
-          `key: ${keyPressed.key}`,
-          `ctrl: ${keyPressed.ctrlKey}`,
-          `shift: ${keyPressed.shiftKey}`,
-          `alt: ${keyPressed.altKey}`
-        ].join(' | ') : 'button clicked'
-      )
+      messages: [...this.state.messages, message]
     });
 
-    // TODO: implement the message submit
+    // TODO: implement the message submit with redux
 
   }
 
@@ -56,18 +56,11 @@ class ChatRoom extends Component {
       <Fragment>
         
         <ContainerBody>
-          <div>
-            <strong>TODO:</strong> define chat room component
-          </div>
-          <div>
-            message: { this.state.message }
-          </div>
-          <div>
-            keyPressed: { this.state.keyPressed }
-          </div>
-          <div>
-            isMobile: { `${isMobile}` }
-          </div>
+          <Messages
+            userName={ 'Guest0001' }
+            clockDisplay={ '12' }
+            data={ this.state.messages }
+          />
         </ContainerBody>
         
         <ChatRoomFooter 

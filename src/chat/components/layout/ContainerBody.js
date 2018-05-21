@@ -22,9 +22,12 @@ import styles from './stylesClassNames';
 class ContainerBody extends Component {
   
   render() {
+    const { className } = this.props;
+
     const containerBodyClass = classNames(
       styles.containerBody,
-      `${styles.containerBody}--${this.props.theme || 'light'}`
+      `${styles.containerBody}--${this.props.theme || 'light'}`,
+      className
     );
 
     const { children } = this.props;

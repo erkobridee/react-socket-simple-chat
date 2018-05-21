@@ -1,0 +1,62 @@
+.messages {
+  @include fix-content-position(absolute);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  overflow: auto;
+
+  > *:not(:last-child){
+    margin-bottom: 0.5rem;
+  }
+
+  padding: $default-unit-value;
+}
+
+//----------------------------------------------------------------------------//
+
+.message {
+  display: flex;
+  justify-content: flex-end;
+
+  &.incoming {
+    justify-content: flex-start;
+  }
+
+  @include element(container) {
+
+    @include element(user) {
+      display: flex;
+      justify-content: flex-end;
+
+      padding-right: 1rem;
+
+      font-size: 1.2rem;
+
+      &.incoming {
+        justify-content: flex-start;
+
+        padding-left: 1rem;
+      }
+    }
+
+    @include element(value) {
+      padding: 1rem;
+      
+      border-radius: 0.8rem;
+
+      // default colors
+      background-color: $base-chatmsg-background-color;
+      color: $base-chatmsg-color;
+      @include apply-border($base-chatmsg-border-color);
+      &.incoming {
+        background-color: $base-chatmsg-incoming-background-color;
+        color: $base-chatmsg-incoming-color;
+        @include apply-border($base-chatmsg-incoming-border-color);
+      }
+
+      @include theme-chatmsg-value-colors;
+    }
+  }
+}

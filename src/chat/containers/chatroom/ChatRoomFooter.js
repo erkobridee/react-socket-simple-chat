@@ -41,16 +41,15 @@ class ChatRoomFooter extends Component {
     this.setState({ message: '' });
   }
 
-  // TODO: remove the event
   submit = ( event ) => {
+    if( event ) event.preventDefault();
+
     if(
       this.props.onSubmit && 
       this.state.message.length > 0
     ){
-      
-      // TODO: do not send the event
       this.props.onSubmit(
-        this.state.message, event
+        this.state.message
       );
       this.resetMessage();
     }
@@ -74,14 +73,12 @@ class ChatRoomFooter extends Component {
       ) &&
       event.key === 'Enter'
     ){
-      event.preventDefault();
       this.submit( event );
     }
   }
 
   handleButtonClick = ( event ) => {
-    event.preventDefault();
-    this.submit();
+    this.submit( event );
   }
 
   render() {
