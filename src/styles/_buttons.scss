@@ -14,7 +14,7 @@
   display: inline-block;
   white-space: nowrap;
 
-  &-expand {
+  @include modifier(expand) {
     width: 100%;
     height: 100%;
   }

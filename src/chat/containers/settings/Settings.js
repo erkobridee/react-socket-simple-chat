@@ -12,8 +12,6 @@ import constants from 'chat/constants'
 
 // TODO: add i18n support
 
-console.log(constants.defaultSettings);
-
 // https://reactjs.org/docs/forms.html
 class Settings extends Component {
 
@@ -60,7 +58,7 @@ class Settings extends Component {
         [name]: value
       });
   
-      // TODO: trigger events
+      // TODO: trigger one event to each field changed and one to persist all the changes
     }
   }
 
@@ -73,7 +71,7 @@ class Settings extends Component {
     );
 
     const buttonClass = classNames(
-      'btn', 'btn-expand',
+      'btn', 'btn--expand',
       `btn--${theme}`
     );
 

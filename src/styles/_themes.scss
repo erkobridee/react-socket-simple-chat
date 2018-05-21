@@ -44,8 +44,8 @@ $base-chatmsg-incoming-border-color: $light-theme-chatmsg-incoming-border-color;
 
 //----------------------------------------------------------------------------//
 
-@mixin apply-border($applyColor: $base-border-color){
-  border: 0.1rem solid $applyColor;
+@mixin apply-border($applyColor: $base-border-color, $borderSize: 0.1rem){
+  border: $borderSize solid $applyColor;
 }
 
 @mixin base-border() {
@@ -154,7 +154,7 @@ $themesColors: (
   }
 }
 
-@mixin theme-check-colors(){
+@mixin theme-form-check-colors(){
   $parent: &;
   
   @each $theme, $map in $themesColors {
@@ -165,7 +165,7 @@ $themesColors: (
       }
   
       #{$parent}-label:before {
-        @include apply-border(map-get($map, 'border-color'));
+        @include apply-border(map-get($map, 'border-color'), 0.2rem);
         background-color: map-get($map, 'background-color');
       }
     }
