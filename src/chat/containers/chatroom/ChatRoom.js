@@ -4,6 +4,8 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import dayjs from 'dayjs';
+
 import { ContainerBody, ContainerFooter } from 'chat/components/layout';
 import { Messages } from 'chat/components/message';
 
@@ -27,15 +29,19 @@ class ChatRoom extends Component {
 
   state = {
     messages: [
-      { message: 'Hello World', user: 'app', time: 'just now' }
+      { 
+        message: 'Welcome to the simple chat application.', 
+        user: 'App', 
+        time: dayjs().format() 
+      }
     ]
   };
 
   handleSubmit = ( message, keyPressed ) => {
-    
+
     message = {
       user: 'Guest0001',
-      time: new Date().toISOString(),
+      time: dayjs().format(),
       message
     }
 

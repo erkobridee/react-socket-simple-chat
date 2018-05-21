@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import dayjs from 'dayjs';
+
+import constants from 'chat/constants'
+
 import styles from './stylesClassNames';
 
 class Message extends Component {
@@ -10,6 +14,7 @@ class Message extends Component {
   static propTypes = {
     theme: PropTypes.string,
     userName: PropTypes.string.isRequired,
+    clockDisplay: PropTypes.string.isRequired,
     data: PropTypes.object.isRequired
   }
 
@@ -19,13 +24,16 @@ class Message extends Component {
   }
 
   render() {
-    const { theme, userName, data } = this.props;
+    const { theme, userName, clockDisplay, data } = this.props;
 
     const isOtherUser = (userName !== data.user);
 
-    // TODO: review and update this logic
-    // const time = (data.time || '');
-    const time = '123';
+    const time = (
+      data.time ? 
+        dayjs(data.time)
+          .format(constants[`timeFormat${clockDisplay}`]) 
+        : '' 
+    );
 
     const userInfo = (
       isOtherUser ? `${data.user}, ${time}` : time
