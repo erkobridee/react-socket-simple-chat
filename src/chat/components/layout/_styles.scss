@@ -41,9 +41,15 @@
 
     &__content {
       position: relative;
+
+      &.chatroom {
+        display: flex;
+        flex-direction: column-reverse;
+        overflow: auto;
+      }
       
       flex: auto;
-      
+
       padding: $default-unit-value;
       @include larger-than-tablet {
         padding: $default-unit-value 2rem;

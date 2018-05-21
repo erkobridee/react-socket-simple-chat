@@ -57,11 +57,10 @@ class ChatRoom extends Component {
   render() {
     const { theme, isMobile } = this.props;
 
-    // TODO: define ContainerBody content to display the messages
     return (
       <Fragment>
         
-        <ContainerBody>
+        <ContainerBody className="chatroom">
           <Messages
             userName={ 'Guest0001' }
             clockDisplay={ '12' }

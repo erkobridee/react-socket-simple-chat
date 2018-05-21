@@ -33,8 +33,13 @@ class ChatRoomFooter extends Component {
   // https://reactjs.org/docs/refs-and-the-dom.html
   messageField = React.createRef();
 
-  componentDidMount() {
+  setFieldFocus = () => {
     this.messageField.current.focus();
+  };
+
+  componentDidMount() {
+    // this.messageField.current.focus();
+    this.setFieldFocus();
   }
 
   resetMessage = () => {
@@ -52,6 +57,7 @@ class ChatRoomFooter extends Component {
         this.state.message
       );
       this.resetMessage();
+      this.setFieldFocus();
     }
   }
 
