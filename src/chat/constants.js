@@ -22,10 +22,15 @@ export const defaultSettings = {
 
 export const keysToListenLabel = isMobile ? 'ENTER' : 'CTRL + ENTER';
 
+export const timeFormat12 = 'hh:mm a (YYYY-MM-DD)';
+export const timeFormat24 = 'HH:mm (YYYY-MM-DD)';
+
 //----------------------------------------------------------------------------//
 
 export default {
   isMobile,
   defaultSettings,
-  keysToListenLabel
+  keysToListenLabel,
+  timeFormat12,
+  timeFormat24
 };
