@@ -4,10 +4,6 @@
     color: $base-color;
     text-decoration: none;
   
-    // &:first-child {
-    //   margin-right: $default-unit-value;
-    // }
-  
     &.active {
       font-weight: bold;
       text-decoration: underline;
