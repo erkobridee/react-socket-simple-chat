@@ -1,0 +1,32 @@
+.btn {
+
+  // required to be able to trigger a button click over a mobile web browser
+  // https://github.com/facebook/react/issues/2055
+  cursor: pointer;
+
+  font-family: $body-font-family;
+  font-size: $body-font-size;
+
+  line-height: $body-line-height;
+
+  padding: 0.5rem 2rem;
+
+  display: inline-block;
+  white-space: nowrap;
+
+  @include modifier(expand) {
+    width: 100%;
+    height: 100%;
+  }
+
+  @include remove-outline;
+
+  @include base-border;
+
+  background-color: darken($base-background-color, 2%);
+  &:active {
+    background-color: darken($base-background-color, 6%);
+  }
+
+  @include theme-button-colors;
+}

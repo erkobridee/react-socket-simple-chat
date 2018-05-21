@@ -1,0 +1,230 @@
+
+$light-theme-background-color: #f0f0f0;
+$light-theme-color: #555555;
+$light-theme-border-color: #cccccc;
+$light-theme-sup-color: #f44336;
+
+$light-theme-chatmsg-background-color: #f0f8ff;
+$light-theme-chatmsg-color: $light-theme-color;
+$light-theme-chatmsg-border-color: $light-theme-border-color;
+
+$light-theme-chatmsg-incoming-background-color: #f0f0f0;
+$light-theme-chatmsg-incoming-color: $light-theme-color;
+$light-theme-chatmsg-incoming-border-color: $light-theme-border-color;
+
+//---
+
+$dark-theme-background-color: #333333;
+$dark-theme-color: #9ab9b9;
+$dark-theme-border-color: #5a5959;
+$dark-theme-sup-color: #ff9876;
+
+$dark-theme-chatmsg-background-color: #4f4f4f;
+$dark-theme-chatmsg-color: #bebebe; 
+$dark-theme-chatmsg-border-color: $dark-theme-border-color;
+
+$dark-theme-chatmsg-incoming-background-color: #a8a8a8;
+$dark-theme-chatmsg-incoming-color: #373737;
+$dark-theme-chatmsg-incoming-border-color:#959595;
+
+//---
+
+$base-background-color: $light-theme-background-color;
+$base-color: $light-theme-color;
+$base-border-color: $light-theme-border-color;
+$base-sup-color: $light-theme-sup-color;
+
+$base-chatmsg-background-color: $light-theme-chatmsg-background-color;
+$base-chatmsg-color: $light-theme-chatmsg-color;
+$base-chatmsg-border-color: $light-theme-chatmsg-border-color;
+
+$base-chatmsg-incoming-background-color: $light-theme-chatmsg-incoming-background-color;
+$base-chatmsg-incoming-color: $light-theme-chatmsg-incoming-color;
+$base-chatmsg-incoming-border-color: $light-theme-chatmsg-incoming-border-color;
+
+//----------------------------------------------------------------------------//
+
+@mixin apply-border($applyColor: $base-border-color, $borderSize: 0.1rem){
+  border: $borderSize solid $applyColor;
+}
+
+@mixin base-border() {
+  @include apply-border();
+}
+
+@mixin base-colors(){
+  background-color: $base-background-color;
+  color: $base-color;
+}
+
+//----------------------------------------------------------------------------//
+
+$lightColorOffset: 35;
+$darkColorOffSet: 20;
+$themesColors: (
+  'light': (
+    'background-color': $light-theme-background-color,
+    'color': $light-theme-color,
+    'placeholder-color': lighten(desaturate($light-theme-color, $lightColorOffset), $lightColorOffset),
+    'border-color': $light-theme-border-color,
+    'sup-color': $light-theme-sup-color,
+
+    'chatmsg-background-color': $light-theme-chatmsg-background-color,
+    'chatmsg-color': $light-theme-chatmsg-color,
+    'chatmsg-border-color': $light-theme-chatmsg-border-color,
+    
+    'chatmsg-incoming-background-color': $light-theme-chatmsg-incoming-background-color,
+    'chatmsg-incoming-color': $light-theme-chatmsg-incoming-color,
+    'chatmsg-incoming-border-color': $light-theme-chatmsg-incoming-border-color
+  ),
+  'dark': (
+    'background-color': $dark-theme-background-color,
+    'color': $dark-theme-color,
+    'placeholder-color': darken(desaturate($dark-theme-color, $darkColorOffSet), $darkColorOffSet),
+    'border-color': $dark-theme-border-color,
+    'sup-color': $dark-theme-sup-color,
+
+    'chatmsg-background-color': $dark-theme-chatmsg-background-color,
+    'chatmsg-color': $dark-theme-chatmsg-color,
+    'chatmsg-border-color': $dark-theme-chatmsg-border-color,
+    
+    'chatmsg-incoming-background-color': $dark-theme-chatmsg-incoming-background-color,
+    'chatmsg-incoming-color': $dark-theme-chatmsg-incoming-color,
+    'chatmsg-incoming-border-color': $dark-theme-chatmsg-incoming-border-color
+  )
+);
+
+//---
+
+@mixin theme-border(){
+  @each $theme, $map in $themesColors {
+    @include modifier($theme){
+      @include apply-border(map-get($map, 'border-color'));
+    }
+  }
+}
+
+@mixin theme-color(){
+  @each $theme, $map in $themesColors {
+    @include modifier($theme){
+      color: map-get($map, 'color');
+    }
+  }
+}
+
+@mixin theme-background-color(){
+  @each $theme, $map in $themesColors {
+    @include modifier($theme){
+      background-color: map-get($map, 'background-color');
+    }
+  }
+}
+
+@mixin theme-colors(){
+  @each $theme, $map in $themesColors {
+    @include modifier($theme){
+      color: map-get($map, 'color');
+      background-color: map-get($map, 'background-color');
+    }
+  }
+}
+
+@mixin theme-content-colors($lightenBy: 5%){
+  @each $theme, $map in $themesColors {
+    @include modifier($theme){
+      @include apply-border(map-get($map, 'border-color'));
+      color: map-get($map, 'color');
+      background-color: lighten(map-get($map, 'background-color'), $lightenBy);
+    }
+  }
+}
+
+//----------------------------------------------------------------------------//
+
+@mixin theme-button-colors($defaultBy: 1%, $activeBy: 3%){
+  @each $theme, $map in $themesColors {
+    @include modifier($theme){
+      @include apply-border(map-get($map, 'border-color'));
+      color: map-get($map, 'color');
+      background-color: lighten(map-get($map, 'background-color'), $defaultBy);
+      &:active {
+        background-color: darken(map-get($map, 'background-color'), $activeBy);
+      }
+    }
+  }
+}
+
+@mixin theme-form-check-colors(){
+  $parent: &;
+  
+  @each $theme, $map in $themesColors {
+    @include modifier($theme){
+      
+      #{$parent}-input:checked + label:before {
+        color: map-get($map, 'color');
+      }
+  
+      #{$parent}-label:before {
+        @include apply-border(map-get($map, 'border-color'), 0.2rem);
+        background-color: map-get($map, 'background-color');
+      }
+    }
+  }
+}
+
+@mixin theme-form-control-colors($lightenBy: 5%){
+  @each $theme, $map in $themesColors {
+    @include modifier($theme){
+      @include apply-border(map-get($map, 'border-color'));
+      color: map-get($map, 'color');
+      background-color: lighten(map-get($map, 'background-color'), $lightenBy);
+      &::placeholder {
+        color: map-get($map, 'placeholder-color');
+        opacity: 1;
+      }
+    }
+  }
+}
+
+//----------------------------------------------------------------------------//
+
+@mixin theme-navbar-colors(){
+  @each $theme, $map in $themesColors {
+    @include modifier($theme){
+      color: map-get($map, 'color');
+      background-color: map-get($map, 'background-color');
+
+      a {
+        color: map-get($map, 'color');
+      }
+    }
+  }
+}
+
+@mixin theme-navbar-sup-color(){
+  @each $theme, $map in $themesColors {
+    @include modifier($theme){
+      color: map-get($map, 'sup-color');
+    }
+  }
+}
+
+//----------------------------------------------------------------------------//
+
+@mixin theme-chatmsg-value-colors(){
+  @each $theme, $map in $themesColors {
+    @include modifier($theme){
+      @include apply-border(map-get($map, 'chatmsg-border-color'));
+      color: map-get($map, 'chatmsg-color');
+      background-color: map-get($map, 'chatmsg-background-color');
+
+      &.incoming {
+        @include apply-border(map-get($map, 'chatmsg-incoming-border-color'));
+        color: map-get($map, 'chatmsg-incoming-color');
+        background-color: map-get($map, 'chatmsg-incoming-background-color');
+      }
+    }
+  }
+}
+
+//----------------------------------------------------------------------------//

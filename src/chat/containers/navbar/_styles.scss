@@ -1,0 +1,56 @@
+.navbar {
+
+  a {
+    color: $base-color;
+    text-decoration: none;
+  
+    &.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    line-height: 3.5rem;
+
+    li {
+      display: inline-block;
+
+      text-align: center;
+
+      &:first-child {
+        padding-right: 0;
+      }
+    }
+  }
+
+  @include theme-navbar-colors;
+
+  &__sup {
+    display: inline-flex;
+    
+    margin-left: 0.2rem;
+
+    line-height: 1;
+
+    direction: ltr;
+    unicode-bidi: isolate;
+    vertical-align: super;
+    
+    font-size: smaller;
+
+    font-weight: bold;
+    text-decoration: none;
+
+    color: $base-sup-color;
+    @include theme-navbar-sup-color;
+
+    &__text {
+      min-width: 2.3rem;
+      text-align: left;
+    }
+  }
+}

@@ -7,8 +7,4 @@ import { hot } from 'react-hot-loader';
 
 import Chat from 'chat';
 
-const App = () => (
-  <Chat />
-);
-
-export default hot(module)(App);
+export default hot(module)(Chat);

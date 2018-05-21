@@ -1,0 +1,74 @@
+%margin-bottom {
+  margin-bottom: $default-unit-value;
+}
+
+.main {
+  @include fix-content-position;
+
+  @include base-colors;
+  @include theme-colors;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  @include fix-content-position(absolute, $default-unit-value);
+
+  @include larger-than-tablet {
+    margin: auto;
+    max-width: $desktop-use-max-width;
+  }
+
+  &__header {
+    flex: none;
+
+    padding: 0 $default-unit-value;
+    @include larger-than-tablet {
+      padding: 0 2rem;
+    }
+    
+    @extend %margin-bottom;
+
+    @include base-border;
+    @include theme-border;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+
+    &__content {
+      position: relative;
+
+      &.chatroom {
+        display: flex;
+        flex-direction: column-reverse;
+        overflow: auto;
+      }
+      
+      flex: auto;
+
+      padding: $default-unit-value;
+      @include larger-than-tablet {
+        padding: $default-unit-value 2rem;
+      }
+
+      @include modifier(no-padding){
+        padding: 0;
+      }
+
+      @extend %margin-bottom;
+
+      background-color: lighten($base-background-color, 5%);
+      @include base-border;
+
+      @include theme-content-colors;
+    }
+  
+    &__footer {
+      flex: none;
+    }
+  }
+}

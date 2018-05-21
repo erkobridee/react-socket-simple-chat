@@ -1,0 +1,51 @@
+
+//----------------------------------------------------------------------------//
+// BEM mixins
+
+// http://getbem.com/
+
+// Sass's `@content` Directive Use Cases
+// https://robots.thoughtbot.com/sasss-content-directive
+
+@mixin element($name) {
+  @at-root #{&}__#{$name} {
+    @content;
+  }
+}
+
+@mixin modifier($name){
+  @at-root #{&}--#{$name} {
+    @content;
+  }
+}
+
+//----------------------------------------------------------------------------//
+
+// mixin to fix the application content to fit in all available space
+@mixin fix-content-position($position: absolute, $unit: 0rem){
+  position: $position;
+  top: $unit;
+  bottom: $unit;
+  left: $unit;
+  right: $unit;
+}
+
+//----------------------------------------------------------------------------//
+
+// media query to screens that are larger than a tablet screen
+@mixin larger-than-tablet() {
+  @media (min-width: $screen-tablet){
+    @content; 
+  }
+}
+
+//----------------------------------------------------------------------------//
+
+// removes that blue outline color 
+@mixin remove-outline(){
+  &:focus {
+    outline: none;
+  }
+}
+
+//----------------------------------------------------------------------------//

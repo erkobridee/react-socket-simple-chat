@@ -1,0 +1,96 @@
+/*
+
+  useful links
+
+  how to style input radio | checkbox
+  https://www.hongkiat.com/blog/css3-checkbox-radio/
+  
+*/
+
+%form-control {
+  padding: 0.5rem 1rem;
+  
+  font-family: $body-font-family;
+  font-size: $body-font-size;
+
+  @include remove-outline;
+
+  @include base-border;
+}
+
+.form {
+
+  // &-group {}
+
+  &-control {
+    @extend %form-control;
+
+    @include theme-form-control-colors;
+  }
+
+  &-select {
+    min-width: 20rem;
+    height: 3rem;
+    @extend %form-control;
+
+    @include theme-form-control-colors;
+  }
+
+  // &-group {}
+
+  &-check-group {
+    display: flex;
+  }
+
+  &-check {
+
+    &-input {
+      display: none;
+
+      &:checked + label {
+        font-weight: bold;
+
+        &:before {
+          content: "\2022";
+          
+          color: $base-color; 
+
+          top: 0.4rem;
+
+          text-align: center;  
+
+          font-weight: bold;
+          font-size: 2.5rem;
+        }
+      }
+    }
+
+    &-label {
+
+      &:before {
+        content: " ";
+        display: inline-block;
+        
+        width: 1.3rem;
+        height: 1.3rem;
+        line-height: 1.3rem;
+        
+        position: relative;
+
+        top: 0.4rem;
+        margin-right: 0.5rem;
+
+        border-radius: 0.8rem;
+
+        border: 0.1rem solid $base-border-color;
+        background-color: $base-background-color;
+      }
+    }
+
+    @include theme-form-check-colors;
+    
+    &:not(:last-child){
+      margin-right: 2rem;
+    }
+  }
+}

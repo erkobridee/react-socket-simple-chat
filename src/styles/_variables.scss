@@ -1,0 +1,30 @@
+
+// Understanding and Using rem Units in CSS — SitePoint
+// https://www.sitepoint.com/understanding-and-using-rem-units-in-css/
+
+$default-unit-value: 1rem;
+
+//----------------------------------------------------------------------------//
+
+$html-font-size: 62.5%;
+
+//----------------------------------------------------------------------------//
+
+// the effective font-size used on the application
+$body-font-size: 1.5rem;
+$body-font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$body-font-weight: 400;
+
+$body-margin: $default-unit-value;
+
+$body-line-height: 2.5rem;
+
+//----------------------------------------------------------------------------//
+
+$screen-tablet: 750px;
+
+//---
+
+$desktop-use-max-width: 700px;
+
+//----------------------------------------------------------------------------//
