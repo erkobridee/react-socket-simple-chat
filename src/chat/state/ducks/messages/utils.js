@@ -12,9 +12,9 @@ export const listenSocketEvents = ( socketClient, storeDispatch ) => {
   const onMessage = () => {};
 
   // https://socket.io/docs/client-api/
-  socketClient.on('message', data => {
+  socketClient.on('message', message => {
     storeDispatch(
-      onMessage( data )
+      onMessage( message )
     );
   });
 

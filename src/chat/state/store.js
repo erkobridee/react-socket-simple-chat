@@ -14,12 +14,13 @@ const localstorage = {
   todo: 'define the socket.io API'
 }
 
+const initialState = {};
+
 const store = createStore(
   combinedReducers,
+  initialState,
   applyMiddleware(
-    thunkMiddleware.withExtraArgument({
-      API: { socketClient, localstorage }
-    })
+    thunkMiddleware.withExtraArgument({ socketClient, localstorage })
   )
 );
 

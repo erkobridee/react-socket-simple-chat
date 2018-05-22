@@ -1,3 +1,12 @@
-// TODO: define stand alone actions to redux
+import { MESSAGE_RECEIVED } from './types';
 
-export default {};
+export const onMessage = ( message ) => {
+  return {
+    type: MESSAGE_RECEIVED,
+    payload: message
+  };
+}
+
+export default {
+  onMessage
+};

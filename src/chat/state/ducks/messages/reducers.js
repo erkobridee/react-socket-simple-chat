@@ -1,11 +1,12 @@
-import types from './types';
+import { MESSAGE_LOAD, MESSAGE_RECEIVED } from './types';
 
 const initialState = [];
 
 const messages = (state = initialState, action) => {
   switch( action.type ) {
-    case 'DEFINE_TYPES':
-      return [ ...state, 'TODO: define' ];
+    case MESSAGE_RECEIVED:
+      return [ ...state, action.payload ];
+    case MESSAGE_LOAD:
     default:
       return state;
   }
