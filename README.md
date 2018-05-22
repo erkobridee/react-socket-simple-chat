@@ -2,6 +2,7 @@
 
 A simple chat application that uses react.js, redux and socket.io.
 
+**TODO:** define detailed project documentation under the `docs/` directory
 
 ## Prerequisites
 
@@ -53,13 +54,15 @@ A simple chat application that uses react.js, redux and socket.io.
 
 * [Optimizing front-end delivery with Webpack 4 | Jasel Gadhia](https://jes.al/2018/04/optimizing-front-end-delivery-with-Webpack-4/)
 
-### React and Redux
+### React and Redux( middleware( thunk )  )
 
 * [React](https://reactjs.org/)
 
 * [Redux](https://redux.js.org/)
 
   * [[Sandbox Editor] Todos](https://codesandbox.io/s/github/reduxjs/redux/tree/master/examples/todos)
+
+* [[GitHub] reduxjs / redux-thunk](https://github.com/reduxjs/redux-thunk) - use [withExtraArgument](https://github.com/reduxjs/redux-thunk#injecting-a-custom-argument) to inject the SocketIO service and localstorage service API
 
 * [[Gist] datchley / react-redux-style-guide.md](https://gist.github.com/datchley/4e0d05c526d532d1b05bf9b48b174faf) - React + [Redux](https://gist.github.com/datchley/4e0d05c526d532d1b05bf9b48b174faf#redux) Style Guide
 
