@@ -59,6 +59,8 @@ I also keep the webpack configure to consider the file paths from the `./src` di
 
 * [Optimizing front-end delivery with Webpack 4 | Jasel Gadhia](https://jes.al/2018/04/optimizing-front-end-delivery-with-Webpack-4/)
 
+* [[Gist] datchley / react-redux-style-guide.md](https://gist.github.com/datchley/4e0d05c526d532d1b05bf9b48b174faf) - React + Redux Style Guide
+
 * Project architecture re-ducks: [Scaling your Redux App with ducks | freeCodeCamp](https://medium.freecodecamp.org/scaling-your-redux-app-with-ducks-6115955638be)
 
   * [[GitHub] alexnm / re-ducks](https://github.com/alexnm/re-ducks) - An attempt to extend the original proposal for redux modular architecture
