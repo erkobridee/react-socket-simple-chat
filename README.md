@@ -72,6 +72,16 @@ A simple chat application that uses react.js, redux and socket.io.
 
 * [React](https://reactjs.org/)
 
+* Forms
+
+  * [Forms | React Docs](https://reactjs.org/docs/forms.html)
+
+  * [React Forms: Using Refs | CSS-Tricks](https://css-tricks.com/react-forms-using-refs/)
+
+  * [Better Form Management | Robbie Dela Victoria – Medium](https://medium.com/@robbiedelavictoria/better-form-management-37c994095b1c)
+
+--
+
 * [Redux](https://redux.js.org/)
 
   * [[Sandbox Editor] Todos](https://codesandbox.io/s/github/reduxjs/redux/tree/master/examples/todos)
