@@ -5,14 +5,14 @@ import classNames from 'classnames';
 /*
   usage:
 
-  <InputField 
+  <InputField
     theme={ theme }
     type={ 'text' | 'password' }
     name="sameAttributeNameFromState"
     onChange={ this.handleChange }
   />
 */
-class InputText extends Component {
+class InputField extends Component {
 
   // https://reactjs.org/docs/typechecking-with-proptypes.html
   static propTypes = {
@@ -38,13 +38,13 @@ class InputText extends Component {
     );
 
     return (
-      <input 
-        className={ inputTextClass } 
-        type={ type } 
+      <input
+        className={ inputTextClass }
+        type={ type }
         { ...rest }
       />
     );
   }
 }
 
-export default InputText;
+export default InputField;
