@@ -1,6 +1,7 @@
 // container component
 
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -13,7 +14,7 @@ import ChatRoomFooter from './ChatRoomFooter';
 
 import constants from 'chat/constants'
 
-class ChatRoom extends Component {
+export class ChatRoom extends Component {
 
   // https://reactjs.org/docs/typechecking-with-proptypes.html
   static propTypes = {
@@ -23,16 +24,16 @@ class ChatRoom extends Component {
 
   // https://reactjs.org/docs/react-without-es6.html#declaring-default-props
   static defaultProps = {
-    theme: 'light', 
+    theme: 'light',
     isMobile: constants.isMobile
   };
 
   state = {
     messages: [
-      { 
-        message: 'Welcome to the simple chat application.', 
-        user: 'App', 
-        time: dayjs().format() 
+      {
+        message: 'Welcome to the simple chat application.',
+        user: 'App',
+        time: dayjs().format()
       }
     ]
   };
@@ -59,7 +60,7 @@ class ChatRoom extends Component {
 
     return (
       <Fragment>
-        
+
         <ContainerBody className="chatroom">
           <Messages
             userName={ 'Guest0001' }
@@ -67,8 +68,8 @@ class ChatRoom extends Component {
             data={ this.state.messages }
           />
         </ContainerBody>
-        
-        <ChatRoomFooter 
+
+        <ChatRoomFooter
           theme={theme}
           onSubmit={ this.handleSubmit }
           listenSendKeys={ true /* load from the settings storage */ }
@@ -79,4 +80,12 @@ class ChatRoom extends Component {
   }
 }
 
-export default ChatRoom;
+//----------------------------------------------------------------------------//
+
+const mapStateToProps = ( state ) => ({
+  messages: state.messages
+});
+
+// TODO: check this out
+// https://egghead.io/lessons/javascript-redux-using-mapdispatchtoprops-shorthand-notation
+export default connect(mapStateToProps)(ChatRoom);

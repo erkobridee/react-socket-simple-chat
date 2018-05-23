@@ -1,10 +1,12 @@
 // container component
 
 import React, { Component } from 'react'
-import { SafeNavLink } from 'chat/components/navlink';
+import { connect } from 'react-redux';
 import classNames from 'classnames';
 
-class NavBar extends Component {
+import { SafeNavLink } from 'chat/components/navlink';
+
+export class NavBar extends Component {
 
   state = {
     isSettings: false,
@@ -63,4 +65,12 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+//----------------------------------------------------------------------------//
+
+const mapStateToProps = ( state ) => ({
+  settings: state.settings
+});
+
+// TODO: check this out
+// https://egghead.io/lessons/javascript-redux-using-mapdispatchtoprops-shorthand-notation
+export default connect(mapStateToProps)(NavBar);
