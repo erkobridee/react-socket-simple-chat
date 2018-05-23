@@ -1,6 +1,7 @@
 // container component
 
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -13,7 +14,7 @@ import constants from 'chat/constants'
 // TODO: add i18n support
 
 // https://reactjs.org/docs/forms.html
-class Settings extends Component {
+export class Settings extends Component {
 
   // https://reactjs.org/docs/typechecking-with-proptypes.html
   static propTypes = {
@@ -30,7 +31,7 @@ class Settings extends Component {
   state = Object.assign({}, constants.defaultSettings);
 
   handleResetClick = ( event ) => {
-    
+
     // TODO: remove
     console.log( 'Settings: clicked on reset to default button' );
 
@@ -57,14 +58,14 @@ class Settings extends Component {
       this.setState({
         [name]: value
       });
-  
+
       // TODO: trigger one event to each field changed and one to persist all the changes
     }
   }
 
   render() {
     const { theme, isMobile } = this.props;
-    
+
     const selectClass = classNames(
       'form-select',
       `form-select--${theme}`
@@ -77,14 +78,14 @@ class Settings extends Component {
 
     return (
       <Fragment>
-        
+
         <ContainerBody>
           <div className="settings__body">
 
             <FormGroup
-              theme={ theme } 
+              theme={ theme }
               label={ 'User Name' }>
-              <InputField 
+              <InputField
                 name="userName"
                 value={ this.state.userName }
                 onChange={ this.handleChange }
@@ -92,54 +93,54 @@ class Settings extends Component {
             </FormGroup>
 
             <FormGroup
-              theme={ theme } 
-              label={ 'Interface color' }>  
-              <InputRadioGroup 
+              theme={ theme }
+              label={ 'Interface color' }>
+              <InputRadioGroup
                 name="theme"
-                selected={ this.state.theme } 
+                selected={ this.state.theme }
                 onChange={ this.handleChange }>
-                <InputRadio 
-                  label="Light" 
+                <InputRadio
+                  label="Light"
                   value="light"
                 />
-                <InputRadio 
-                  label="Dark" 
+                <InputRadio
+                  label="Dark"
                   value="dark"
                 />
               </InputRadioGroup>
             </FormGroup>
 
             <FormGroup
-              theme={ theme } 
-              label={ 'Clock display' }>  
-              <InputRadioGroup 
+              theme={ theme }
+              label={ 'Clock display' }>
+              <InputRadioGroup
                 name="clockDisplay"
-                selected={ this.state.clockDisplay } 
+                selected={ this.state.clockDisplay }
                 onChange={ this.handleChange }>
-                <InputRadio 
-                  label="12 Hours" 
+                <InputRadio
+                  label="12 Hours"
                   value="12"
                 />
-                <InputRadio 
-                  label="24 Hours" 
+                <InputRadio
+                  label="24 Hours"
                   value="24"
                 />
               </InputRadioGroup>
             </FormGroup>
 
             <FormGroup
-              theme={ theme } 
-              label={ `Send messages on ${ constants.keysToListenLabel /*isMobile ? 'ENTER' : 'CTRL + ENTER'*/ }` }>  
-              <InputRadioGroup 
+              theme={ theme }
+              label={ `Send messages on ${ constants.keysToListenLabel /*isMobile ? 'ENTER' : 'CTRL + ENTER'*/ }` }>
+              <InputRadioGroup
                 name="listenSendKeys"
-                selected={ this.state.listenSendKeys ? 'on' : 'off' } 
+                selected={ this.state.listenSendKeys ? 'on' : 'off' }
                 onChange={ this.handleChange }>
-                <InputRadio 
-                  label="On" 
+                <InputRadio
+                  label="On"
                   value="on"
                 />
-                <InputRadio 
-                  label="Off" 
+                <InputRadio
+                  label="Off"
                   value="off"
                 />
               </InputRadioGroup>
@@ -148,10 +149,10 @@ class Settings extends Component {
             <div>
               <div>Language</div>
               <div>
-                <select 
-                  name="locale" 
+                <select
+                  name="locale"
                   className={ selectClass }
-                  value={ this.state.locale } 
+                  value={ this.state.locale }
                   onChange={ this.handleChange }>
                   <option value="en">English</option>
                   <option value="pt">Portuguese</option>
@@ -161,9 +162,9 @@ class Settings extends Component {
             </div>
           </div>
         </ContainerBody>
-        
+
         <ContainerFooter>
-          <button 
+          <button
             className={ buttonClass }
             onClick={ this.handleResetClick }>
             <i className="fas fa-undo fa-fw"></i> Reset to Default
@@ -174,4 +175,12 @@ class Settings extends Component {
   }
 }
 
-export default Settings;
+//----------------------------------------------------------------------------//
+
+const mapStateToProps = ( state ) => ({
+  settings: state.settings
+});
+
+// TODO: check this out
+// https://egghead.io/lessons/javascript-redux-using-mapdispatchtoprops-shorthand-notation
+export default connect(mapStateToProps)(Settings);

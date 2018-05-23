@@ -3,14 +3,14 @@ import thunkMiddleware from 'redux-thunk';
 
 import LocalStorageService from 'chat/services/localstorage';
 
+import MessagesUtils from './ducks/messages/utils';
 import combinedReducers from './ducks';
-
-import MessagesUtils from './messages/utils';
 
 
 // https://stackoverflow.com/questions/37876889/react-redux-and-websockets-with-socket-io
 const socketClient = {
-  todo: 'define the socket.io API'
+  todo: 'define the socket.io API',
+  on: () => {}
 };
 
 const persistedState = LocalStorageService.loadState();

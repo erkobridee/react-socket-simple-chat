@@ -1,6 +1,6 @@
 import { MESSAGE_RECEIVED } from './types';
 
-export const onMessage = ( message ) => {
+export const received = ( message ) => {
   return {
     type: MESSAGE_RECEIVED,
     payload: message
@@ -8,5 +8,5 @@ export const onMessage = ( message ) => {
 }
 
 export default {
-  onMessage
+  received
 };

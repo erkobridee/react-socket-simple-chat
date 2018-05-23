@@ -1,11 +1,15 @@
-import types from './types';
+import constants from 'chat/constants'
 
-const initialState = [];
+import { SETTINGS_UPDATE, SETTINGS_RESTORE } from './types';
 
-const settings = (state = initialState, action) => {
+const initialState = () => Object.assign({}, constants.defaultSettings);
+
+const settings = (state = initialState(), action) => {
   switch( action.type ) {
-    case 'DEFINE_TYPES':
-      return [ ...state, 'TODO: define' ];
+    case SETTINGS_UPDATE:
+      return action.payload;
+    case SETTINGS_RESTORE:
+      return initialState();
     default:
       return state;
   }

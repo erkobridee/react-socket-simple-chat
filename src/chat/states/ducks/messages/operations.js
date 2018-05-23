@@ -1,7 +1,7 @@
 import { MESSAGE_SEND } from './types';
 import actions from './actions';
 
-export const sendMessage = ( message ) = ( dispatch, getState, api ) => {
+export const send = ( message ) => ( dispatch, getState, api ) => {
 
   // load userName from the getState().settings.userName
 
@@ -16,5 +16,5 @@ export const sendMessage = ( message ) = ( dispatch, getState, api ) => {
 
 export default {
   ...actions,
-  sendMessage
+  send
 };

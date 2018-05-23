@@ -1,3 +1,9 @@
-// TODO: define the types
+const namespace = 'settings::';
 
-export default {};
+export const SETTINGS_UPDATE = `${namespace}update`;
+export const SETTINGS_RESTORE = `${namespace}restore`;
+
+export default {
+  SETTINGS_UPDATE,
+  SETTINGS_RESTORE
+};
