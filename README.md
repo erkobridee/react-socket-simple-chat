@@ -80,6 +80,12 @@ A simple chat application that uses react.js, redux and socket.io.
 
   * [Better Form Management | Robbie Dela Victoria – Medium](https://medium.com/@robbiedelavictoria/better-form-management-37c994095b1c)
 
+* Multiple actions
+
+  * [Can I dispatch multiple actions from Redux action creators?](http://jamesknelson.com/can-i-dispatch-multiple-actions-from-redux-action-creators/)
+
+  * [Redux Thunk – how to populate various reducers](http://frontendinsights.com/redux-thunk-populate-various-reducers/)
+
 --
 
 * [Redux](https://redux.js.org/)
