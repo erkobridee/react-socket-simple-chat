@@ -2,7 +2,7 @@ import types from './types';
 
 const initialState = [];
 
-const messages = (state = initialState, action) => {
+const settings = (state = initialState, action) => {
   switch( action.type ) {
     case 'DEFINE_TYPES':
       return [ ...state, 'TODO: define' ];
@@ -11,4 +11,4 @@ const messages = (state = initialState, action) => {
   }
 }
 
-export default messages;
+export default settings;
