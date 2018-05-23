@@ -92,11 +92,15 @@ A simple chat application that uses react.js, redux and socket.io.
 
   * [[Sandbox Editor] Todos](https://codesandbox.io/s/github/reduxjs/redux/tree/master/examples/todos)
 
+  * [A Dummy's Guide to Redux and Thunk in React | Matt Stow on CodePen](https://codepen.io/stowball/post/a-dummy-s-guide-to-redux-and-thunk-in-react)
+
+    * [[GitHub] stowball / dummys-guide-to-redux-and-thunk-react](https://github.com/stowball/dummys-guide-to-redux-and-thunk-react)
+
+  * [Redux: Persisting the State to the Local Storage | @dan_abramov on @eggheadio](https://egghead.io/lessons/javascript-redux-persisting-the-state-to-the-local-storage)
+
 * [[GitHub] reduxjs / redux-thunk](https://github.com/reduxjs/redux-thunk) - use [withExtraArgument](https://github.com/reduxjs/redux-thunk#injecting-a-custom-argument) to inject the SocketIO service and localstorage service API
 
   * [Super Simple Redux Thunk Example | Tyler Buchea](http://blog.tylerbuchea.com/super-simple-redux-thunk-example/) - 2017/10/10 ([Sandbox Editor](https://codesandbox.io/s/github/tylerbuchea/my-simple-async-app))
-
-* [Redux: Persisting the State to the Local Storage | @dan_abramov on @eggheadio](https://egghead.io/lessons/javascript-redux-persisting-the-state-to-the-local-storage)
 
 
 ### Style Guide
