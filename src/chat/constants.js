@@ -1,13 +1,20 @@
-// import checkIsMobile from 'chat/services/is-mobile';
-
 import { hash, checkIsMobile } from 'chat/services';
 
 //----------------------------------------------------------------------------//
+// mobile devide check
 
 export const isMobile = checkIsMobile.any();
 
 //----------------------------------------------------------------------------//
-// default settings
+// messages
+
+export const welcomeMessage = {
+    message: 'Welcome to the simple chat application.',
+    user: 'App'
+};
+
+//----------------------------------------------------------------------------//
+// settings
 
 const localTime = new Date().getTime();
 const buildUserName = () => ( `Guest_${ hash(localTime).hashSum }` )
@@ -17,7 +24,7 @@ export const defaultSettings = {
   theme: process.env.THEME || 'light',
   clockDisplay: process.env.CLOCK_DISPLAY || '12',
   listenSendKeys: (process.env.LISTEN_SEND_KEYS === 'on'),
-  locale: process.env.LOCALE || 'en' // i18n default language  
+  locale: process.env.LOCALE || 'en' // i18n default language
 };
 
 export const keysToListenLabel = isMobile ? 'ENTER' : 'CTRL + ENTER';
@@ -29,6 +36,7 @@ export const timeFormat24 = 'HH:mm (YYYY-MM-DD)';
 
 export default {
   isMobile,
+  welcomeMessage,
   defaultSettings,
   keysToListenLabel,
   timeFormat12,
