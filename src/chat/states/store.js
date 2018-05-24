@@ -47,7 +47,13 @@ LocalStorageService.subscribe(
   store.subscribe,
   // defines a callback to get the data which will be persisted
   () => ({
-    messages: store.getState().messages
+    // TODO: review and update to use selectors
+    messages: store.getState().messages,
+    userName: store.getState().userName,
+    theme: store.getState().theme,
+    clockDisplay: store.getState().clockDisplay,
+    locale: store.getState().locale,
+    listenSendKeys: store.getState().listenSendKeys
   })
 );
 
