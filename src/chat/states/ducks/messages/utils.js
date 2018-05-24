@@ -1,3 +1,19 @@
+import dayjs from 'dayjs';
+import uuidv4 from 'uuid/v4';
+
+import { welcomeMessage } from 'chat/constants';
+
+//----------------------------------------------------------------------------//
+
+export const processMessage = message => ({
+  id: uuidv4(),
+  time: dayjs().format(),
+  ...message
+});
+
+export const getInitialMessage = () => processMessage(welcomeMessage);
+
+//----------------------------------------------------------------------------//
 
 // https://github.com/socketio/socket.io-client/tree/0.9.16
 
@@ -20,6 +36,10 @@ export const listenSocketEvents = ( socketClient, storeDispatch ) => {
 
 };
 
+//----------------------------------------------------------------------------//
+
 export default {
+  processMessage,
+  getInitialMessage,
   listenSocketEvents
 }

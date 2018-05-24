@@ -10,9 +10,15 @@ class Messages extends Component {
 
   // https://reactjs.org/docs/typechecking-with-proptypes.html
   static propTypes = {
+    theme: PropTypes.string,
     userName: PropTypes.string.isRequired,
     clockDisplay: PropTypes.string.isRequired,
     data: PropTypes.array.isRequired
+  }
+
+  // https://reactjs.org/docs/react-without-es6.html#declaring-default-props
+  static defaultProps = {
+    theme: 'light'
   }
 
   // https://reactjs.org/docs/refs-and-the-dom.html
@@ -31,26 +37,27 @@ class Messages extends Component {
   }
 
   render() {
-    const { userName, clockDisplay, data, className } = this.props;
+    const { theme, userName, clockDisplay, data, className } = this.props;
 
     const messagesClass = classNames(
       styles.messages,
       className
     );
-   
+
     return (
-      <div 
-        ref={ this.scrollArea } 
+      <div
+        ref={ this.scrollArea }
         className={ messagesClass }
       >
-        { 
-          data.map( ( message, key ) => (
-            <Message 
-              theme={ 'light' }
+        {
+          data.map( ( message ) => (
+            <Message
+              key={ message.id }
+              theme={ theme }
               data={ message }
-              { ...{ key, userName, clockDisplay } }
+              { ...{ userName, clockDisplay } }
             />
-          ) ) 
+          ) )
         }
       </div>
     );

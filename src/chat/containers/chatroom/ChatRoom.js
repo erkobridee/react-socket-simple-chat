@@ -14,6 +14,8 @@ import ChatRoomFooter from './ChatRoomFooter';
 
 import constants from 'chat/constants'
 
+import { operations } from 'chat/states/ducks/messages';
+
 export class ChatRoom extends Component {
 
   // https://reactjs.org/docs/typechecking-with-proptypes.html
@@ -40,37 +42,40 @@ export class ChatRoom extends Component {
 
   handleSubmit = ( message, keyPressed ) => {
 
-    message = {
-      user: 'Guest0001',
-      time: dayjs().format(),
-      message
-    }
+    // message = {
+    //   user: 'Guest0001',
+    //   time: dayjs().format(),
+    //   message
+    // }
 
     // TODO: remove to use redux to handle the messages data
-    this.setState({
-      messages: [...this.state.messages, message]
-    });
+    // this.setState({
+    //   messages: [...this.state.messages, message]
+    // });
 
     // TODO: implement the message submit with redux
+
+    this.props.sendMessage( message );
 
   }
 
   render() {
-    const { theme, isMobile } = this.props;
+    const { theme, isMobile, messages } = this.props;
 
     return (
       <Fragment>
 
         <ContainerBody className="chatroom">
           <Messages
+            theme={ theme }
             userName={ 'Guest0001' }
             clockDisplay={ '12' }
-            data={ this.state.messages }
+            data={ messages }
           />
         </ContainerBody>
 
         <ChatRoomFooter
-          theme={theme}
+          theme={ theme }
           onSubmit={ this.handleSubmit }
           listenSendKeys={ true /* load from the settings storage */ }
           isMobile={ isMobile }
@@ -86,6 +91,15 @@ const mapStateToProps = ( state ) => ({
   messages: state.messages
 });
 
-// TODO: check this out
+// const mapDispatchToProps = ( dispatch ) => ({
+//   sendMessage( message ) {
+//     dispatch( operations.send )
+//   }
+// });
+
 // https://egghead.io/lessons/javascript-redux-using-mapdispatchtoprops-shorthand-notation
-export default connect(mapStateToProps)(ChatRoom);
+const mapDispatchToProps = {
+  sendMessage: operations.send
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChatRoom);

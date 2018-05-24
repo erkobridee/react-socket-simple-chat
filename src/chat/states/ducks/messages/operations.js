@@ -1,20 +1,32 @@
-import { MESSAGE_SEND } from './types';
 import actions from './actions';
+import { processMessage } from './utils';
 
 export const send = ( message ) => ( dispatch, getState, api ) => {
 
-  // load userName from the getState().settings.userName
-
-  // send the message api.socketClient.emit('message', message)
-
-  // TODO: return after emit the message
-  return {
-    type: MESSAGE_SEND,
-    payload: message
+  message = {
+    user: 'DEFINE',
+    message
   };
+
+  dispatch( actions.send( message ) );
+
+  api.socketClient.emit( 'message', message );
+
+  // TODO: remove
+  dispatch(receive(message));
+}
+
+export const receive = ( message ) => ( dispatch, getState, api ) => {
+
+  message = processMessage( message );
+
+  dispatch(actions.add(message));
 }
 
 export default {
-  ...actions,
-  send
+  actions: {
+    ...actions
+  },
+  send,
+  receive
 };

@@ -1,12 +1,28 @@
-import { MESSAGE_RECEIVED } from './types';
+import { MESSAGE_SEND, MESSAGE_RECEIVE, MESSAGE_ADD } from './types';
 
-export const received = ( message ) => {
+export const send = ( message ) => {
   return {
-    type: MESSAGE_RECEIVED,
+    type: MESSAGE_SEND,
+    payload: message
+  };
+}
+
+export const receive = ( message ) => {
+  return {
+    type: MESSAGE_RECEIVE,
+    payload: message
+  };
+}
+
+export const add = ( message ) => {
+  return {
+    type: MESSAGE_ADD,
     payload: message
   };
 }
 
 export default {
-  received
+  send,
+  receive,
+  add
 };

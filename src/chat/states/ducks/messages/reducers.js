@@ -1,13 +1,14 @@
-import { MESSAGE_RECEIVED } from './types';
+import { MESSAGE_ADD } from './types';
+import { getInitialMessage } from './utils';
 
-const initialState = [];
+const initialState = [
+  getInitialMessage()
+];
 
 const messages = (state = initialState, action) => {
   switch( action.type ) {
-    case MESSAGE_RECEIVED:
+    case MESSAGE_ADD:
       return [ ...state, action.payload ];
-    // case MESSAGE_SEND:
-    // case MESSAGE_LOAD:
     default:
       return state;
   }
