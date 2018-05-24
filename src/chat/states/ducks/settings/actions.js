@@ -1,9 +1,9 @@
-import { SETTINGS_UPDATE, SETTINGS_RESTORE } from './types';
+import { settingsKeysMap, SETTINGS_RESTORE } from './types';
 
-export const update = ( settings ) => {
+export const update = ( field, value ) => {
   return {
-    type: SETTINGS_UPDATE,
-    payload: settings
+    type: settingsKeysMap[field],
+    payload: value
   };
 }
 

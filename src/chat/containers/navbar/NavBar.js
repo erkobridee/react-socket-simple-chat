@@ -1,10 +1,13 @@
 // container component
 
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
 import { SafeNavLink } from 'chat/components/navlink';
+
+import { selectors as SettingsSelectors } from 'chat/states/ducks/settings';
 
 export class NavBar extends Component {
 
@@ -31,7 +34,7 @@ export class NavBar extends Component {
   */
 
   render() {
-    const theme = this.props.theme || 'light';
+    const { theme, locale } = this.props;
 
     const navbarClass = classNames(
       'navbar',
@@ -68,9 +71,12 @@ export class NavBar extends Component {
 //----------------------------------------------------------------------------//
 
 const mapStateToProps = ( state ) => ({
-  settings: state.settings
+  theme: SettingsSelectors.getTheme( state ),
+  locale: SettingsSelectors.getLocale( state )
 });
 
 // TODO: check this out
 // https://egghead.io/lessons/javascript-redux-using-mapdispatchtoprops-shorthand-notation
-export default connect(mapStateToProps)(NavBar);
+export default withRouter(
+  connect(mapStateToProps)(NavBar)
+);

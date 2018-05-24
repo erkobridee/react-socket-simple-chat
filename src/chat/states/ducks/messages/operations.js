@@ -1,12 +1,9 @@
 import actions from './actions';
 import { processMessage } from './utils';
 
-export const send = ( message ) => ( dispatch, getState, api ) => {
+export const send = ( message, user ) => ( dispatch, getState, api ) => {
 
-  message = {
-    user: 'DEFINE',
-    message
-  };
+  message = { user, message };
 
   dispatch( actions.send( message ) );
 

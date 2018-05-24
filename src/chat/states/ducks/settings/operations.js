@@ -1,8 +1,8 @@
 import actions from './actions';
 
-// TODO: define operations to redux thunk
-// https://github.com/reduxjs/redux-thunk
+// define operation that will dispatch actions if needed
 
+// to this case, I'm just exposing the actions itselfs
 export default {
   ...actions
 };

@@ -1,6 +1,7 @@
 // container component
 
 import React, { Component, Fragment } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -11,6 +12,12 @@ import { FormGroup, InputField, InputRadioGroup, InputRadio } from 'chat/compone
 
 import constants from 'chat/constants'
 
+import {
+  selectors as SettingsSelectors,
+  operations as SettingsOperations
+} from 'chat/states/ducks/settings';
+
+
 // TODO: add i18n support
 
 // https://reactjs.org/docs/forms.html
@@ -18,29 +25,26 @@ export class Settings extends Component {
 
   // https://reactjs.org/docs/typechecking-with-proptypes.html
   static propTypes = {
-    theme: PropTypes.string.isRequired,
+    theme: PropTypes.string, //.isRequired,
     isMobile: PropTypes.bool
   }
 
   // https://reactjs.org/docs/react-without-es6.html#declaring-default-props
   static defaultProps = {
-    theme: 'light',
     isMobile: constants.isMobile
   }
 
-  state = Object.assign({}, constants.defaultSettings);
-
   handleResetClick = ( event ) => {
+    const { restoreFields } = this.props;
 
     // TODO: remove
     console.log( 'Settings: clicked on reset to default button' );
 
-    this.setState(Object.assign({}, constants.defaultSettings));
-
-    // TODO: trigger events
+    restoreFields();
   }
 
   handleChange = ( event ) => {
+    const { settings, updateField } = this.props;
     const { name } = event.target;
     let { value } = event.target;
 
@@ -50,21 +54,17 @@ export class Settings extends Component {
     }
 
     // only do the updates if the value is different from the previous one
-    if( this.state[name] !== value ){
+    if( settings[name] !== value ){
 
       // TODO: remove
       console.log( `Settings: radio ${name} changed, new value ${value}` );
 
-      this.setState({
-        [name]: value
-      });
-
-      // TODO: trigger one event to each field changed and one to persist all the changes
+      updateField(name, value);
     }
   }
 
   render() {
-    const { theme, isMobile } = this.props;
+    const { theme, isMobile, settings } = this.props;
 
     const selectClass = classNames(
       'form-select',
@@ -87,7 +87,7 @@ export class Settings extends Component {
               label={ 'User Name' }>
               <InputField
                 name="userName"
-                value={ this.state.userName }
+                value={ settings.userName }
                 onChange={ this.handleChange }
               />
             </FormGroup>
@@ -97,7 +97,7 @@ export class Settings extends Component {
               label={ 'Interface color' }>
               <InputRadioGroup
                 name="theme"
-                selected={ this.state.theme }
+                selected={ settings.theme }
                 onChange={ this.handleChange }>
                 <InputRadio
                   label="Light"
@@ -115,7 +115,7 @@ export class Settings extends Component {
               label={ 'Clock display' }>
               <InputRadioGroup
                 name="clockDisplay"
-                selected={ this.state.clockDisplay }
+                selected={ settings.clockDisplay }
                 onChange={ this.handleChange }>
                 <InputRadio
                   label="12 Hours"
@@ -130,10 +130,10 @@ export class Settings extends Component {
 
             <FormGroup
               theme={ theme }
-              label={ `Send messages on ${ constants.keysToListenLabel /*isMobile ? 'ENTER' : 'CTRL + ENTER'*/ }` }>
+              label={ `Send messages on ${ constants.keysToListenLabel}` }>
               <InputRadioGroup
                 name="listenSendKeys"
-                selected={ this.state.listenSendKeys ? 'on' : 'off' }
+                selected={ settings.listenSendKeys ? 'on' : 'off' }
                 onChange={ this.handleChange }>
                 <InputRadio
                   label="On"
@@ -152,7 +152,7 @@ export class Settings extends Component {
                 <select
                   name="locale"
                   className={ selectClass }
-                  value={ this.state.locale }
+                  value={ settings.locale }
                   onChange={ this.handleChange }>
                   <option value="en">English</option>
                   <option value="pt">Portuguese</option>
@@ -178,9 +178,17 @@ export class Settings extends Component {
 //----------------------------------------------------------------------------//
 
 const mapStateToProps = ( state ) => ({
-  settings: state.settings
+  settings: SettingsSelectors.getSettings( state ),
+  theme: SettingsSelectors.getTheme( state )
 });
 
-// TODO: check this out
 // https://egghead.io/lessons/javascript-redux-using-mapdispatchtoprops-shorthand-notation
-export default connect(mapStateToProps)(Settings);
+const mapDispatchToProps = {
+  updateField: SettingsOperations.update,
+  restoreFields: SettingsOperations.restore
+}
+
+// https://reacttraining.com/react-router/web/guides/redux-integration
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(Settings)
+);

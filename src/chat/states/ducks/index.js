@@ -8,5 +8,5 @@ import settings from './settings';
 
 export default combineReducers({
   messages,
-  settings
+  ...settings
 });
