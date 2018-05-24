@@ -26,14 +26,14 @@
     "dayjs": "^1.6.3",
     "hashids": "^1.1.4",
     "lodash": "^4.17.10",
-    "node-uuid": "^1.4.8",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "autoprefixer": "^8.5.0",
