@@ -1,4 +1,4 @@
-import { loadState} from './service';
+import { loadState } from './service';
 import { subscribe } from './utils';
 
 export {
