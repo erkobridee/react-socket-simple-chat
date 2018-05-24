@@ -33,8 +33,8 @@ export const loadState = () => {
 
 export const saveState = ( state ) => {
   try {
-    const serializedState = serialize( data );
-    localStorage.setItem( key,  serializedState);
+    const serializedState = serialize( state );
+    localStorage.setItem( key,  serializedState );
   } catch( e ) {
     // ignore the error
   }
