@@ -58,7 +58,18 @@ A simple chat application that uses react.js, redux and socket.io.
 
 ## Useful links
 
+### Styles (CSS and SASS)
+
 * [Understanding and Using rem Units in CSS — SitePoint](https://www.sitepoint.com/understanding-and-using-rem-units-in-css/)
+
+* [Sass's `@content` Directive Use Cases](https://robots.thoughtbot.com/sasss-content-directive)
+
+* [BEM](http://getbem.com/)
+
+  * [Using Sass to Control Scope With BEM Naming | CSS-Tricks](https://css-tricks.com/using-sass-control-scope-bem-naming/) - 2018/02/28
+
+  * [Modular CSS with Sass & BEM | Mat Hayward](http://mathayward.com/modular-css-with-sass-and-bem/) - 2014/01/17
+
 
 ### Webpack
 
@@ -67,6 +78,7 @@ A simple chat application that uses react.js, redux and socket.io.
 * [How to use Webpack with React: an in-depth tutorial | freeCodeCamp](https://medium.freecodecamp.org/learn-webpack-for-react-a36d4cac5060)
 
 * [Optimizing front-end delivery with Webpack 4 | Jasel Gadhia](https://jes.al/2018/04/optimizing-front-end-delivery-with-Webpack-4/)
+
 
 ### React and Redux( middleware( thunk )  )
 
@@ -103,7 +115,7 @@ A simple chat application that uses react.js, redux and socket.io.
   * [Super Simple Redux Thunk Example | Tyler Buchea](http://blog.tylerbuchea.com/super-simple-redux-thunk-example/) - 2017/10/10 ([Sandbox Editor](https://codesandbox.io/s/github/tylerbuchea/my-simple-async-app))
 
 
-### Style Guide
+#### Code Style Guide
 
 * [[Gist] datchley / react-redux-style-guide.md](https://gist.github.com/datchley/4e0d05c526d532d1b05bf9b48b174faf) - React + [Redux](https://gist.github.com/datchley/4e0d05c526d532d1b05bf9b48b174faf#redux) Style Guide
 
