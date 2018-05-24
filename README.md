@@ -92,11 +92,9 @@ A simple chat application that uses react.js, redux and socket.io.
 
   * [Better Form Management | Robbie Dela Victoria – Medium](https://medium.com/@robbiedelavictoria/better-form-management-37c994095b1c)
 
-* Multiple actions
+--
 
-  * [Can I dispatch multiple actions from Redux action creators?](http://jamesknelson.com/can-i-dispatch-multiple-actions-from-redux-action-creators/)
-
-  * [Redux Thunk – how to populate various reducers](http://frontendinsights.com/redux-thunk-populate-various-reducers/)
+* [Redux Integration | React Router Docs](https://reacttraining.com/react-router/web/guides/redux-integration)
 
 --
 
@@ -113,6 +111,12 @@ A simple chat application that uses react.js, redux and socket.io.
 * [[GitHub] reduxjs / redux-thunk](https://github.com/reduxjs/redux-thunk) - use [withExtraArgument](https://github.com/reduxjs/redux-thunk#injecting-a-custom-argument) to inject the SocketIO service and localstorage service API
 
   * [Super Simple Redux Thunk Example | Tyler Buchea](http://blog.tylerbuchea.com/super-simple-redux-thunk-example/) - 2017/10/10 ([Sandbox Editor](https://codesandbox.io/s/github/tylerbuchea/my-simple-async-app))
+
+* Multiple actions
+
+  * [Can I dispatch multiple actions from Redux action creators?](http://jamesknelson.com/can-i-dispatch-multiple-actions-from-redux-action-creators/)
+
+  * [Redux Thunk – how to populate various reducers](http://frontendinsights.com/redux-thunk-populate-various-reducers/)
 
 
 #### Code Style Guide
