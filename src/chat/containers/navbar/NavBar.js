@@ -9,7 +9,7 @@ import { SafeNavLink } from 'chat/components/navlink';
 
 import ComponentUtils from 'chat/components/Utils';
 
-import { selectors as SettingsSelectors } from 'chat/states/ducks/settings';
+import { selectors as settingsSelectors } from 'chat/states/ducks/settings';
 
 export class NavBar extends Component {
 
@@ -72,8 +72,8 @@ export class NavBar extends Component {
 //----------------------------------------------------------------------------//
 
 const mapStateToProps = ( state ) => ({
-  theme: SettingsSelectors.getTheme( state ),
-  locale: SettingsSelectors.getLocale( state )
+  theme: settingsSelectors.getTheme( state ),
+  locale: settingsSelectors.getLocale( state )
 });
 
 const NavBarReduxConnected = connect(mapStateToProps)(NavBar);

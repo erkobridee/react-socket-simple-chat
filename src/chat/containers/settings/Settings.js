@@ -15,8 +15,8 @@ import ComponentUtils from 'chat/components/Utils';
 import constants from 'chat/constants'
 
 import {
-  selectors as SettingsSelectors,
-  operations as SettingsOperations
+  selectors as settingsSelectors,
+  operations as settingsOperations
 } from 'chat/states/ducks/settings';
 
 
@@ -175,14 +175,14 @@ export class Settings extends Component {
 //----------------------------------------------------------------------------//
 
 const mapStateToProps = ( state ) => ({
-  settings: SettingsSelectors.getSettings( state ),
-  theme: SettingsSelectors.getTheme( state )
+  settings: settingsSelectors.getSettings( state ),
+  theme: settingsSelectors.getTheme( state )
 });
 
 // https://egghead.io/lessons/javascript-redux-using-mapdispatchtoprops-shorthand-notation
 const mapDispatchToProps = {
-  updateField: SettingsOperations.update,
-  restoreFields: SettingsOperations.restore
+  updateField: settingsOperations.update,
+  restoreFields: settingsOperations.restore
 }
 
 const SettingsReduxConnected = connect(mapStateToProps, mapDispatchToProps)(Settings);
