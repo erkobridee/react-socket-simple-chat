@@ -5,20 +5,20 @@ const config = {
   minLength: 4
 };
 
-const hashids = new Hashids(config.salt, config.minLength);
+const hashids = new Hashids( config.salt, config.minLength );
 
-const isString = ( value ) => (typeof value === 'string');
+const isString = value => ( typeof value === 'string' );
 
 //----------------------------------------------------------------------------//
 
-export const build = ( value ) => {
-  if( !isString(value) ) value = JSON.stringify( value );
-  
+export const build = value => {
+  if( !isString( value ) ) value = JSON.stringify( value );
+
   const valueLength = value.length;
 
   let i, charArray = [];
   for( i = 0; i < valueLength; i++ ) {
-    charArray.push( value.charCodeAt(i) );
+    charArray.push( value.charCodeAt( i ) );
   }
 
   let hash = hashids.encode( charArray );
@@ -28,7 +28,7 @@ export const build = ( value ) => {
   }
 
   return {
-    input: value, 
+    input: value,
     hashSum,
     hash
   };
