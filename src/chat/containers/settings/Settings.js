@@ -32,7 +32,7 @@ export class Settings extends Component {
       userName: PropTypes.string,
       theme: PropTypes.string,
       clockDisplay: PropTypes.string,
-      listenSendKeys: PropTypes.string,
+      listenSendKeys: PropTypes.bool,
       locale: PropTypes.string
     })
   }
