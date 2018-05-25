@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import ComponentUtils from 'chat/components/Utils';
+import { utils as componentUtils } from 'chat/components';
 
 /*
   usage:
@@ -54,7 +54,7 @@ class InputRadio extends Component {
     } = this.props;
 
     const inputRadioClass = classNames(
-      ComponentUtils.plusTheme( 'form-check', theme ),
+      componentUtils.plusTheme( 'form-check', theme ),
       className
     );
 

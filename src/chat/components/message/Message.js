@@ -8,7 +8,7 @@ import constants from 'chat/constants'
 
 import styles from './stylesClassNames';
 
-import ComponentUtils from 'chat/components/Utils';
+import { utils as componentUtils } from 'chat/components';
 
 class Message extends Component {
 
@@ -42,21 +42,21 @@ class Message extends Component {
     );
 
     const messageClass = classNames(
-      ComponentUtils.plusTheme( styles.message, theme ),
+      componentUtils.plusTheme( styles.message, theme ),
       { incoming: isOtherUser }
     );
 
     const containerClass = classNames(
-      ComponentUtils.plusTheme( styles.messageContainer, theme )
+      componentUtils.plusTheme( styles.messageContainer, theme )
     );
 
     const containerUserClass = classNames(
-      ComponentUtils.plusTheme( styles.messageContainerUser, theme ),
+      componentUtils.plusTheme( styles.messageContainerUser, theme ),
       { incoming: isOtherUser }
     );
 
     const containerValueClass = classNames(
-      ComponentUtils.plusTheme( styles.messageContainerValue, theme ),
+      componentUtils.plusTheme( styles.messageContainerValue, theme ),
       { incoming: isOtherUser }
     );
 

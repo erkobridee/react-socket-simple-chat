@@ -10,7 +10,7 @@ import { ContainerBody, ContainerFooter } from 'chat/components/layout';
 
 import { FormGroup, InputField, InputRadioGroup, InputRadio } from 'chat/components/form';
 
-import ComponentUtils from 'chat/components/Utils';
+import { utils as componentUtils } from 'chat/components';
 
 import constants from 'chat/constants'
 
@@ -62,11 +62,11 @@ export class Settings extends Component {
     const { theme, settings } = this.props;
 
     const selectClass = classNames(
-      ComponentUtils.plusTheme( 'form-select', theme ),
+      componentUtils.plusTheme( 'form-select', theme ),
     );
 
     const buttonClass = classNames(
-      ComponentUtils.plusTheme( 'btn', theme ),
+      componentUtils.plusTheme( 'btn', theme ),
       'btn--expand'
     );
 

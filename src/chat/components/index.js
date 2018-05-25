@@ -3,10 +3,15 @@
 import NavLink from './navlink';
 import Layout from './layout';
 import Form from './form';
+import Message from './message';
 
+import utils from './utils';
 
 export {
   NavLink,
   Layout,
-  Form
+  Form,
+  Message,
+
+  utils
 };

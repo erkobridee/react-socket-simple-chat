@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import ComponentUtils from 'chat/components/Utils';
+import { utils as componentUtils } from 'chat/components';
 
 /*
   usage:
@@ -33,7 +33,7 @@ class InputField extends Component {
     const { theme, type, className, ...rest } = this.props;
 
     const inputTextClass = classNames(
-      ComponentUtils.plusTheme( 'form-control', theme ),
+      componentUtils.plusTheme( 'form-control', theme ),
       className
     );
 

@@ -7,7 +7,7 @@ import classNames from 'classnames';
 
 import { SafeNavLink } from 'chat/components/navlink';
 
-import ComponentUtils from 'chat/components/Utils';
+import { utils as componentUtils } from 'chat/components';
 
 import { selectors as settingsSelectors } from 'chat/states/ducks/settings';
 
@@ -40,11 +40,11 @@ export class NavBar extends Component {
     const { theme, locale } = this.props;
 
     const navbarClass = classNames(
-      ComponentUtils.plusTheme( 'navbar', theme )
+      componentUtils.plusTheme( 'navbar', theme )
     );
 
     const navbarSupClass = classNames(
-      ComponentUtils.plusTheme( 'navbar__sup', theme )
+      componentUtils.plusTheme( 'navbar__sup', theme )
     );
 
     return (

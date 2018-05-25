@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { ContainerFooter } from 'chat/components/layout';
 
-import ComponentUtils from 'chat/components/Utils';
+import { utils as componentUtils } from 'chat/components';
 
 import constants from 'chat/constants'
 
@@ -92,11 +92,11 @@ class ChatRoomFooter extends Component {
     const { theme } = this.props;
 
     const fieldClass = classNames(
-      ComponentUtils.plusTheme( 'form-control', theme )
+      componentUtils.plusTheme( 'form-control', theme )
     );
 
     const buttonClass = classNames(
-      ComponentUtils.plusTheme( 'btn', theme ),
+      componentUtils.plusTheme( 'btn', theme ),
       'chatroom__btn'
     )
 

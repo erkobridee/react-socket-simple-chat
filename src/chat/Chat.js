@@ -11,7 +11,7 @@ import { NavBar } from './containers';
 import Routes from './Routes';
 
 import {
-  selectors as SettingsSelectors
+  selectors as settingsSelectors
 } from 'chat/states/ducks/settings';
 
 
@@ -52,7 +52,7 @@ export class Chat extends Component {
 //----------------------------------------------------------------------------//
 
 const mapStateToProps = ( state ) => ({
-  theme: SettingsSelectors.getTheme( state )
+  theme: settingsSelectors.getTheme( state )
 });
 
 const ChatReduxConnected = connect(mapStateToProps)(Chat);

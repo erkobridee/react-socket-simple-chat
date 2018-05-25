@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import ComponentUtils from 'chat/components/Utils';
+import { utils as componentUtils } from 'chat/components';
 
 /*
   usage:
@@ -58,7 +58,7 @@ class InputRadioGroup extends Component {
     const { theme, className } = this.props;
 
     const inputRadioGroupClass = classNames(
-      ComponentUtils.plusTheme( 'form-check-group', theme ),
+      componentUtils.plusTheme( 'form-check-group', theme ),
       className
     );
 
