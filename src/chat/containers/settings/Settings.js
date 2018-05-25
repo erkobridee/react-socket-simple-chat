@@ -73,7 +73,7 @@ export class Settings extends Component {
     return (
       <Fragment>
 
-        <ContainerBody theme={ theme }>
+        <ContainerBody theme={ theme } className="enable-scroll">
           <div className="settings__body">
 
             <FormGroup

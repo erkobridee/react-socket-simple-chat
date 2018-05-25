@@ -50,7 +50,9 @@ export class ChatRoom extends Component {
     return (
       <Fragment>
 
-        <ContainerBody className="chatroom" theme={ theme }>
+        <ContainerBody
+          className="chatroom enable-scroll reverse-items"
+          theme={ theme }>
           <Messages
             theme={ theme }
             userName={ userName }

@@ -1,4 +1,5 @@
 $element-space-height: 1.5rem;
+$last-element-landscape-space-height: 3rem;
 
 .settings {
 
@@ -12,6 +13,13 @@ $element-space-height: 1.5rem;
 
       &:not(:last-child) {
         margin-bottom: $element-space-height;
+      }
+
+      @media only screen and (orientation:landscape) {
+
+        &:last-child {
+          margin-bottom: $last-element-landscape-space-height;
+        }
       }
     }
   }
