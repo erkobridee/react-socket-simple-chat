@@ -7,7 +7,11 @@ A simple chat application that uses react.js, redux and socket.io.
 
 - [x] finish the redux code to manage the application data/states
 
-- [ ] connect to the socket.io server to handle the messages 
+- socket.io
+
+  - [x] socket.io-client mock
+
+  - [ ] connect to the socket.io server to handle the messages 
 
 - [x] use the settings theme state to switch between the themes
 
