@@ -5,13 +5,13 @@ A simple chat application that uses react.js, redux and socket.io.
 
 ## things left to have the v1
 
-- [ ] finish the redux code to manage the application data/states
+- [x] finish the redux code to manage the application data/states
 
 - [ ] connect to the socket.io server to handle the messages 
 
-- [ ] use the settings theme state to switch between the themes
+- [x] use the settings theme state to switch between the themes
 
-- [ ] add local storage support to persist the changes in the settings page
+- [x] add local storage support to persist the changes in the settings page
 
 - [ ] add i18n (internationalization) support
 
