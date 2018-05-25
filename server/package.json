@@ -1,0 +1,17 @@
+{
+  "name": "react-socket-simple-chat_socket-server",
+  "version": "0.1.0",
+  "description": "local socket.io server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Erko Bridee",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "http": "^0.0.0",
+    "ip": "^1.1.5",
+    "socket.io": "^2.1.1"
+  }
+}
