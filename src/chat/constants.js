@@ -6,6 +6,12 @@ import { hash, checkIsMobile } from 'chat/services';
 export const isMobile = checkIsMobile.any();
 
 //----------------------------------------------------------------------------//
+// socket server
+
+export const socketURL = ( process.env.SOCKET_SERVER || 'http://localhost:3001' );
+export const mockSocket = ( process.env.MOCK_SOCKET === 'true' );
+
+//----------------------------------------------------------------------------//
 // messages
 
 export const welcomeMessage = {
@@ -32,7 +38,7 @@ export const defaultSettings = {
   userName: buildUserName(),
   theme: process.env.THEME || 'light',
   clockDisplay: process.env.CLOCK_DISPLAY || '12',
-  listenSendKeys: (process.env.LISTEN_SEND_KEYS === 'on'),
+  listenSendKeys: (process.env.LISTEN_SEND_KEYS === 'true'),
   locale: process.env.LOCALE || 'en' // i18n default language
 };
 

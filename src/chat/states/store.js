@@ -2,6 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
 import localStorageService from 'chat/services/localstorage';
+import socketClient from 'chat/services/socketclient';
 
 import ducksReducers, {
   selectors as ducksSelectors,
@@ -11,13 +12,13 @@ import ducksReducers, {
 //----------------------------------------------------------------------------//
 
 // https://stackoverflow.com/questions/37876889/react-redux-and-websockets-with-socket-io
-const socketClient = {
-  todo: 'define the socket.io API',
-  on: () => {},
-  emit: (event, payload) => {
-    console.log(`socket event: ${event} with the payload: `, payload);
-  }
-};
+// const socketClient = {
+//   todo: 'define the socket.io API',
+//   on: () => {},
+//   emit: (event, payload) => {
+//     console.log(`socket event: ${event} with the payload: `, payload);
+//   }
+// };
 
 const persistedState = localStorageService.loadState();
 

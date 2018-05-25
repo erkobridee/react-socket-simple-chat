@@ -8,9 +8,6 @@ export const send = ( message, user ) => ( dispatch, getState, api ) => {
   dispatch( actions.send( message ) );
 
   api.socketClient.emit( 'message', message );
-
-  // TODO: remove
-  dispatch(receive(message));
 }
 
 export const receive = ( message ) => ( dispatch, getState, api ) => {
@@ -21,9 +18,6 @@ export const receive = ( message ) => ( dispatch, getState, api ) => {
 }
 
 export default {
-  actions: {
-    ...actions
-  },
   send,
   receive
 };
