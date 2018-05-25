@@ -15,7 +15,7 @@ A simple chat application that uses react.js, redux and socket.io.
 
 - [x] use the settings theme state to switch between the themes
 
-- [x] add local storage support to persist the changes in the settings page
+- [x] add local storage support to persist the changes on the settings page
 
 - [ ] add i18n (internationalization) support
 
