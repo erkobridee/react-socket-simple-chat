@@ -1,10 +1,12 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
-import LocalStorageService from 'chat/services/localstorage';
+import localStorageService from 'chat/services/localstorage';
 
-import MessagesUtils from './ducks/messages/utils';
-import combinedReducers from './ducks';
+import ducksReducers, {
+  selectors as ducksSelectors,
+  utils as ducksUtils
+} from './ducks';
 
 //----------------------------------------------------------------------------//
 
@@ -17,12 +19,12 @@ const socketClient = {
   }
 };
 
-const persistedState = LocalStorageService.loadState();
+const persistedState = localStorageService.loadState();
 
 //----------------------------------------------------------------------------//
 
 const store = createStore(
-  combinedReducers,
+  ducksReducers,
   persistedState,
   applyMiddleware(
     thunkMiddleware.withExtraArgument({ socketClient })
@@ -41,20 +43,12 @@ if( module.hot ){
 
 //----------------------------------------------------------------------------//
 
-MessagesUtils.listenSocketEvents( socketClient, store.dispatch );
+ducksUtils.listenSocketEvents( socketClient, store.dispatch );
 
-LocalStorageService.subscribe(
+localStorageService.subscribe(
   store.subscribe,
   // defines a callback to get the data which will be persisted
-  () => ({
-    // TODO: review and update to use selectors
-    messages: store.getState().messages,
-    userName: store.getState().userName,
-    theme: store.getState().theme,
-    clockDisplay: store.getState().clockDisplay,
-    locale: store.getState().locale,
-    listenSendKeys: store.getState().listenSendKeys
-  })
+  () => ducksSelectors.getStateToPersist( store.getState() )
 );
 
 //----------------------------------------------------------------------------//
