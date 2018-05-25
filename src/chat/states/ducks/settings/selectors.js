@@ -1,10 +1,3 @@
-
-// export const getSettings = state => {
-//   let { settings } = state;
-//   settings.listenSendKeys = settings.listenSendKeys ? 'on' : 'off';
-//   return settings;
-// };
-
 /*
   settings: {
     username: string,
