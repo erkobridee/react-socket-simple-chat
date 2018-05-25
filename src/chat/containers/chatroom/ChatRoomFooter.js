@@ -5,25 +5,26 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { ContainerFooter } from 'chat/components/layout';
 
+import ComponentUtils from 'chat/components/Utils';
+
+import constants from 'chat/constants'
+
 // TODO: add i18n support
 
 // https://reactjs.org/docs/forms.html
 class ChatRoomFooter extends Component {
-  
+
   // https://reactjs.org/docs/typechecking-with-proptypes.html
   static propTypes = {
-    locale: PropTypes.string.isRequired,
     theme: PropTypes.string.isRequired,
     onSubmit: PropTypes.func.isRequired,
-    listenSendKeys: PropTypes.bool,
-    isMobile: PropTypes.bool
+    listenSendKeys: PropTypes.bool.isRequired,
+    isMobile: PropTypes.bool.isRequired
   };
 
   // https://reactjs.org/docs/react-without-es6.html#declaring-default-props
   static defaultProps = {
-    locale: 'en',
-    listenSendKeys: true, // TODO: change to false
-    isMobile: false
+    isMobile: constants.isMobile
   };
 
   state = {
@@ -50,7 +51,7 @@ class ChatRoomFooter extends Component {
     if( event ) event.preventDefault();
 
     if(
-      this.props.onSubmit && 
+      this.props.onSubmit &&
       this.state.message.length > 0
     ){
       this.props.onSubmit(
@@ -71,11 +72,11 @@ class ChatRoomFooter extends Component {
   handleKeyPress = ( event ) => {
     const { listenSendKeys, isMobile } = this.props;
     if(
-      listenSendKeys && 
+      listenSendKeys &&
       (
         // when its running under the mobile web browser
         // only check the enter key
-        isMobile || event.ctrlKey 
+        isMobile || event.ctrlKey
       ) &&
       event.key === 'Enter'
     ){
@@ -91,13 +92,11 @@ class ChatRoomFooter extends Component {
     const { theme } = this.props;
 
     const fieldClass = classNames(
-      'form-control',
-      `form-control--${theme}`
+      ComponentUtils.plusTheme( 'form-control', theme )
     );
 
     const buttonClass = classNames(
-      'btn',
-      `btn--${theme}`,
+      ComponentUtils.plusTheme( 'btn', theme ),
       'chatroom__btn'
     )
 
@@ -105,18 +104,18 @@ class ChatRoomFooter extends Component {
       <ContainerFooter>
         <div className={ 'chatroom__input' }>
           <div className={ 'chatroom__input__field' }>
-            <input 
+            <input
               ref={ this.messageField }
               type="text"
               name="message"
-              className={ fieldClass } 
+              className={ fieldClass }
               placeholder={ 'Enter a message' /* TODO: use i18n support */ }
               value={ this.state.message }
               onChange={ this.handleChange }
               onKeyPress={ this.handleKeyPress }></input>
           </div>
           <div className={ 'chatroom__input__submit' }>
-            <button 
+            <button
               className={ buttonClass }
               title={ 'send' /* TODO: use i18n support */  }
               onClick={ this.handleButtonClick }>

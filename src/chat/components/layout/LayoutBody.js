@@ -11,13 +11,13 @@ import styles from './stylesClassNames';
   </Layout>
 */
 class LayoutBody extends Component {
-  
+
   render() {
     const { children } = this.props;
 
     return (
-      <div className={styles.layoutBody}>
-      { children && children }
+      <div className={ styles.layoutBody }>
+        { children }
       </div>
     );
   }

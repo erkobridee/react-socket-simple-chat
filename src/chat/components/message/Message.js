@@ -8,6 +8,8 @@ import constants from 'chat/constants'
 
 import styles from './stylesClassNames';
 
+import ComponentUtils from 'chat/components/Utils';
+
 class Message extends Component {
 
   // https://reactjs.org/docs/typechecking-with-proptypes.html
@@ -29,10 +31,10 @@ class Message extends Component {
     const isOtherUser = (userName !== data.user);
 
     const time = (
-      data.time ? 
+      data.time ?
         dayjs(data.time)
-          .format(constants[`timeFormat${clockDisplay}`]) 
-        : '' 
+          .format(constants[`timeFormat${clockDisplay}`])
+        : ''
     );
 
     const userInfo = (
@@ -40,21 +42,21 @@ class Message extends Component {
     );
 
     const messageClass = classNames(
-      styles.plusTheme( styles.message, theme ),
+      ComponentUtils.plusTheme( styles.message, theme ),
       { incoming: isOtherUser }
     );
 
     const containerClass = classNames(
-      styles.plusTheme( styles.messageContainer, theme )
+      ComponentUtils.plusTheme( styles.messageContainer, theme )
     );
 
     const containerUserClass = classNames(
-      styles.plusTheme( styles.messageContainerUser, theme ),
+      ComponentUtils.plusTheme( styles.messageContainerUser, theme ),
       { incoming: isOtherUser }
     );
 
     const containerValueClass = classNames(
-      styles.plusTheme( styles.messageContainerValue, theme ),
+      ComponentUtils.plusTheme( styles.messageContainerValue, theme ),
       { incoming: isOtherUser }
     );
 

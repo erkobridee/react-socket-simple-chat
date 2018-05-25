@@ -10,6 +10,8 @@ import { ContainerBody, ContainerFooter } from 'chat/components/layout';
 
 import { FormGroup, InputField, InputRadioGroup, InputRadio } from 'chat/components/form';
 
+import ComponentUtils from 'chat/components/Utils';
+
 import constants from 'chat/constants'
 
 import {
@@ -25,7 +27,14 @@ export class Settings extends Component {
 
   // https://reactjs.org/docs/typechecking-with-proptypes.html
   static propTypes = {
-    theme: PropTypes.string, //.isRequired
+    theme: PropTypes.string,
+    settings: PropTypes.shape({
+      userName: PropTypes.string,
+      theme: PropTypes.string,
+      clockDisplay: PropTypes.string,
+      listenSendKeys: PropTypes.string,
+      locale: PropTypes.string
+    })
   }
 
   handleResetClick = ( event ) => {
@@ -53,13 +62,11 @@ export class Settings extends Component {
     const { theme, settings } = this.props;
 
     const selectClass = classNames(
-      'form-select',
-      `form-select--${theme}`
+      ComponentUtils.plusTheme( 'form-select', theme ),
     );
 
     const buttonClass = classNames(
-      'btn',
-      `btn--${theme}`,
+      ComponentUtils.plusTheme( 'btn', theme ),
       'btn--expand'
     );
 
@@ -71,7 +78,7 @@ export class Settings extends Component {
 
             <FormGroup
               theme={ theme }
-              label={ 'User Name' }>
+              label={ 'User Name' /* TODO: use i18n support */ }>
               <InputField
                 name="userName"
                 value={ settings.userName }
@@ -81,7 +88,7 @@ export class Settings extends Component {
 
             <FormGroup
               theme={ theme }
-              label={ 'Interface color' }>
+              label={ 'Interface color' /* TODO: use i18n support */ }>
               <InputRadioGroup
                 name="theme"
                 selected={ settings.theme }
@@ -99,17 +106,17 @@ export class Settings extends Component {
 
             <FormGroup
               theme={ theme }
-              label={ 'Clock display' }>
+              label={ 'Clock display' /* TODO: use i18n support */ }>
               <InputRadioGroup
                 name="clockDisplay"
                 selected={ settings.clockDisplay }
                 onChange={ this.handleChange }>
                 <InputRadio
-                  label={ '12 Hours' }
+                  label={ '12 Hours' /* TODO: use i18n support */ }
                   value="12"
                 />
                 <InputRadio
-                  label={ '24 Hours' }
+                  label={ '24 Hours' /* TODO: use i18n support */ }
                   value="24"
                 />
               </InputRadioGroup>
@@ -117,17 +124,20 @@ export class Settings extends Component {
 
             <FormGroup
               theme={ theme }
-              label={ `Send messages on ${ constants.keysToListenLabel }` }>
+              label={
+                `Send messages on ${ constants.keysToListenLabel }`
+                /* TODO: use i18n support */
+              }>
               <InputRadioGroup
                 name="listenSendKeys"
                 selected={ settings.listenSendKeys ? 'on' : 'off' }
                 onChange={ this.handleChange }>
                 <InputRadio
-                  label={ 'On' }
+                  label={ 'On' /* TODO: use i18n support */ }
                   value="on"
                 />
                 <InputRadio
-                  label={ 'Off' }
+                  label={ 'Off' /* TODO: use i18n support */ }
                   value="off"
                 />
               </InputRadioGroup>
@@ -141,9 +151,9 @@ export class Settings extends Component {
                   className={ selectClass }
                   value={ settings.locale }
                   onChange={ this.handleChange }>
-                  <option value="en">English</option>
-                  <option value="pt">Portuguese</option>
-                  <option value="es">Spanish</option>
+                  <option value="en">{ 'English' /* TODO: use i18n support */ }</option>
+                  <option value="pt">{ 'Portuguese' /* TODO: use i18n support */ }</option>
+                  <option value="es">{ 'Spanish' /* TODO: use i18n support */ }</option>
                 </select>
               </div>
             </div>
@@ -154,7 +164,7 @@ export class Settings extends Component {
           <button
             className={ buttonClass }
             onClick={ this.handleResetClick }>
-            <i className="fas fa-undo fa-fw"></i> Reset to Default
+            <i className="fas fa-undo fa-fw"></i> { 'Reset to Default' /* TODO: use i18n support */ }
           </button>
         </ContainerFooter>
       </Fragment>

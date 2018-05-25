@@ -6,7 +6,7 @@ import styles from './stylesClassNames';
 
     // router
     <LayoutBody>
-      
+
       // chat or settings
       <Container>
 
@@ -18,13 +18,13 @@ import styles from './stylesClassNames';
   </Layout>
 */
 class ContainerFooter extends Component {
-  
+
   render() {
     const { children } = this.props;
 
     return (
       <div className={styles.containerFooter}>
-      { children && children }
+        { children }
       </div>
     );
   }

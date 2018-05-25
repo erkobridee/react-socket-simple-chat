@@ -13,7 +13,7 @@ import styles from './stylesClassNames';
   </Layout>
 */
 class LayoutHeader extends Component {
-  
+
   render() {
     const layoutHeaderClass = classNames(
       styles.layoutHeader,
@@ -23,8 +23,8 @@ class LayoutHeader extends Component {
     const { children } = this.props;
 
     return (
-      <div className={layoutHeaderClass}>
-      { children && children }
+      <div className={ layoutHeaderClass }>
+        { children }
       </div>
     );
   }

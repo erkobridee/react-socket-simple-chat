@@ -7,10 +7,13 @@ import classNames from 'classnames';
 
 import { SafeNavLink } from 'chat/components/navlink';
 
+import ComponentUtils from 'chat/components/Utils';
+
 import { selectors as SettingsSelectors } from 'chat/states/ducks/settings';
 
 export class NavBar extends Component {
 
+  // TODO: find a way to define them in the redux state
   state = {
     isSettings: false,
     messagesLenghtSnapshot: 0,
@@ -37,29 +40,27 @@ export class NavBar extends Component {
     const { theme, locale } = this.props;
 
     const navbarClass = classNames(
-      'navbar',
-      `navbar--${theme}`
+      ComponentUtils.plusTheme( 'navbar', theme )
     );
 
     const navbarSupClass = classNames(
-      'navbar__sup',
-      `navbar__sup--${theme}`
+      ComponentUtils.plusTheme( 'navbar__sup', theme )
     );
 
     return (
-      <div className={navbarClass}>
+      <div className={ navbarClass }>
         <ul>
           <li>
             <SafeNavLink exact to="/">
-              Chat
+              { 'Chat'/* TODO: use i18n support */ }
             </SafeNavLink>
-            <div className={navbarSupClass}>
+            <div className={ navbarSupClass }>
               <span className="navbar__sup__text">10</span>
             </div>
           </li>
           <li>
             <SafeNavLink exact to="/settings">
-              Settings
+              { 'Settings' /* TODO: use i18n support */ }
             </SafeNavLink>
           </li>
         </ul>

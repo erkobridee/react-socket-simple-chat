@@ -9,7 +9,7 @@ import styles from './stylesClassNames';
   </Layout>
 */
 class Layout extends Component {
-  
+
   render() {
     const mainClass = classNames(
       styles.main,
@@ -19,9 +19,9 @@ class Layout extends Component {
     const { children } = this.props;
 
     return (
-      <div className={mainClass}>
-        <div className={styles.container}>
-        { children && children }
+      <div className={ mainClass }>
+        <div className={ styles.container }>
+          { children }
         </div>
       </div>
     );

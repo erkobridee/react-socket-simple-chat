@@ -10,14 +10,7 @@ export const messageContainerUserTo = `${messageContainerUser}--to`;
 export const messageContainerValue = `${messageContainer}__value`;
 export const messageContainerValueTo = `${messageContainerValue}--to`;
 
-export const plusTheme = ( className, theme ) => [ 
-  className, 
-  theme ? `${className}--${theme}` : null 
-];
-
 export default {
-  plusTheme,
-
   messages,
 
   message,

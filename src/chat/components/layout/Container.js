@@ -5,7 +5,7 @@ import React, { Component, Fragment } from 'react';
 
     // router
     <LayoutBody>
-      
+
       // chat or settings
       <Container>
         {children}
@@ -14,13 +14,13 @@ import React, { Component, Fragment } from 'react';
   </Layout>
 */
 class Container extends Component {
-  
+
   render() {
     const { children } = this.props;
 
     return (
       <Fragment>
-      { children && children }
+        { children }
       </Fragment>
     );
   }

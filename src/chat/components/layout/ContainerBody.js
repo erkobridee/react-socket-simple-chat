@@ -8,7 +8,7 @@ import styles from './stylesClassNames';
 
     // router
     <LayoutBody>
-      
+
       // chat or settings
       <Container>
 
@@ -20,7 +20,7 @@ import styles from './stylesClassNames';
   </Layout>
 */
 class ContainerBody extends Component {
-  
+
   render() {
     const { className } = this.props;
 
@@ -34,7 +34,7 @@ class ContainerBody extends Component {
 
     return (
       <div className={containerBodyClass}>
-      { children && children }
+      { children }
       </div>
     );
   }

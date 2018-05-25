@@ -5,17 +5,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-/*
-    usage:
+import ComponentUtils from 'chat/components/Utils';
 
-    <InputRadio
-      theme={ theme }
-      label="Input Radio Label"
-      name="sameAttributeNameFromState"
-      value="valueAssignedToTheInputRadio"
-      selected={ this.state.sameAttributeNameFromState }
-      onChange={ this.handleChange }
-    />
+/*
+  usage:
+
+  <InputRadio
+    theme={ theme }
+    label="Input Radio Label"
+    name="sameAttributeNameFromState"
+    value="valueAssignedToTheInputRadio"
+    selected={ this.state.sameAttributeNameFromState }
+    onChange={ this.handleChange }
+  />
 */
 class InputRadio extends Component {
 
@@ -52,8 +54,7 @@ class InputRadio extends Component {
     } = this.props;
 
     const inputRadioClass = classNames(
-      'form-check',
-      `form-check--${theme}`,
+      ComponentUtils.plusTheme( 'form-check', theme ),
       className
     );
 
