@@ -47,7 +47,7 @@ export class ChatRoom extends Component {
     return (
       <Fragment>
 
-        <ContainerBody className="chatroom">
+        <ContainerBody className="chatroom" theme={ theme }>
           <Messages
             theme={ theme }
             userName={ userName }
@@ -82,7 +82,9 @@ const mapDispatchToProps = {
   sendMessage: operations.send
 }
 
+const ChatRoomReduxConnected = connect(mapStateToProps, mapDispatchToProps)(ChatRoom);
+
 // https://reacttraining.com/react-router/web/guides/redux-integration
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ChatRoom)
-);
+const ChatRoomReduxWithRouter = withRouter(ChatRoomReduxConnected);
+
+export default ChatRoomReduxWithRouter;

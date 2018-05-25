@@ -75,8 +75,8 @@ const mapStateToProps = ( state ) => ({
   locale: SettingsSelectors.getLocale( state )
 });
 
-// TODO: check this out
-// https://egghead.io/lessons/javascript-redux-using-mapdispatchtoprops-shorthand-notation
-export default withRouter(
-  connect(mapStateToProps)(NavBar)
-);
+const NavBarReduxConnected = connect(mapStateToProps)(NavBar);
+
+const NavBarReduxWithRouter = withRouter(NavBarReduxConnected);
+
+export default NavBarReduxWithRouter;

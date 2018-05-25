@@ -25,21 +25,11 @@ export class Settings extends Component {
 
   // https://reactjs.org/docs/typechecking-with-proptypes.html
   static propTypes = {
-    theme: PropTypes.string, //.isRequired,
-    isMobile: PropTypes.bool
-  }
-
-  // https://reactjs.org/docs/react-without-es6.html#declaring-default-props
-  static defaultProps = {
-    isMobile: constants.isMobile
+    theme: PropTypes.string, //.isRequired
   }
 
   handleResetClick = ( event ) => {
     const { restoreFields } = this.props;
-
-    // TODO: remove
-    console.log( 'Settings: clicked on reset to default button' );
-
     restoreFields();
   }
 
@@ -55,16 +45,12 @@ export class Settings extends Component {
 
     // only do the updates if the value is different from the previous one
     if( settings[name] !== value ){
-
-      // TODO: remove
-      console.log( `Settings: radio ${name} changed, new value ${value}` );
-
       updateField(name, value);
     }
   }
 
   render() {
-    const { theme, isMobile, settings } = this.props;
+    const { theme, settings } = this.props;
 
     const selectClass = classNames(
       'form-select',
@@ -72,14 +58,15 @@ export class Settings extends Component {
     );
 
     const buttonClass = classNames(
-      'btn', 'btn--expand',
-      `btn--${theme}`
+      'btn',
+      `btn--${theme}`,
+      'btn--expand'
     );
 
     return (
       <Fragment>
 
-        <ContainerBody>
+        <ContainerBody theme={ theme }>
           <div className="settings__body">
 
             <FormGroup
@@ -118,11 +105,11 @@ export class Settings extends Component {
                 selected={ settings.clockDisplay }
                 onChange={ this.handleChange }>
                 <InputRadio
-                  label="12 Hours"
+                  label={ '12 Hours' }
                   value="12"
                 />
                 <InputRadio
-                  label="24 Hours"
+                  label={ '24 Hours' }
                   value="24"
                 />
               </InputRadioGroup>
@@ -130,17 +117,17 @@ export class Settings extends Component {
 
             <FormGroup
               theme={ theme }
-              label={ `Send messages on ${ constants.keysToListenLabel}` }>
+              label={ `Send messages on ${ constants.keysToListenLabel }` }>
               <InputRadioGroup
                 name="listenSendKeys"
                 selected={ settings.listenSendKeys ? 'on' : 'off' }
                 onChange={ this.handleChange }>
                 <InputRadio
-                  label="On"
+                  label={ 'On' }
                   value="on"
                 />
                 <InputRadio
-                  label="Off"
+                  label={ 'Off' }
                   value="off"
                 />
               </InputRadioGroup>
@@ -188,7 +175,9 @@ const mapDispatchToProps = {
   restoreFields: SettingsOperations.restore
 }
 
+const SettingsReduxConnected = connect(mapStateToProps, mapDispatchToProps)(Settings);
+
 // https://reacttraining.com/react-router/web/guides/redux-integration
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(Settings)
-);
+const SettingsReduxWithRouter = withRouter(SettingsReduxConnected);
+
+export default SettingsReduxWithRouter;
