@@ -19,6 +19,15 @@ export const welcomeMessage = {
 const localTime = new Date().getTime();
 const buildUserName = () => ( `Guest_${ hash(localTime).hashSum }` )
 
+/*
+  settings = {
+    userName: string,
+    theme: string,
+    clockDisplay: string,
+    listenSendKeys: string,
+    locale: string
+  }
+*/
 export const defaultSettings = {
   userName: buildUserName(),
   theme: process.env.THEME || 'light',
