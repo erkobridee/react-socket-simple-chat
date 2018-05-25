@@ -15,8 +15,11 @@ import ChatRoomFooter from './ChatRoomFooter';
 
 import constants from 'chat/constants'
 
+import {
+  operations as MessagesOperations,
+  selectors as MessagesSelectors
+} from 'chat/states/ducks/messages';
 import { selectors as SettingsSelectors } from 'chat/states/ducks/settings';
-import { operations } from 'chat/states/ducks/messages';
 
 
 export class ChatRoom extends Component {
@@ -70,7 +73,7 @@ export class ChatRoom extends Component {
 //----------------------------------------------------------------------------//
 
 const mapStateToProps = ( state ) => ({
-  messages: state.messages, // TODO: define and use a selector
+  messages: MessagesSelectors.getMessages(state),
   userName: SettingsSelectors.getUserName( state ),
   theme: SettingsSelectors.getTheme( state ),
   clockDisplay: SettingsSelectors.getClockDisplay( state ),
@@ -79,7 +82,7 @@ const mapStateToProps = ( state ) => ({
 
 // https://egghead.io/lessons/javascript-redux-using-mapdispatchtoprops-shorthand-notation
 const mapDispatchToProps = {
-  sendMessage: operations.send
+  sendMessage: MessagesOperations.send
 }
 
 const ChatRoomReduxConnected = connect(mapStateToProps, mapDispatchToProps)(ChatRoom);
