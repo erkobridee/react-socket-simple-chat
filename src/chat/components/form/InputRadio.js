@@ -8,7 +8,7 @@ import classNames from 'classnames';
 /*
     usage:
 
-    <InputRadio 
+    <InputRadio
       theme={ theme }
       label="Input Radio Label"
       name="sameAttributeNameFromState"
@@ -30,9 +30,9 @@ class InputRadio extends Component {
   }
 
   // https://reactjs.org/docs/react-without-es6.html#declaring-default-props
-  static defaultProps = {
-    theme: 'light'
-  }
+  // static defaultProps = {
+  //   theme: 'light'
+  // }
 
   handleClick = (event) => {
     event.preventDefault();
@@ -43,12 +43,12 @@ class InputRadio extends Component {
   }
 
   render() {
-    const { 
-        theme, label, 
-        className, 
-        name, value, 
+    const {
+        theme, label,
+        className,
+        name, value,
         selected,
-        ...rest 
+        ...rest
     } = this.props;
 
     const inputRadioClass = classNames(
@@ -58,18 +58,18 @@ class InputRadio extends Component {
     );
 
     return (
-      <div 
+      <div
         className={ inputRadioClass }
         onClick={ this.handleClick  }>
-        <input 
+        <input
           className="form-check-input"
-          type="radio" 
+          type="radio"
           id={ name }
           checked={ value === selected }
           { ...{ name, value, ...rest } }
         />
-        <label 
-          className="form-check-label" 
+        <label
+          className="form-check-label"
           htmlFor={ name }>
           { label }
         </label>

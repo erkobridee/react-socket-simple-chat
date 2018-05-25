@@ -24,7 +24,6 @@ class InputField extends Component {
 
   // https://reactjs.org/docs/react-without-es6.html#declaring-default-props
   static defaultProps = {
-    theme: 'light',
     type: 'text'
   }
 

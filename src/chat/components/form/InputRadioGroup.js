@@ -12,12 +12,12 @@ import classNames from 'classnames';
     onChange={ this.handleChange }
   >
 
-    <InputRadio 
+    <InputRadio
       label="Radio 1"
       value="radio_1"
     />
 
-    <InputRadio 
+    <InputRadio
       label="Radio 2"
       value="radio_2"
     />
@@ -39,11 +39,6 @@ class InputRadioGroup extends Component {
     ]).isRequired,
     onChange: PropTypes.func.isRequired,
     children: PropTypes.arrayOf(PropTypes.element).isRequired
-  }
-
-  // https://reactjs.org/docs/react-without-es6.html#declaring-default-props
-  static defaultProps = {
-    theme: 'light'
   }
 
   // https://jaketrent.com/post/send-props-to-children-react/
@@ -68,7 +63,7 @@ class InputRadioGroup extends Component {
 
     return (
       <div className={ inputRadioGroupClass }>
-        { this.renderChildren( this.props) }
+        { this.renderChildren( this.props ) }
       </div>
     );
   }

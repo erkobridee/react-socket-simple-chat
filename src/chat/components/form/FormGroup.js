@@ -22,14 +22,10 @@ class FormGroup extends Component {
     children: PropTypes.element.isRequired
   }
 
-   // https://reactjs.org/docs/react-without-es6.html#declaring-default-props
-   static defaultProps = {
-    theme: 'light'
-  }
-
   // https://jaketrent.com/post/send-props-to-children-react/
   // https://reactjs.org/docs/react-api.html#reactchildren
   renderChildren = ( theme, children ) => {
+
     return React.Children.map( children, child => {
       return React.cloneElement( child, {
         theme
