@@ -84,7 +84,10 @@ A simple chat application that uses react.js, redux and socket.io.
 
 * [React](https://reactjs.org/)
 
+  * [[YouTube] 6 Pro Tips from React Developers](https://www.youtube.com/watch?v=xa-_FIy2NgE)
+
   * [[YouTube] Get derived state from props in React 16.3 | hackages.tv](https://www.youtube.com/watch?v=p_m4TrYGtCo) - 2018/03/14
+
 
 * Forms
 
