@@ -1,4 +1,7 @@
-import { MESSAGE_SEND, MESSAGE_RECEIVE, MESSAGE_ADD } from './types';
+import {
+  MESSAGE_SEND, MESSAGE_RECEIVE, MESSAGE_ADD,
+  MESSAGES_REMOVE
+} from './types';
 
 export const send = ( message ) => {
   return {
@@ -21,8 +24,15 @@ export const add = ( message ) => {
   };
 }
 
+export const remove = () => {
+  return {
+    type: MESSAGES_REMOVE
+  }
+}
+
 export default {
   send,
   receive,
-  add
+  add,
+  remove
 };

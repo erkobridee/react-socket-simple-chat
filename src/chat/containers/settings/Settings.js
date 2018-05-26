@@ -19,6 +19,11 @@ import {
   operations as settingsOperations
 } from 'chat/states/ducks/settings';
 
+import {
+  selectors as messagesSelectors,
+  operations as messagesOperations
+} from 'chat/states/ducks/messages';
+
 
 // TODO: add i18n support
 
@@ -42,6 +47,11 @@ export class Settings extends Component {
     restoreFields();
   }
 
+  handleDeleteMessagesClick = ( event ) => {
+    const { deleteMessages } = this.props;
+    deleteMessages();
+  }
+
   handleChange = ( event ) => {
     const { settings, updateField } = this.props;
     const { name } = event.target;
@@ -59,10 +69,14 @@ export class Settings extends Component {
   }
 
   render() {
-    const { theme, settings } = this.props;
+    const { theme, settings, messagesLength } = this.props;
 
     const selectClass = classNames(
       componentUtils.plusTheme( 'form-select', theme ),
+    );
+
+    const buttonCleanupClass = classNames(
+      componentUtils.plusTheme( 'btn', theme )
     );
 
     const buttonClass = classNames(
@@ -157,6 +171,19 @@ export class Settings extends Component {
                 </select>
               </div>
             </div>
+
+            <div>
+              <div>
+                { `Cached Messages ( total ${messagesLength} )` /* TODO: use i18n support */ }
+              </div>
+              <div>
+                <button
+                  className={ buttonCleanupClass }
+                  onClick={ this.handleDeleteMessagesClick }>
+                  <i className="fas fa-eraser fa-fw"></i> { 'Cleanup' /* TODO: use i18n support */ }
+                </button>
+              </div>
+            </div>
           </div>
         </ContainerBody>
 
@@ -176,13 +203,15 @@ export class Settings extends Component {
 
 const mapStateToProps = ( state ) => ({
   settings: settingsSelectors.getSettings( state ),
-  theme: settingsSelectors.getTheme( state )
+  theme: settingsSelectors.getTheme( state ),
+  messagesLength: messagesSelectors.getMessagesLength( state )
 });
 
 // https://egghead.io/lessons/javascript-redux-using-mapdispatchtoprops-shorthand-notation
 const mapDispatchToProps = {
   updateField: settingsOperations.update,
-  restoreFields: settingsOperations.restore
+  restoreFields: settingsOperations.restore,
+  deleteMessages: messagesOperations.remove
 }
 
 const SettingsReduxConnected = connect(mapStateToProps, mapDispatchToProps)(Settings);

@@ -17,7 +17,13 @@ export const receive = ( message ) => ( dispatch, getState, api ) => {
   dispatch(actions.add(message));
 }
 
+export const remove = () => ( dispatch, getState, api ) => {
+
+  dispatch( actions.remove() );
+}
+
 export default {
   send,
-  receive
+  receive,
+  remove
 };
