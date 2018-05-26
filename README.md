@@ -5,7 +5,7 @@ A simple chat application that uses react.js, redux and socket.io.
 
 ## things left to have the v1
 
-- [x] finih UI/layout components and styles with light/dark color themes
+- [x] finish UI/layout components and styles with light/dark color themes
 
 - [x] finish the redux code to manage the application data/states
 
