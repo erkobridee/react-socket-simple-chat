@@ -112,7 +112,11 @@ A simple chat application that uses react.js, redux and socket.io.
 
   * [react i18n next](https://react.i18next.com/)
 
-  * [[SandBox Editor] react i18n next example](https://codesandbox.io/s/l4qrory2nl)
+    * [I18n with React and i18next | Danny Hurlburt - Alligator.io](https://alligator.io/react/i18n-with-react-and-i18next)
+
+    * [[GitHub] i18next / react-i18next / examples](https://github.com/i18next/react-i18next/tree/master/example)
+
+    * [[SandBox Editor] react i18n next example](https://codesandbox.io/s/l4qrory2nl)
 
 --
 
