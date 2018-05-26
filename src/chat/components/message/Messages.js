@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -6,7 +6,7 @@ import styles from './stylesClassNames';
 
 import Message from './Message';
 
-class Messages extends Component {
+class Messages extends PureComponent {
 
   // https://reactjs.org/docs/typechecking-with-proptypes.html
   static propTypes = {
