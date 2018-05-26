@@ -74,7 +74,7 @@ io.on( IO_EVENT_CONNECTION, socket => {
 http.listen( SERVER_PORT, ipAddress, () => (
   console.log(
     '\n',
-    `Socket IO server running on  ${ipAddress}:${SERVER_PORT}`,
+    `Socket IO server is running at ${ipAddress}:${SERVER_PORT}`,
     '\n',
     'Please remember to update the .env file, and if needed restart your dev. environment.',
     '\n'
