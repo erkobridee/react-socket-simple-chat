@@ -1,14 +1,16 @@
-import React, { Component } from 'react';
-import classNames from 'classnames';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './stylesClassNames';
+
+import LayoutPiece from 'chat/components/layout/LayoutPiece';
 
 /*
   <Layout>
 
     // router
     <LayoutBody>
-      
+
       // chat or settings
       <Container>
 
@@ -19,25 +21,21 @@ import styles from './stylesClassNames';
     </LayoutBody>
   </Layout>
 */
-class ContainerBody extends Component {
-  
-  render() {
-    const { className } = this.props;
+const ContainerBody = ({ theme, className, children }) => (
+  <LayoutPiece
+   { ...{ mainClassName: styles.containerBody, theme, className, children } }
+  />
+);
 
-    const containerBodyClass = classNames(
-      styles.containerBody,
-      `${styles.containerBody}--${this.props.theme || 'light'}`,
-      className
-    );
-
-    const { children } = this.props;
-
-    return (
-      <div className={containerBodyClass}>
-      { children && children }
-      </div>
-    );
-  }
-}
+// https://reactjs.org/docs/typechecking-with-proptypes.html
+ContainerBody.propTypes = {
+  theme: PropTypes.string,
+  className: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element)
+  ]).isRequired,
+};
 
 export default ContainerBody;

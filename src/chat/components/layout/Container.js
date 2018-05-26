@@ -1,11 +1,15 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+
+import { plusTheme } from 'chat/components/utils';
 
 /*
   <Layout>
 
     // router
     <LayoutBody>
-      
+
       // chat or settings
       <Container>
         {children}
@@ -13,17 +17,19 @@ import React, { Component, Fragment } from 'react';
     </LayoutBody>
   </Layout>
 */
-class Container extends Component {
-  
-  render() {
-    const { children } = this.props;
+const Container = ({ children }) => (
+  <Fragment>
+    { children }
+  </Fragment>
+);
 
-    return (
-      <Fragment>
-      { children && children }
-      </Fragment>
-    );
-  }
-}
+// https://reactjs.org/docs/typechecking-with-proptypes.html
+Container.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element)
+  ]).isRequired,
+};
 
 export default Container;

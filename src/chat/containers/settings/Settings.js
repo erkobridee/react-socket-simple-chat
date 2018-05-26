@@ -1,6 +1,8 @@
 // container component
 
 import React, { Component, Fragment } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -8,38 +10,50 @@ import { ContainerBody, ContainerFooter } from 'chat/components/layout';
 
 import { FormGroup, InputField, InputRadioGroup, InputRadio } from 'chat/components/form';
 
+import { utils as componentUtils } from 'chat/components';
+
 import constants from 'chat/constants'
+
+import {
+  selectors as settingsSelectors,
+  operations as settingsOperations
+} from 'chat/states/ducks/settings';
+
+import {
+  selectors as messagesSelectors,
+  operations as messagesOperations
+} from 'chat/states/ducks/messages';
+
 
 // TODO: add i18n support
 
 // https://reactjs.org/docs/forms.html
-class Settings extends Component {
+export class Settings extends Component {
 
   // https://reactjs.org/docs/typechecking-with-proptypes.html
   static propTypes = {
-    theme: PropTypes.string.isRequired,
-    isMobile: PropTypes.bool
+    theme: PropTypes.string,
+    settings: PropTypes.shape({
+      userName: PropTypes.string,
+      theme: PropTypes.string,
+      clockDisplay: PropTypes.string,
+      listenSendKeys: PropTypes.bool,
+      locale: PropTypes.string
+    })
   }
-
-  // https://reactjs.org/docs/react-without-es6.html#declaring-default-props
-  static defaultProps = {
-    theme: 'light',
-    isMobile: constants.isMobile
-  }
-
-  state = Object.assign({}, constants.defaultSettings);
 
   handleResetClick = ( event ) => {
-    
-    // TODO: remove
-    console.log( 'Settings: clicked on reset to default button' );
+    const { restoreFields } = this.props;
+    restoreFields();
+  }
 
-    this.setState(Object.assign({}, constants.defaultSettings));
-
-    // TODO: trigger events
+  handleDeleteMessagesClick = ( event ) => {
+    const { deleteMessages } = this.props;
+    deleteMessages();
   }
 
   handleChange = ( event ) => {
+    const { settings, updateField } = this.props;
     const { name } = event.target;
     let { value } = event.target;
 
@@ -49,97 +63,95 @@ class Settings extends Component {
     }
 
     // only do the updates if the value is different from the previous one
-    if( this.state[name] !== value ){
-
-      // TODO: remove
-      console.log( `Settings: radio ${name} changed, new value ${value}` );
-
-      this.setState({
-        [name]: value
-      });
-  
-      // TODO: trigger one event to each field changed and one to persist all the changes
+    if( settings[name] !== value ){
+      updateField(name, value);
     }
   }
 
   render() {
-    const { theme, isMobile } = this.props;
-    
+    const { theme, settings, messagesLength } = this.props;
+
     const selectClass = classNames(
-      'form-select',
-      `form-select--${theme}`
+      componentUtils.plusTheme( 'form-select', theme ),
+    );
+
+    const buttonCleanupClass = classNames(
+      componentUtils.plusTheme( 'btn', theme )
     );
 
     const buttonClass = classNames(
-      'btn', 'btn--expand',
-      `btn--${theme}`
+      componentUtils.plusTheme( 'btn', theme ),
+      'btn--expand'
     );
 
     return (
       <Fragment>
-        
-        <ContainerBody>
+
+        <ContainerBody theme={ theme } className="enable-scroll">
           <div className="settings__body">
 
             <FormGroup
-              theme={ theme } 
-              label={ 'User Name' }>
-              <InputField 
+              theme={ theme }
+              label={ 'User Name' /* TODO: use i18n support */ }>
+              <InputField
                 name="userName"
-                value={ this.state.userName }
+                value={ settings.userName }
                 onChange={ this.handleChange }
               />
             </FormGroup>
 
             <FormGroup
-              theme={ theme } 
-              label={ 'Interface color' }>  
-              <InputRadioGroup 
+              theme={ theme }
+              label={ 'Interface color' /* TODO: use i18n support */ }>
+              <InputRadioGroup
                 name="theme"
-                selected={ this.state.theme } 
+                selected={ settings.theme }
                 onChange={ this.handleChange }>
-                <InputRadio 
-                  label="Light" 
+                <InputRadio
+                  label="Light"
                   value="light"
                 />
-                <InputRadio 
-                  label="Dark" 
+                <InputRadio
+                  label="Dark"
                   value="dark"
                 />
               </InputRadioGroup>
             </FormGroup>
 
             <FormGroup
-              theme={ theme } 
-              label={ 'Clock display' }>  
-              <InputRadioGroup 
+              theme={ theme }
+              label={ 'Clock display' /* TODO: use i18n support */ }>
+              <InputRadioGroup
                 name="clockDisplay"
-                selected={ this.state.clockDisplay } 
+                selected={ settings.clockDisplay }
                 onChange={ this.handleChange }>
-                <InputRadio 
-                  label="12 Hours" 
+                <InputRadio
+                  label={ '12 Hours' /* TODO: use i18n support */ }
                   value="12"
                 />
-                <InputRadio 
-                  label="24 Hours" 
+                <InputRadio
+                  label={ '24 Hours' /* TODO: use i18n support */ }
                   value="24"
                 />
               </InputRadioGroup>
             </FormGroup>
 
             <FormGroup
-              theme={ theme } 
-              label={ `Send messages on ${ constants.keysToListenLabel /*isMobile ? 'ENTER' : 'CTRL + ENTER'*/ }` }>  
-              <InputRadioGroup 
+              theme={ theme }
+              label={
+                `Send messages on ${ constants.keysToListenLabel }`
+                /* TODO: use i18n support */
+              }>
+              <InputRadioGroup
                 name="listenSendKeys"
-                selected={ this.state.listenSendKeys ? 'on' : 'off' } 
+                selected={ settings.listenSendKeys ? 'on' : 'off' }
                 onChange={ this.handleChange }>
-                <InputRadio 
-                  label="On" 
+                <InputRadio
+                  label={ 'On' /* TODO: use i18n support */ }
                   value="on"
                 />
-                <InputRadio 
-                  label="Off" 
+                <InputRadio
+                  label={ 'Off' /* TODO: use i18n support */ }
                   value="off"
                 />
               </InputRadioGroup>
@@ -148,25 +160,38 @@ class Settings extends Component {
             <div>
               <div>Language</div>
               <div>
-                <select 
-                  name="locale" 
+                <select
+                  name="locale"
                   className={ selectClass }
-                  value={ this.state.locale } 
+                  value={ settings.locale }
                   onChange={ this.handleChange }>
-                  <option value="en">English</option>
-                  <option value="pt">Portuguese</option>
-                  <option value="es">Spanish</option>
+                  <option value="en">{ 'English' /* TODO: use i18n support */ }</option>
+                  <option value="pt">{ 'Portuguese' /* TODO: use i18n support */ }</option>
+                  <option value="es">{ 'Spanish' /* TODO: use i18n support */ }</option>
                 </select>
+              </div>
+            </div>
+
+            <div className="cached-messages">
+              <div>
+                { `Cached Messages ( total ${messagesLength} )` /* TODO: use i18n support */ }
+              </div>
+              <div>
+                <button
+                  className={ buttonCleanupClass }
+                  onClick={ this.handleDeleteMessagesClick }>
+                  <i className="fas fa-eraser fa-fw"></i> { 'Cleanup' /* TODO: use i18n support */ }
+                </button>
               </div>
             </div>
           </div>
         </ContainerBody>
-        
+
         <ContainerFooter>
-          <button 
+          <button
             className={ buttonClass }
             onClick={ this.handleResetClick }>
-            <i className="fas fa-undo fa-fw"></i> Reset to Default
+            <i className="fas fa-undo fa-fw"></i> { 'Reset to Default' /* TODO: use i18n support */ }
           </button>
         </ContainerFooter>
       </Fragment>
@@ -174,4 +199,24 @@ class Settings extends Component {
   }
 }
 
-export default Settings;
+//----------------------------------------------------------------------------//
+
+const mapStateToProps = ( state ) => ({
+  settings: settingsSelectors.getSettings( state ),
+  theme: settingsSelectors.getTheme( state ),
+  messagesLength: messagesSelectors.getMessagesLength( state )
+});
+
+// https://egghead.io/lessons/javascript-redux-using-mapdispatchtoprops-shorthand-notation
+const mapDispatchToProps = {
+  updateField: settingsOperations.update,
+  restoreFields: settingsOperations.restore,
+  deleteMessages: messagesOperations.remove
+}
+
+const SettingsReduxConnected = connect(mapStateToProps, mapDispatchToProps)(Settings);
+
+// https://reacttraining.com/react-router/web/guides/redux-integration
+const SettingsReduxWithRouter = withRouter(SettingsReduxConnected);
+
+export default SettingsReduxWithRouter;

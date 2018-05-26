@@ -1,6 +1,8 @@
 // container component
 
 import React, { Component, Fragment } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -13,7 +15,14 @@ import ChatRoomFooter from './ChatRoomFooter';
 
 import constants from 'chat/constants'
 
-class ChatRoom extends Component {
+import {
+  operations as messagesOperations,
+  selectors as messagesSelectors
+} from 'chat/states/ducks/messages';
+import { selectors as settingsSelectors } from 'chat/states/ducks/settings';
+
+
+export class ChatRoom extends Component {
 
   // https://reactjs.org/docs/typechecking-with-proptypes.html
   static propTypes = {
@@ -23,55 +32,39 @@ class ChatRoom extends Component {
 
   // https://reactjs.org/docs/react-without-es6.html#declaring-default-props
   static defaultProps = {
-    theme: 'light', 
     isMobile: constants.isMobile
   };
 
-  state = {
-    messages: [
-      { 
-        message: 'Welcome to the simple chat application.', 
-        user: 'App', 
-        time: dayjs().format() 
-      }
-    ]
-  };
-
-  handleSubmit = ( message, keyPressed ) => {
-
-    message = {
-      user: 'Guest0001',
-      time: dayjs().format(),
-      message
-    }
-
-    // TODO: remove to use redux to handle the messages data
-    this.setState({
-      messages: [...this.state.messages, message]
-    });
-
-    // TODO: implement the message submit with redux
-
+  handleSubmit = ( message ) => {
+    const { sendMessage, userName } = this.props;
+    sendMessage( message, userName );
   }
 
   render() {
-    const { theme, isMobile } = this.props;
+    const {
+      isMobile,
+      userName, theme, clockDisplay, listenSendKeys,
+      messages
+    } = this.props;
 
     return (
       <Fragment>
-        
-        <ContainerBody className="chatroom">
+
+        <ContainerBody
+          className="chatroom enable-scroll reverse-items"
+          theme={ theme }>
           <Messages
-            userName={ 'Guest0001' }
-            clockDisplay={ '12' }
-            data={ this.state.messages }
+            theme={ theme }
+            userName={ userName }
+            clockDisplay={ clockDisplay }
+            data={ messages }
           />
         </ContainerBody>
-        
-        <ChatRoomFooter 
-          theme={theme}
+
+        <ChatRoomFooter
+          theme={ theme }
           onSubmit={ this.handleSubmit }
-          listenSendKeys={ true /* load from the settings storage */ }
+          listenSendKeys={ listenSendKeys }
           isMobile={ isMobile }
         />
       </Fragment>
@@ -79,4 +72,24 @@ class ChatRoom extends Component {
   }
 }
 
-export default ChatRoom;
+//----------------------------------------------------------------------------//
+
+const mapStateToProps = ( state ) => ({
+  messages: messagesSelectors.getMessages(state),
+  userName: settingsSelectors.getUserName( state ),
+  theme: settingsSelectors.getTheme( state ),
+  clockDisplay: settingsSelectors.getClockDisplay( state ),
+  listenSendKeys: settingsSelectors.getListenSendKeys( state )
+});
+
+// https://egghead.io/lessons/javascript-redux-using-mapdispatchtoprops-shorthand-notation
+const mapDispatchToProps = {
+  sendMessage: messagesOperations.send
+}
+
+const ChatRoomReduxConnected = connect(mapStateToProps, mapDispatchToProps)(ChatRoom);
+
+// https://reacttraining.com/react-router/web/guides/redux-integration
+const ChatRoomReduxWithRouter = withRouter(ChatRoomReduxConnected);
+
+export default ChatRoomReduxWithRouter;

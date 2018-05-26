@@ -1,13 +1,28 @@
 # react-socket-simple-chat
 
-<!-- A simple chat application that uses react.js, redux and socket.io. -->
+A simple chat application that uses react.js, redux and socket.io.
 
 
-## Status
+## things left to have the v1
 
-Development tools build on top of webpack v4, with HMR (also react HMR), sass and css modules support, and the webpack-dev-server uses the machines IP from the local network to enable the multi screen development, with that is possible to have the application openned over the desktop, tablet and mobile at the same time.
+- [x] finish UI/layout components and styles with light/dark color themes
 
-I also keep the webpack configure to consider the file paths from the `./src` directoty, and with that avoid the import hell to return to parents directory ( avoid: `import ComponentName from '../../components/ComponentName'`, to use like: `import ComponentName from 'components/ComponentName'` where the components directory is located at `./src/components`, so no matter how deep you are, you'll be able to import from the project src root folder ).
+- [x] finish the redux code to manage the application data/states
+
+- [ ] socket.io
+
+  - [x] socket.io-client mock
+
+  - [ ] connect to the socket.io server to handle the messages 
+
+- [x] use the settings theme state to switch between the themes
+
+- [x] add local storage support to persist the changes on the settings page
+
+- [ ] add i18n (internationalization) support
+
+- [ ] write down the documentation under the `docs/` directory
+
 
 ## Prerequisites
 
@@ -49,15 +64,77 @@ I also keep the webpack configure to consider the file paths from the `./src` di
 
 ## Useful links
 
-* [React](https://reactjs.org/)
-
-* [Webpack](https://webpack.js.org/)
+### Styles (CSS and SASS)
 
 * [Understanding and Using rem Units in CSS — SitePoint](https://www.sitepoint.com/understanding-and-using-rem-units-in-css/)
+
+* [Sass's `@content` Directive Use Cases](https://robots.thoughtbot.com/sasss-content-directive)
+
+* [BEM](http://getbem.com/)
+
+  * [Using Sass to Control Scope With BEM Naming | CSS-Tricks](https://css-tricks.com/using-sass-control-scope-bem-naming/) - 2018/02/28
+
+  * [Modular CSS with Sass & BEM | Mat Hayward](http://mathayward.com/modular-css-with-sass-and-bem/) - 2014/01/17
+
+
+### Webpack
+
+* [Webpack](https://webpack.js.org/)
 
 * [How to use Webpack with React: an in-depth tutorial | freeCodeCamp](https://medium.freecodecamp.org/learn-webpack-for-react-a36d4cac5060)
 
 * [Optimizing front-end delivery with Webpack 4 | Jasel Gadhia](https://jes.al/2018/04/optimizing-front-end-delivery-with-Webpack-4/)
+
+
+### React and Redux( middleware( thunk )  )
+
+* [React](https://reactjs.org/)
+
+  * [[YouTube] 6 Pro Tips from React Developers](https://www.youtube.com/watch?v=xa-_FIy2NgE)
+
+  * [React Stateless Functional Components: Nine Wins You Might Have Overlooked | Hackernoon](https://hackernoon.com/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc) - 2016/03/28
+
+  * [[YouTube] Get derived state from props in React 16.3 | hackages.tv](https://www.youtube.com/watch?v=p_m4TrYGtCo) - 2018/03/14
+
+
+* Forms
+
+  * [Forms | React Docs](https://reactjs.org/docs/forms.html)
+
+  * [React Forms: Using Refs | CSS-Tricks](https://css-tricks.com/react-forms-using-refs/)
+
+  * [Better Form Management | Robbie Dela Victoria – Medium](https://medium.com/@robbiedelavictoria/better-form-management-37c994095b1c)
+
+--
+
+* [Redux Integration | React Router Docs](https://reacttraining.com/react-router/web/guides/redux-integration)
+
+--
+
+* [Redux](https://redux.js.org/)
+
+  * [[Sandbox Editor] Todos](https://codesandbox.io/s/github/reduxjs/redux/tree/master/examples/todos)
+
+  * [A Dummy's Guide to Redux and Thunk in React | Matt Stow on CodePen](https://codepen.io/stowball/post/a-dummy-s-guide-to-redux-and-thunk-in-react)
+
+    * [[GitHub] stowball / dummys-guide-to-redux-and-thunk-react](https://github.com/stowball/dummys-guide-to-redux-and-thunk-react)
+
+  * [Redux: Persisting the State to the Local Storage | @dan_abramov on @eggheadio](https://egghead.io/lessons/javascript-redux-persisting-the-state-to-the-local-storage)
+
+* [[GitHub] reduxjs / redux-thunk](https://github.com/reduxjs/redux-thunk) - use [withExtraArgument](https://github.com/reduxjs/redux-thunk#injecting-a-custom-argument) to inject the SocketIO service and localstorage service API
+
+  * [Super Simple Redux Thunk Example | Tyler Buchea](http://blog.tylerbuchea.com/super-simple-redux-thunk-example/) - 2017/10/10 ([Sandbox Editor](https://codesandbox.io/s/github/tylerbuchea/my-simple-async-app))
+
+* Multiple actions
+
+  * [Can I dispatch multiple actions from Redux action creators?](http://jamesknelson.com/can-i-dispatch-multiple-actions-from-redux-action-creators/)
+
+  * [Redux Thunk – how to populate various reducers](http://frontendinsights.com/redux-thunk-populate-various-reducers/)
+
+
+#### Code Style Guide
+
+* [[Gist] datchley / react-redux-style-guide.md](https://gist.github.com/datchley/4e0d05c526d532d1b05bf9b48b174faf) - React + [Redux](https://gist.github.com/datchley/4e0d05c526d532d1b05bf9b48b174faf#redux) Style Guide
 
 * Project architecture re-ducks: [Scaling your Redux App with ducks | freeCodeCamp](https://medium.freecodecamp.org/scaling-your-redux-app-with-ducks-6115955638be)
 

@@ -1,5 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import styles from './stylesClassNames';
+
+import LayoutPiece from 'chat/components/layout/LayoutPiece';
 
 /*
   <Layout>
@@ -10,17 +14,19 @@ import styles from './stylesClassNames';
     </LayoutBody>
   </Layout>
 */
-class LayoutBody extends Component {
-  
-  render() {
-    const { children } = this.props;
+const LayoutBody = ({ children }) => (
+  <LayoutPiece
+    { ...{ mainClassName: styles.layoutBody, children } }
+  />
+);
 
-    return (
-      <div className={styles.layoutBody}>
-      { children && children }
-      </div>
-    );
-  }
-}
+// https://reactjs.org/docs/typechecking-with-proptypes.html
+LayoutBody.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element)
+  ]).isRequired,
+};
 
 export default LayoutBody;

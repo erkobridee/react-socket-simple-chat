@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-// using HashRouter that will make the routes work 
+// using HashRouter that will make the routes work
 // over a deployment that hasn't a backend with historyApiFallback support
 import { HashRouter } from 'react-router-dom';
 
-import { NavBar } from './containers';
 import { Layout, LayoutHeader, LayoutBody } from './components/layout';
 
+import { NavBar } from './containers';
 import Routes from './Routes';
 
-class Chat extends Component {
+import {
+  selectors as settingsSelectors
+} from 'chat/states/ducks/settings';
+
+
+export class Chat extends Component {
 
   render() {
 
@@ -26,13 +32,15 @@ class Chat extends Component {
     </HashRouter>
   */
 
+    const { theme } = this.props;
+
     return (
       <HashRouter>
-        <Layout>
-          <LayoutHeader>
+        <Layout theme={ theme }>
+          <LayoutHeader theme={ theme }>
             <NavBar />
           </LayoutHeader>
-          <LayoutBody>
+          <LayoutBody theme={ theme }>
             <Routes />
           </LayoutBody>
         </Layout>
@@ -41,4 +49,12 @@ class Chat extends Component {
   }
 }
 
-export default Chat;
+//----------------------------------------------------------------------------//
+
+const mapStateToProps = ( state ) => ({
+  theme: settingsSelectors.getTheme( state )
+});
+
+const ChatReduxConnected = connect(mapStateToProps)(Chat);
+
+export default ChatReduxConnected;

@@ -13,6 +13,8 @@
   display: flex;
   flex-direction: column;
 
+  flex-grow: 1;
+
   @include fix-content-position(absolute, $default-unit-value);
 
   @include larger-than-tablet {
@@ -27,7 +29,7 @@
     @include larger-than-tablet {
       padding: 0 2rem;
     }
-    
+
     @extend %margin-bottom;
 
     @include base-border;
@@ -42,12 +44,15 @@
     &__content {
       position: relative;
 
-      &.chatroom {
+      &.enable-scroll {
         display: flex;
-        flex-direction: column-reverse;
         overflow: auto;
       }
-      
+
+      &.reverse-items {
+        flex-direction: column-reverse;
+      }
+
       flex: auto;
 
       padding: $default-unit-value;
@@ -66,7 +71,7 @@
 
       @include theme-content-colors;
     }
-  
+
     &__footer {
       flex: none;
     }

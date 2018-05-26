@@ -4,12 +4,12 @@
 
   how to style input radio | checkbox
   https://www.hongkiat.com/blog/css3-checkbox-radio/
-  
+
 */
 
 %form-control {
   padding: 0.5rem 1rem;
-  
+
   font-family: $body-font-family;
   font-size: $body-font-size;
 
@@ -29,6 +29,8 @@
   }
 
   &-select {
+    cursor: pointer;
+
     min-width: 20rem;
     height: 3rem;
     @extend %form-control;
@@ -49,15 +51,16 @@
 
       &:checked + label {
         font-weight: bold;
+        cursor: default;
 
         &:before {
           content: "\2022";
-          
-          color: $base-color; 
+
+          color: $base-color;
 
           top: 0.4rem;
 
-          text-align: center;  
+          text-align: center;
 
           font-weight: bold;
           font-size: 2.5rem;
@@ -66,15 +69,16 @@
     }
 
     &-label {
+      cursor: pointer;
 
       &:before {
         content: " ";
         display: inline-block;
-        
+
         width: 1.3rem;
         height: 1.3rem;
         line-height: 1.3rem;
-        
+
         position: relative;
 
         top: 0.4rem;
@@ -88,8 +92,8 @@
     }
 
     @include theme-form-check-colors;
-    
-    &:not(:last-child){
+
+    &:not(:last-child) {
       margin-right: 2rem;
     }
   }

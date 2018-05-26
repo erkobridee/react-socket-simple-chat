@@ -1,8 +1,10 @@
 $element-space-height: 1.5rem;
+$element-space-double-height: 3rem;
 
 .settings {
 
   &__body {
+    width: 100%;
 
     > * {
 
@@ -13,6 +15,21 @@ $element-space-height: 1.5rem;
       &:not(:last-child) {
         margin-bottom: $element-space-height;
       }
+
+      @media only screen and (orientation:landscape) {
+
+        &:last-child {
+          margin-bottom: $element-space-double-height;
+        }
+      }
+    }
+
+    .cached-messages {
+      width: 100%;
+
+      margin-top: $element-space-double-height;
+      padding: $element-space-height 0;
+      border-top: 0.1rem solid;
     }
   }
 }
