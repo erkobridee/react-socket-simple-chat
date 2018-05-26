@@ -10,6 +10,11 @@ import styles from './stylesClassNames';
 
 import { utils as componentUtils } from 'chat/components';
 
+// https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml
+// const RenderRawHTML = ({ html }) => (
+//   <div dangerouslySetInnerHTML={{ __html: html }}></div>
+// );
+
 class Message extends Component {
 
   // https://reactjs.org/docs/typechecking-with-proptypes.html
@@ -68,6 +73,7 @@ class Message extends Component {
           </div>
           <div className={ containerValueClass }>
             { data.message }
+            { /* <RenderRawHTML html={ data.message } /> */ }
           </div>
         </div>
       </div>
