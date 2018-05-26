@@ -1,31 +1,31 @@
-import React, { Component } from 'react';
+import React  from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import styles from './stylesClassNames';
+
+import LayoutPiece from 'chat/components/layout/LayoutPiece';
 
 /*
   <Layout>
     {children}
   </Layout>
 */
-class Layout extends Component {
+const Layout = ({ theme, children }) => (
+  <LayoutPiece { ...{ mainClassName: styles.main, theme } }>
+    <div className={ styles.container }>
+      { children }
+    </div>
+  </LayoutPiece>
+);
 
-  render() {
-    const mainClass = classNames(
-      styles.main,
-      `${styles.main}--${this.props.theme || 'light'}`
-    );
-
-    const { children } = this.props;
-
-    return (
-      <div className={ mainClass }>
-        <div className={ styles.container }>
-          { children }
-        </div>
-      </div>
-    );
-  }
-}
+// https://reactjs.org/docs/typechecking-with-proptypes.html
+Layout.propTypes = {
+  theme: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element)
+  ]).isRequired,
+};
 
 export default Layout;
