@@ -1,5 +1,7 @@
-import React,  { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+
+import { RenderChildrenWith } from 'chat/components/utils'
 
 /*
   usage:
@@ -13,36 +15,18 @@ import PropTypes from 'prop-types';
 
   </FormGroup>
 */
-class FormGroup extends Component {
+const FormGroup = ({ theme, label, children }) => (
+  <div className="form-group">
+    <div>{ label }</div>
+    <RenderChildrenWith { ...{ children, theme } } />
+  </div>
+);
 
-  // https://reactjs.org/docs/typechecking-with-proptypes.html
-  static propTypes = {
-    theme: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    children: PropTypes.element.isRequired
-  }
-
-  // https://jaketrent.com/post/send-props-to-children-react/
-  // https://reactjs.org/docs/react-api.html#reactchildren
-  renderChildren = ( theme, children ) => {
-
-    return React.Children.map( children, child => {
-      return React.cloneElement( child, {
-        theme
-      });
-    });
-  }
-
-  render() {
-    const { theme, label, children } = this.props;
-
-    return (
-      <div className="form-group">
-        <div>{ label }</div>
-        { this.renderChildren( theme, children ) }
-      </div>
-    );
-  }
-}
+// https://reactjs.org/docs/typechecking-with-proptypes.html
+FormGroup.propTypes = {
+  theme: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  children: PropTypes.element.isRequired
+};
 
 export default FormGroup;
