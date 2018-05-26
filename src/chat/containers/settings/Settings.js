@@ -172,7 +172,7 @@ export class Settings extends Component {
               </div>
             </div>
 
-            <div>
+            <div className="cached-messages">
               <div>
                 { `Cached Messages ( total ${messagesLength} )` /* TODO: use i18n support */ }
               </div>
