@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -10,69 +10,76 @@ import styles from './stylesClassNames';
 
 import { utils as componentUtils } from 'chat/components';
 
-class Message extends Component {
+// https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml
+// const RenderRawHTML = ({ html }) => (
+//   <div dangerouslySetInnerHTML={{ __html: html }}></div>
+// );
 
-  // https://reactjs.org/docs/typechecking-with-proptypes.html
-  static propTypes = {
-    theme: PropTypes.string,
-    userName: PropTypes.string.isRequired,
-    clockDisplay: PropTypes.string.isRequired,
-    data: PropTypes.object.isRequired
-  }
+const Message = ({ theme, userName, clockDisplay, data }) => {
 
-  // https://reactjs.org/docs/react-without-es6.html#declaring-default-props
-  static defaultProps = {
-    theme: 'light'
-  }
+  const isOtherUser = (userName !== data.user);
 
-  render() {
-    const { theme, userName, clockDisplay, data } = this.props;
+  const time = (
+    data.time ?
+      dayjs(data.time)
+        .format(constants[`timeFormat${clockDisplay}`])
+      : ''
+  );
 
-    const isOtherUser = (userName !== data.user);
+  const userInfo = (
+    isOtherUser ? `${data.user}, ${time}` : time
+  );
 
-    const time = (
-      data.time ?
-        dayjs(data.time)
-          .format(constants[`timeFormat${clockDisplay}`])
-        : ''
-    );
+  const messageClass = classNames(
+    componentUtils.plusTheme( styles.message, theme ),
+    { incoming: isOtherUser }
+  );
 
-    const userInfo = (
-      isOtherUser ? `${data.user}, ${time}` : time
-    );
+  const containerClass = classNames(
+    componentUtils.plusTheme( styles.messageContainer, theme )
+  );
 
-    const messageClass = classNames(
-      componentUtils.plusTheme( styles.message, theme ),
-      { incoming: isOtherUser }
-    );
+  const containerUserClass = classNames(
+    componentUtils.plusTheme( styles.messageContainerUser, theme ),
+    { incoming: isOtherUser }
+  );
 
-    const containerClass = classNames(
-      componentUtils.plusTheme( styles.messageContainer, theme )
-    );
+  const containerValueClass = classNames(
+    componentUtils.plusTheme( styles.messageContainerValue, theme ),
+    { incoming: isOtherUser }
+  );
 
-    const containerUserClass = classNames(
-      componentUtils.plusTheme( styles.messageContainerUser, theme ),
-      { incoming: isOtherUser }
-    );
-
-    const containerValueClass = classNames(
-      componentUtils.plusTheme( styles.messageContainerValue, theme ),
-      { incoming: isOtherUser }
-    );
-
-    return (
-      <div className={ messageClass }>
-        <div className={ containerClass }>
-          <div className={ containerUserClass }>
-            { userInfo }
-          </div>
-          <div className={ containerValueClass }>
-            { data.message }
-          </div>
+  return (
+    <div className={ messageClass }>
+      <div className={ containerClass }>
+        <div className={ containerUserClass }>
+          { userInfo }
+        </div>
+        <div className={ containerValueClass }>
+          { /* TODO: define inner components to handle and parse the message */ }
+          { data.message }
+          { /* <RenderRawHTML html={ data.message } /> */ }
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+// https://reactjs.org/docs/typechecking-with-proptypes.html
+Message.propTypes = {
+  theme: PropTypes.string,
+  userName: PropTypes.string.isRequired,
+  clockDisplay: PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    user: PropTypes.string,
+    message: PropTypes.string,
+    time: PropTypes.string
+  }).isRequired
+};
+
+// https://reactjs.org/docs/react-without-es6.html#declaring-default-props
+Message.defaultProps = {
+  theme: constants.defaultSettings.theme
+};
 
 export default Message;

@@ -1,24 +1,30 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+
+import constants from 'chat/constants'
 
 import styles from './stylesClassNames';
 
 import Message from './Message';
 
-class Messages extends Component {
+class Messages extends PureComponent {
 
   // https://reactjs.org/docs/typechecking-with-proptypes.html
   static propTypes = {
     theme: PropTypes.string,
     userName: PropTypes.string.isRequired,
     clockDisplay: PropTypes.string.isRequired,
-    data: PropTypes.array.isRequired
+    data: PropTypes.arrayOf(PropTypes.shape({
+      user: PropTypes.string,
+      message: PropTypes.string,
+      time: PropTypes.string
+    })).isRequired
   }
 
   // https://reactjs.org/docs/react-without-es6.html#declaring-default-props
   static defaultProps = {
-    theme: 'light'
+    theme: constants.defaultSettings.theme
   }
 
   // https://reactjs.org/docs/refs-and-the-dom.html

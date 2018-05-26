@@ -29,6 +29,8 @@
   }
 
   &-select {
+    cursor: pointer;
+
     min-width: 20rem;
     height: 3rem;
     @extend %form-control;
@@ -49,6 +51,7 @@
 
       &:checked + label {
         font-weight: bold;
+        cursor: default;
 
         &:before {
           content: "\2022";
@@ -66,6 +69,7 @@
     }
 
     &-label {
+      cursor: pointer;
 
       &:before {
         content: " ";

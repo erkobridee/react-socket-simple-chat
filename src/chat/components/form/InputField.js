@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -10,41 +10,40 @@ import { utils as componentUtils } from 'chat/components';
   <InputField
     theme={ theme }
     type={ 'text' | 'password' }
-    name="sameAttributeNameFromState"
-    onChange={ this.handleChange }
+    name="sameAttributeNameFromObject"
+    value={ object.attributeName }
+    onChange={ handleChange }
   />
 */
-class InputField extends Component {
+const InputField = ( props ) => {
+  const { theme, type, className, ...rest } = props;
 
-  // https://reactjs.org/docs/typechecking-with-proptypes.html
-  static propTypes = {
-    theme: PropTypes.string,
-    type: PropTypes.oneOf(['text', 'password']),
-    name: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired
-  }
+  const inputTextClass = classNames(
+    componentUtils.plusTheme( 'form-control', theme ),
+    className
+  );
 
-  // https://reactjs.org/docs/react-without-es6.html#declaring-default-props
-  static defaultProps = {
-    type: 'text'
-  }
+  return (
+    <input
+      className={ inputTextClass }
+      type={ type }
+      { ...rest }
+    />
+  );
+};
 
-  render() {
-    const { theme, type, className, ...rest } = this.props;
+// https://reactjs.org/docs/typechecking-with-proptypes.html
+InputField.propTypes = {
+  theme: PropTypes.string,
+  type: PropTypes.oneOf(['text', 'password']),
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  onChange: PropTypes.func.isRequired
+};
 
-    const inputTextClass = classNames(
-      componentUtils.plusTheme( 'form-control', theme ),
-      className
-    );
-
-    return (
-      <input
-        className={ inputTextClass }
-        type={ type }
-        { ...rest }
-      />
-    );
-  }
-}
+// https://reactjs.org/docs/react-without-es6.html#declaring-default-props
+InputField.defaultProps = {
+  type: 'text'
+};
 
 export default InputField;

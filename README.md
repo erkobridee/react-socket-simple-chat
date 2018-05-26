@@ -5,6 +5,8 @@ A simple chat application that uses react.js, redux and socket.io.
 
 ## things left to have the v1
 
+- [x] finish UI/layout components and styles with light/dark color themes
+
 - [x] finish the redux code to manage the application data/states
 
 - [ ] socket.io
@@ -95,6 +97,8 @@ A simple chat application that uses react.js, redux and socket.io.
 * [React](https://reactjs.org/)
 
   * [[YouTube] 6 Pro Tips from React Developers](https://www.youtube.com/watch?v=xa-_FIy2NgE)
+
+  * [React Stateless Functional Components: Nine Wins You Might Have Overlooked | Hackernoon](https://hackernoon.com/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc) - 2016/03/28
 
   * [[YouTube] Get derived state from props in React 16.3 | hackages.tv](https://www.youtube.com/watch?v=p_m4TrYGtCo) - 2018/03/14
 

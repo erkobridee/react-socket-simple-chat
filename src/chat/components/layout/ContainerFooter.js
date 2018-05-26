@@ -1,5 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import styles from './stylesClassNames';
+
+import LayoutPiece from 'chat/components/layout/LayoutPiece';
 
 /*
   <Layout>
@@ -17,17 +21,21 @@ import styles from './stylesClassNames';
     </LayoutBody>
   </Layout>
 */
-class ContainerFooter extends Component {
+const ContainerFooter = ({ theme, className, children }) => (
+  <LayoutPiece
+   { ...{ mainClassName: styles.containerFooter, theme, className, children } }
+  />
+);
 
-  render() {
-    const { children } = this.props;
-
-    return (
-      <div className={styles.containerFooter}>
-        { children }
-      </div>
-    );
-  }
-}
+// https://reactjs.org/docs/typechecking-with-proptypes.html
+ContainerFooter.propTypes = {
+  theme: PropTypes.string,
+  className: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element)
+  ]).isRequired,
+};
 
 export default ContainerFooter;
