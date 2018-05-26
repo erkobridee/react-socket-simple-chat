@@ -105,6 +105,15 @@ A simple chat application that uses react.js, redux and socket.io.
 
   * [Better Form Management | Robbie Dela Victoria – Medium](https://medium.com/@robbiedelavictoria/better-form-management-37c994095b1c)
 
+
+* i18n
+
+  * [i18n next](https://www.i18next.com/)
+
+  * [react i18n next](https://react.i18next.com/)
+
+  * [[SandBox Editor] react i18n next example](https://codesandbox.io/s/l4qrory2nl)
+
 --
 
 * [Redux Integration | React Router Docs](https://reacttraining.com/react-router/web/guides/redux-integration)
