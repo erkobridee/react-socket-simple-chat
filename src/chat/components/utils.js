@@ -42,6 +42,7 @@ export const RenderChildrenWith = ({
   ))
 );
 
+// https://reactjs.org/docs/typechecking-with-proptypes.html
 RenderChildrenWith.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.element,
