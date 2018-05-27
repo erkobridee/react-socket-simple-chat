@@ -4,6 +4,8 @@ const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 const ip = require('ip');
 
+//----------------------------------------------------------------------------//
+
 let ipAddress = 'localhost'; // will works only to the local host
 try {
   // will enable to the server to be accessed from the network
@@ -12,7 +14,7 @@ try {
   console.err( err );
 }
 
-const SERVER_PORT = 3001;
+const SERVER_PORT = 3000;
 
 //----------------------------------------------------------------------------//
 // CORS configs - allows access from the other machines beyond the localhost
@@ -79,4 +81,4 @@ http.listen( SERVER_PORT, ipAddress, () => (
     'Please remember to update the .env file, and if needed restart your dev. environment.',
     '\n'
   )
-))
+));
