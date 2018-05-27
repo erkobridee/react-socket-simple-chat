@@ -5,7 +5,9 @@
   },
   "messages": {
     "welcome": "Welcome to the {{value}}.",
-    "time": "{{date, MM/DD/YYYY}}"
+    "time": "{{date, MM/DD/YYYY}}",
+    "input.placeholder": "Enter a message",
+    "button.title": "Send"
   },
   "settings": {
     "username": "User name",

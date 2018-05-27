@@ -5,7 +5,9 @@
   },
   "messages": {
     "welcome": "Bem vindo ao {{value}}.",
-    "time": "{{date, MM/DD/YYYY}}"
+    "time": "{{date, MM/DD/YYYY}}",
+    "input.placeholder": "Digite uma mensagem",
+    "button.title": "Enviar"
   },
   "settings": {
     "username": "Nome do usuário",
