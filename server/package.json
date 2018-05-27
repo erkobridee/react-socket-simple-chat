@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "local socket.io server",
   "main": "index.js",
+  "engines": {
+    "node": ">=8"
+  },
   "scripts": {
     "start": "node index"
   },
