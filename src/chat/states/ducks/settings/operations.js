@@ -1,3 +1,5 @@
+import constants from 'chat/constants'
+
 import actions from './actions';
 
 export const update = ( field, value ) => ( dispatch, getState, api ) => {
@@ -9,7 +11,14 @@ export const update = ( field, value ) => ( dispatch, getState, api ) => {
   dispatch( actions.update( field, value ) );
 }
 
-export const restore = actions.restore;
+
+export const restore = () => ( dispatch, getState, api ) => {
+
+  api.changeLanguage(  constants.defaultSettings.locale );
+
+  dispatch( actions.restore );
+};
+
 
 export default {
   update,
