@@ -19,7 +19,7 @@ A simple chat application that uses react.js, redux and socket.io.
 
 - [x] add local storage support to persist the changes on the settings page
 
-- [ ] add i18n (internationalization) support
+- [x] add i18n (internationalization) support
 
 - [ ] write down the documentation under the `docs/` directory
 
