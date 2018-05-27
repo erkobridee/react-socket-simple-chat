@@ -14,9 +14,9 @@ export const update = ( field, value ) => ( dispatch, getState, api ) => {
 
 export const restore = () => ( dispatch, getState, api ) => {
 
-  api.changeLanguage(  constants.defaultSettings.locale );
+  dispatch( actions.restore() );
 
-  dispatch( actions.restore );
+  api.changeLanguage(  constants.defaultSettings.locale );
 };
 
 
