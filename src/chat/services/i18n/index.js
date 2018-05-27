@@ -49,10 +49,10 @@ export const instance = (
       // init with the giver resources
       resources,
 
-      lang: detectLanguage(), // default language
+      lng: detectLanguage(), // default language
 
       // if there is no language defined to use, here the default one : english
-      fallbackLang: 'en',
+      fallbackLng: 'en',
 
       // list of namespaces
       ns: [ 'navbar', 'messages', 'settings' ],
@@ -70,10 +70,6 @@ export const instance = (
       debug: false
     })
 );
-
-// solving react-hot-loader integration issue
-// for some unknow reason I need to do this to make the i18next works
-console.log( instance );
 
 export const changeLanguage = ( locale ) => {
   if( locale && locale !== instance.language ) {
