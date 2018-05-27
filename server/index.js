@@ -6,6 +6,10 @@ const ip = require('ip');
 
 //----------------------------------------------------------------------------//
 
+const MODE_PRODUCTION = ( process.env.MODE === 'production' );
+
+//----------------------------------------------------------------------------//
+
 let ipAddress = 'localhost'; // will works only to the local host
 try {
   // will enable to the server to be accessed from the network
@@ -52,18 +56,27 @@ const IO_EVENT_DISCONNECT = 'disconnect';
 
 let connectionsCounter = 1;
 
-const logConnections = () =>
-  console.log( `Socket IO connections: ${connectionsCounter}` );
+const logConnections = () => {
+  if( !MODE_PRODUCTION ) {
+    console.log( `Socket IO connections: ${connectionsCounter}` );
+  }
+};
+
+const logMessage = message => {
+  if( !MODE_PRODUCTION ) {
+    console.log(
+      'Socket IO server received the message: ',
+      JSON.stringify( message )
+    );
+  }
+};
 
 io.on( IO_EVENT_CONNECTION, socket => {
   logConnections();
   connectionsCounter++;
 
   socket.on( IO_EVENT_MESSAGE, message => {
-    console.log(
-      'Socket IO server received the message: ',
-      JSON.stringify( message )
-    );
+    logMessage( message );
 
     // return the message to the sender
     socket.emit( IO_EVENT_MESSAGE, message );
@@ -81,12 +94,18 @@ io.on( IO_EVENT_CONNECTION, socket => {
 //----------------------------------------------------------------------------//
 // start the server
 
-http.listen( SERVER_PORT, ipAddress, () => (
-  console.log(
+http.listen( SERVER_PORT, ipAddress, () => {
+  let message = [
     '\n',
     `Socket IO server is running at ${ipAddress}:${SERVER_PORT}`,
-    '\n',
-    'Please remember to update the .env file, and if needed restart your dev. environment.',
-    '\n'
-  )
-));
+    '\n\n'
+  ];
+
+  if( !MODE_PRODUCTION ) {
+    message.push(
+      'Please remember to update the .env file, and if needed restart your dev. environment.\n\n'
+    );
+  }
+
+  console.log( ...message )
+});
