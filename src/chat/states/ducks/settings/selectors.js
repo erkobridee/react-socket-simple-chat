@@ -1,3 +1,5 @@
+import { availableLanguages } from 'chat/services/i18n';
+
 /*
   settings: {
     username: string,
@@ -20,6 +22,7 @@ export const getTheme = state => state.theme;
 export const getClockDisplay = state => state.clockDisplay;
 export const getLocale = state => state.locale;
 export const getListenSendKeys = state => state.listenSendKeys;
+export const getAvailableLanguages = () => availableLanguages;
 
 export default {
   getSettings,
@@ -27,5 +30,6 @@ export default {
   getTheme,
   getClockDisplay,
   getLocale,
-  getListenSendKeys
+  getListenSendKeys,
+  getAvailableLanguages
 };

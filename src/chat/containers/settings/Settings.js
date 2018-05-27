@@ -1,9 +1,10 @@
 // container component
 
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 import classNames from 'classnames';
 
 import { ContainerBody, ContainerFooter } from 'chat/components/layout';
@@ -25,21 +26,25 @@ import {
 } from 'chat/states/ducks/messages';
 
 
-// TODO: add i18n support
-
 // https://reactjs.org/docs/forms.html
 export class Settings extends Component {
 
   // https://reactjs.org/docs/typechecking-with-proptypes.html
   static propTypes = {
-    theme: PropTypes.string,
     settings: PropTypes.shape({
       userName: PropTypes.string,
       theme: PropTypes.string,
       clockDisplay: PropTypes.string,
       listenSendKeys: PropTypes.bool,
       locale: PropTypes.string
-    })
+    }),
+    theme: PropTypes.string,
+    availableLanguages: PropTypes.arrayOf(PropTypes.shape({
+      key: PropTypes.string,
+      value: PropTypes.string
+    })),
+    messagesLength: PropTypes.number,
+    t: PropTypes.func
   }
 
   handleResetClick = ( event ) => {
@@ -69,7 +74,10 @@ export class Settings extends Component {
   }
 
   render() {
-    const { theme, settings, messagesLength } = this.props;
+    const {
+      t, theme, settings,
+      messagesLength, availableLanguages
+    } = this.props;
 
     const selectClass = classNames(
       componentUtils.plusTheme( 'form-select', theme ),
@@ -92,7 +100,7 @@ export class Settings extends Component {
 
             <FormGroup
               theme={ theme }
-              label={ 'User Name' /* TODO: use i18n support */ }>
+              label={ t('username') }>
               <InputField
                 name="userName"
                 value={ settings.userName }
@@ -102,17 +110,17 @@ export class Settings extends Component {
 
             <FormGroup
               theme={ theme }
-              label={ 'Interface color' /* TODO: use i18n support */ }>
+              label={ t('interface.color') }>
               <InputRadioGroup
                 name="theme"
                 selected={ settings.theme }
                 onChange={ this.handleChange }>
                 <InputRadio
-                  label="Light"
+                  label={ t('color.light') }
                   value="light"
                 />
                 <InputRadio
-                  label="Dark"
+                  label={ t('color.dark') }
                   value="dark"
                 />
               </InputRadioGroup>
@@ -120,17 +128,17 @@ export class Settings extends Component {
 
             <FormGroup
               theme={ theme }
-              label={ 'Clock display' /* TODO: use i18n support */ }>
+              label={ t('clock.display') }>
               <InputRadioGroup
                 name="clockDisplay"
                 selected={ settings.clockDisplay }
                 onChange={ this.handleChange }>
                 <InputRadio
-                  label={ '12 Hours' /* TODO: use i18n support */ }
+                  label={ t('clock.hours', { value: 12 }) }
                   value="12"
                 />
                 <InputRadio
-                  label={ '24 Hours' /* TODO: use i18n support */ }
+                  label={ t('clock.hours', { value: 24 }) }
                   value="24"
                 />
               </InputRadioGroup>
@@ -139,48 +147,56 @@ export class Settings extends Component {
             <FormGroup
               theme={ theme }
               label={
-                `Send messages on ${ constants.keysToListenLabel }`
-                /* TODO: use i18n support */
+                t('send.messages', { value: constants.keysToListenLabel })
               }>
               <InputRadioGroup
                 name="listenSendKeys"
-                selected={ settings.listenSendKeys ? 'on' : 'off' }
+                selected={
+                  // map the boolean value to a string value
+                  settings.listenSendKeys ? 'on' : 'off'
+                }
                 onChange={ this.handleChange }>
                 <InputRadio
-                  label={ 'On' /* TODO: use i18n support */ }
+                  label={ t('send.messages.on') }
                   value="on"
                 />
                 <InputRadio
-                  label={ 'Off' /* TODO: use i18n support */ }
+                  label={ t('send.messages.off') }
                   value="off"
                 />
               </InputRadioGroup>
             </FormGroup>
 
             <div>
-              <div>Language</div>
+              <div>{ t('language') }</div>
               <div>
                 <select
                   name="locale"
                   className={ selectClass }
                   value={ settings.locale }
                   onChange={ this.handleChange }>
-                  <option value="en">{ 'English' /* TODO: use i18n support */ }</option>
-                  <option value="pt">{ 'Portuguese' /* TODO: use i18n support */ }</option>
-                  <option value="es">{ 'Spanish' /* TODO: use i18n support */ }</option>
+                  {
+                    availableLanguages.map((locale, idx) => (
+                      <option
+                        key={ idx }
+                        value={ locale.value }>
+                        { t( locale.key ) }
+                      </option>
+                    ))
+                  }
                 </select>
               </div>
             </div>
 
             <div className="cached-messages">
               <div>
-                { `Cached Messages ( total ${messagesLength} )` /* TODO: use i18n support */ }
+                { t('cached.messages', { value: messagesLength }) }
               </div>
               <div>
                 <button
                   className={ buttonCleanupClass }
                   onClick={ this.handleDeleteMessagesClick }>
-                  <i className="fas fa-eraser fa-fw"></i> { 'Cleanup' /* TODO: use i18n support */ }
+                  <i className="fas fa-eraser fa-fw"></i> { t('cleanup.messages') }
                 </button>
               </div>
             </div>
@@ -191,7 +207,7 @@ export class Settings extends Component {
           <button
             className={ buttonClass }
             onClick={ this.handleResetClick }>
-            <i className="fas fa-undo fa-fw"></i> { 'Reset to Default' /* TODO: use i18n support */ }
+            <i className="fas fa-undo fa-fw"></i> { t('restore.default') }
           </button>
         </ContainerFooter>
       </Fragment>
@@ -203,6 +219,7 @@ export class Settings extends Component {
 
 const mapStateToProps = ( state ) => ({
   settings: settingsSelectors.getSettings( state ),
+  availableLanguages: settingsSelectors.getAvailableLanguages(),
   theme: settingsSelectors.getTheme( state ),
   messagesLength: messagesSelectors.getMessagesLength( state )
 });
@@ -214,9 +231,11 @@ const mapDispatchToProps = {
   deleteMessages: messagesOperations.remove
 }
 
-const SettingsReduxConnected = connect(mapStateToProps, mapDispatchToProps)(Settings);
+const SettingsRedux = connect(mapStateToProps, mapDispatchToProps)(Settings);
 
 // https://reacttraining.com/react-router/web/guides/redux-integration
-const SettingsReduxWithRouter = withRouter(SettingsReduxConnected);
+const SettingsRouter = withRouter(SettingsRedux);
 
-export default SettingsReduxWithRouter;
+const SettingsI18N = translate('settings')(SettingsRouter);
+
+export default SettingsI18N;

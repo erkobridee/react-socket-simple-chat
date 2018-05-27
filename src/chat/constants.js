@@ -15,7 +15,7 @@ export const mockSocket = ( process.env.MOCK_SOCKET === 'true' );
 // messages
 
 export const welcomeMessage = {
-    message: 'Welcome to the simple chat application.',
+    i18n: 'welcome',
     user: 'App'
 };
 
@@ -44,16 +44,11 @@ export const defaultSettings = {
 
 export const keysToListenLabel = isMobile ? 'ENTER' : 'CTRL + ENTER';
 
-export const timeFormat12 = 'hh:mm a (YYYY-MM-DD)';
-export const timeFormat24 = 'HH:mm (YYYY-MM-DD)';
-
 //----------------------------------------------------------------------------//
 
 export default {
   isMobile,
   welcomeMessage,
   defaultSettings,
-  keysToListenLabel,
-  timeFormat12,
-  timeFormat24
+  keysToListenLabel
 };
