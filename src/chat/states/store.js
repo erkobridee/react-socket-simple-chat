@@ -30,7 +30,7 @@ const store = createStore(
 // IMPORTANT: that won't work to this file, and you'll get an error on the browser console
 // https://github.com/reduxjs/react-redux/releases/tag/v2.0.0
 if( module.hot ){
-  module.hot.accept('./ducks', () => {
+  module.hot.accept( () => {
     const nextRootReducer = require(`./ducks/index`);
     store.replaceReducer(nextRootReducer);
   });
