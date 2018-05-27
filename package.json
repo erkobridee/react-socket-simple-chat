@@ -1,6 +1,6 @@
 {
   "name": "react-socket-simple-chat",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "a simple chat application that uses react.js, redux and socket.io",
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot",
@@ -14,7 +14,8 @@
     "webpack4",
     "react",
     "redux",
-    "socket.io"
+    "socket.io",
+    "i18n"
   ],
   "author": "Erko Bridee",
   "license": "MIT",
