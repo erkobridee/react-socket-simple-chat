@@ -36,17 +36,43 @@ app.options( ( req, res ) => {
 
 Deployed on `now.sh` ([zeit.co/now](https://zeit.co/now))
 
-### now requirement
+
+### Requirement
 
 Must have the `start` script defined on the `package.json`
 
-### now commands
 
-* deploy to the server: `now` ([Deployment | now docs](https://zeit.co/docs/getting-started/deployment))
+### Commands
 
-* define a alias to the deployed instance: `now <SOURCE URL | ID> react-socket-simple-chat-server` ([Aliases and Domains | now docs](https://zeit.co/docs/features/aliases))
+* [Now's Command Line Interface | now docs](https://zeit.co/docs/features/now-cli)
 
-* make sure to have only one instance of the server: `now scale <SOURCE URL | ID> sfo 1 1` ([Global Scaling | now docs](https://zeit.co/docs/features/scaling))
+  * `now` ([Deployment | now docs](https://zeit.co/docs/getting-started/deployment)) - deploy the current folder content to the `now.sh` server.
+
+  * `now alias <ID> <ALIAS>` ([Aliases and Domains | now docs](https://zeit.co/docs/features/aliases)) - define a custom URL
+
+  * `now scale <ID> sfo 1 1` ([Global Scaling | now docs](https://zeit.co/docs/features/scaling)) - make sure to have only one instance of deployment
+
+  * `now remove <ID>` - remove the given instance by its <ID>
+
+
+### Deployment steps
+
+1 - `now` - This commmand will give to you the `<ID>` of the deployed instance.
+
+2 - `now alias <ID> <ALIAS>`
+
+3 - `now scale <ID> sfo 1 1`
+  
+
+### Re-deployment steps
+
+1 - `now list` - copy the `<OLD_ID>` assigned to the alias `<ALIAS>`
+
+2 - `now` - will deploy a new instance of the current folder content. This commmand will give to you the `<NEW_ID>` of the deployed instance.
+
+3 - `now alias <NEW_ID> <ALIAS>`
+
+4 - `now remove <OLD_ID>`
 
 
 ## Links
