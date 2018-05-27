@@ -65,9 +65,15 @@ export const instance = (
 
       react: {
         wait: true
-      }
+      },
+
+      debug: false
     })
 );
+
+// solving react-hot-loader integration issue
+// for some unknow reason I need to do this to make the i18next works
+console.log( instance );
 
 export const changeLanguage = ( locale ) => {
   if( locale && locale !== instance.language ) {
