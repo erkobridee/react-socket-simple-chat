@@ -44,6 +44,10 @@ Must have the `start` script defined on the `package.json`
 
 ### Commands
 
+* [Getting start with Environment Variables | now docs](https://zeit.co/docs/getting-started/environment-variables)
+
+* [Environment Variables and Secrets | now docs](https://zeit.co/docs/features/env-and-secrets)
+
 * [Now's Command Line Interface | now docs](https://zeit.co/docs/features/now-cli)
 
   * `now` ([Deployment | now docs](https://zeit.co/docs/getting-started/deployment)) - deploy the current folder content to the `now.sh` server.
@@ -52,12 +56,12 @@ Must have the `start` script defined on the `package.json`
 
   * `now scale <ID> sfo 1 1` ([Global Scaling | now docs](https://zeit.co/docs/features/scaling)) - make sure to have only one instance of deployment
 
-  * `now remove <ID>` - remove the given instance by its <ID>
+  * `now remove <ID>` - ([Deployment Inactivity | now docs](https://zeit.co/docs/deployment-types/node#deployment-inactivity)) remove the given instance by its <ID>
 
 
 ### Deployment steps
 
-1 - `now` - This commmand will give to you the `<ID>` of the deployed instance.
+1 - `now -e MODE=production` - This commmand will give to you the `<ID>` of the deployed instance.
 
 2 - `now alias <ID> <ALIAS>`
 
@@ -68,7 +72,7 @@ Must have the `start` script defined on the `package.json`
 
 1 - `now list` - copy the `<OLD_ID>` assigned to the alias `<ALIAS>`
 
-2 - `now` - will deploy a new instance of the current folder content. This commmand will give to you the `<NEW_ID>` of the deployed instance.
+2 - `now -e MODE=production` - will deploy a new instance of the current folder content. This commmand will give to you the `<NEW_ID>` of the deployed instance.
 
 3 - `now alias <NEW_ID> <ALIAS>`
 
