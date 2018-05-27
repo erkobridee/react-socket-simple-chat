@@ -4,8 +4,9 @@
     "settings": "Settings"
   },
   "messages": {
-    "welcome": "Welcome to the {{value}}.",
-    "time": "{{date, MM/DD/YYYY}}",
+    "welcome": "Welcome to the simple chat application.",
+    "format.time.12": "hh:mm a MM/DD/YYYY",
+    "format.time.24": "HH:mm MM/DD/YYYY",
     "input.placeholder": "Enter a message",
     "button.title": "Send"
   },

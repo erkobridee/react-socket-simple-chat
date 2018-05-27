@@ -4,8 +4,9 @@
     "settings": "Configuraciones"
   },
   "messages": {
-    "welcome": "Bienvenido al {{value}}.",
-    "time": "{{date, MM/DD/YYYY}}",
+    "welcome": "Bienvenido a la applicacion de charla simples.",
+    "format.time.12": "hh:mm a DD/MM/YYYY",
+    "format.time.24": "HH:mm DD/MM/YYYY",
     "input.placeholder": "Ingrese un mensaje",
     "button.title": "Enviar"
   },

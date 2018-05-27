@@ -4,8 +4,9 @@
     "settings": "Configurações"
   },
   "messages": {
-    "welcome": "Bem vindo ao {{value}}.",
-    "time": "{{date, MM/DD/YYYY}}",
+    "welcome": "Bem vindo a aplicação de bate-papo simples.",
+    "format.time.12": "hh:mm a DD/MM/YYYY",
+    "format.time.24": "HH:mm DD/MM/YYYY",
     "input.placeholder": "Digite uma mensagem",
     "button.title": "Enviar"
   },
