@@ -3,6 +3,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { translate } from 'react-i18next';
 import classNames from 'classnames';
 
 import { SafeNavLink } from 'chat/components/navlink';
@@ -37,7 +38,7 @@ export class NavBar extends Component {
   */
 
   render() {
-    const { theme, locale } = this.props;
+    const { t, theme, locale } = this.props;
 
     const navbarClass = classNames(
       componentUtils.plusTheme( 'navbar', theme )
@@ -52,7 +53,7 @@ export class NavBar extends Component {
         <ul>
           <li>
             <SafeNavLink exact to="/">
-              { 'Chat'/* TODO: use i18n support */ }
+              { t('chat') }
             </SafeNavLink>
             <div className={ navbarSupClass }>
               <span className="navbar__sup__text">10</span>
@@ -60,7 +61,7 @@ export class NavBar extends Component {
           </li>
           <li>
             <SafeNavLink exact to="/settings">
-              { 'Settings' /* TODO: use i18n support */ }
+              { t('settings') }
             </SafeNavLink>
           </li>
         </ul>
@@ -76,8 +77,10 @@ const mapStateToProps = ( state ) => ({
   locale: settingsSelectors.getLocale( state )
 });
 
-const NavBarReduxConnected = connect(mapStateToProps)(NavBar);
+const NavBarRedux = connect(mapStateToProps)(NavBar);
 
-const NavBarReduxWithRouter = withRouter(NavBarReduxConnected);
+const NavBarRouter = withRouter(NavBarRedux);
 
-export default NavBarReduxWithRouter;
+const NavBarI18N = translate('navbar')(NavBarRouter);
+
+export default NavBarI18N;

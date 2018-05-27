@@ -3,6 +3,7 @@ import thunkMiddleware from 'redux-thunk';
 
 import localStorageService from 'chat/services/localstorage';
 import socketClient from 'chat/services/socketclient';
+import { changeLanguage } from 'chat/services/i18n';
 
 import ducksReducers, {
   selectors as ducksSelectors,
@@ -11,16 +12,9 @@ import ducksReducers, {
 
 //----------------------------------------------------------------------------//
 
-// https://stackoverflow.com/questions/37876889/react-redux-and-websockets-with-socket-io
-// const socketClient = {
-//   todo: 'define the socket.io API',
-//   on: () => {},
-//   emit: (event, payload) => {
-//     console.log(`socket event: ${event} with the payload: `, payload);
-//   }
-// };
-
 const persistedState = localStorageService.loadState();
+
+changeLanguage( persistedState && persistedState.locale );
 
 //----------------------------------------------------------------------------//
 
@@ -28,7 +22,7 @@ const store = createStore(
   ducksReducers,
   persistedState,
   applyMiddleware(
-    thunkMiddleware.withExtraArgument({ socketClient })
+    thunkMiddleware.withExtraArgument({ socketClient, changeLanguage })
   )
 );
 
@@ -36,7 +30,7 @@ const store = createStore(
 // IMPORTANT: that won't work to this file, and you'll get an error on the browser console
 // https://github.com/reduxjs/react-redux/releases/tag/v2.0.0
 if( module.hot ){
-  module.hot.accept('./ducks', () => {
+  module.hot.accept( () => {
     const nextRootReducer = require(`./ducks/index`);
     store.replaceReducer(nextRootReducer);
   });

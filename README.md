@@ -25,7 +25,7 @@ A simple chat application that uses react.js, redux and socket.io.
 
 - [x] add local storage support to persist the changes on the settings page
 
-- [ ] add i18n (internationalization) support
+- [x] add i18n (internationalization) support
 
 - [ ] write down the documentation under the `docs/` directory
 
@@ -110,6 +110,19 @@ A simple chat application that uses react.js, redux and socket.io.
   * [React Forms: Using Refs | CSS-Tricks](https://css-tricks.com/react-forms-using-refs/)
 
   * [Better Form Management | Robbie Dela Victoria – Medium](https://medium.com/@robbiedelavictoria/better-form-management-37c994095b1c)
+
+
+* i18n
+
+  * [i18n next](https://www.i18next.com/)
+
+  * [react i18n next](https://react.i18next.com/)
+
+    * [I18n with React and i18next | Danny Hurlburt - Alligator.io](https://alligator.io/react/i18n-with-react-and-i18next)
+
+    * [[GitHub] i18next / react-i18next / examples](https://github.com/i18next/react-i18next/tree/master/example)
+
+    * [[SandBox Editor] react i18n next example](https://codesandbox.io/s/l4qrory2nl)
 
 --
 

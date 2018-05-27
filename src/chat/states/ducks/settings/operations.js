@@ -1,8 +1,26 @@
+import constants from 'chat/constants'
+
 import actions from './actions';
 
-// define operation that will dispatch actions if needed
+export const update = ( field, value ) => ( dispatch, getState, api ) => {
 
-// to this case, I'm just exposing the actions itselfs
+  if( field === 'locale' ){
+    api.changeLanguage( value );
+  }
+
+  dispatch( actions.update( field, value ) );
+}
+
+
+export const restore = () => ( dispatch, getState, api ) => {
+
+  dispatch( actions.restore() );
+
+  api.changeLanguage(  constants.defaultSettings.locale );
+};
+
+
 export default {
-  ...actions
+  update,
+  restore
 };
