@@ -15,14 +15,14 @@ import { utils as componentUtils } from 'chat/components';
 //   <div dangerouslySetInnerHTML={{ __html: html }}></div>
 // );
 
-const Message = ({ theme, userName, clockDisplay, data }) => {
+const Message = ({ t, theme, userName, clockDisplay, data }) => {
 
   const isOtherUser = (userName !== data.user);
 
   const time = (
     data.time ?
       dayjs(data.time)
-        .format(constants[`timeFormat${clockDisplay}`])
+        .format( t(`format.time.${clockDisplay}`) )
       : ''
   );
 
@@ -57,7 +57,7 @@ const Message = ({ theme, userName, clockDisplay, data }) => {
         </div>
         <div className={ containerValueClass }>
           { /* TODO: define inner components to handle and parse the message */ }
-          { data.message }
+          { data.i18n ? t(data.i18n) : data.message }
           { /* <RenderRawHTML html={ data.message } /> */ }
         </div>
       </div>
@@ -74,7 +74,8 @@ Message.propTypes = {
     user: PropTypes.string,
     message: PropTypes.string,
     time: PropTypes.string
-  }).isRequired
+  }).isRequired,
+  t: PropTypes.func.isRequired
 };
 
 // https://reactjs.org/docs/react-without-es6.html#declaring-default-props

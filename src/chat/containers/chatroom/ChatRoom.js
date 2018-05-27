@@ -1,9 +1,10 @@
 // container component
 
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 import classNames from 'classnames';
 
 import dayjs from 'dayjs';
@@ -27,7 +28,11 @@ export class ChatRoom extends Component {
   // https://reactjs.org/docs/typechecking-with-proptypes.html
   static propTypes = {
     theme: PropTypes.string,
-    isMobile: PropTypes.bool
+    userName: PropTypes.string,
+    clockDisplay: PropTypes.string,
+    listenSendKeys: PropTypes.bool,
+    isMobile: PropTypes.bool,
+    t: PropTypes.func.isRequired
   };
 
   // https://reactjs.org/docs/react-without-es6.html#declaring-default-props
@@ -42,6 +47,7 @@ export class ChatRoom extends Component {
 
   render() {
     const {
+      t,
       isMobile,
       userName, theme, clockDisplay, listenSendKeys,
       messages
@@ -58,6 +64,7 @@ export class ChatRoom extends Component {
             userName={ userName }
             clockDisplay={ clockDisplay }
             data={ messages }
+            t={ t }
           />
         </ContainerBody>
 
@@ -66,6 +73,7 @@ export class ChatRoom extends Component {
           onSubmit={ this.handleSubmit }
           listenSendKeys={ listenSendKeys }
           isMobile={ isMobile }
+          t={ t }
         />
       </Fragment>
     );
@@ -87,9 +95,11 @@ const mapDispatchToProps = {
   sendMessage: messagesOperations.send
 }
 
-const ChatRoomReduxConnected = connect(mapStateToProps, mapDispatchToProps)(ChatRoom);
+const ChatRoomRedux = connect(mapStateToProps, mapDispatchToProps)(ChatRoom);
 
 // https://reacttraining.com/react-router/web/guides/redux-integration
-const ChatRoomReduxWithRouter = withRouter(ChatRoomReduxConnected);
+const ChatRoomRouter = withRouter(ChatRoomRedux);
 
-export default ChatRoomReduxWithRouter;
+const ChatRoomI18N = translate('messages')(ChatRoomRouter);
+
+export default ChatRoomI18N;

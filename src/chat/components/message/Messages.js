@@ -19,7 +19,8 @@ class Messages extends PureComponent {
       user: PropTypes.string,
       message: PropTypes.string,
       time: PropTypes.string
-    })).isRequired
+    })).isRequired,
+    t: PropTypes.func.isRequired
   }
 
   // https://reactjs.org/docs/react-without-es6.html#declaring-default-props
@@ -43,7 +44,7 @@ class Messages extends PureComponent {
   }
 
   render() {
-    const { theme, userName, clockDisplay, data, className } = this.props;
+    const { t, theme, userName, clockDisplay, data, className } = this.props;
 
     const messagesClass = classNames(
       styles.messages,
@@ -59,6 +60,7 @@ class Messages extends PureComponent {
           data.map( ( message ) => (
             <Message
               key={ message.id }
+              t={ t }
               theme={ theme }
               data={ message }
               { ...{ userName, clockDisplay } }

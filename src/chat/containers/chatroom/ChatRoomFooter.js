@@ -9,7 +9,17 @@ import { utils as componentUtils } from 'chat/components';
 
 import constants from 'chat/constants'
 
-// TODO: add i18n support
+/*
+  usage:
+
+  <ChatRoomFooter
+    theme={ theme }
+    onSubmit={ this.handleSubmit }
+    listenSendKeys={ listenSendKeys }
+    isMobile={ isMobile }
+    t={ i18n.t }
+  />
+*/
 
 // https://reactjs.org/docs/forms.html
 class ChatRoomFooter extends Component {
@@ -19,7 +29,8 @@ class ChatRoomFooter extends Component {
     theme: PropTypes.string.isRequired,
     onSubmit: PropTypes.func.isRequired,
     listenSendKeys: PropTypes.bool.isRequired,
-    isMobile: PropTypes.bool.isRequired
+    isMobile: PropTypes.bool.isRequired,
+    t: PropTypes.func.isRequired
   };
 
   // https://reactjs.org/docs/react-without-es6.html#declaring-default-props
@@ -89,7 +100,7 @@ class ChatRoomFooter extends Component {
   }
 
   render() {
-    const { theme } = this.props;
+    const { t, theme } = this.props;
 
     const fieldClass = classNames(
       componentUtils.plusTheme( 'form-control', theme )
@@ -109,7 +120,7 @@ class ChatRoomFooter extends Component {
               type="text"
               name="message"
               className={ fieldClass }
-              placeholder={ 'Enter a message' /* TODO: use i18n support */ }
+              placeholder={ t('input.placeholder') }
               value={ this.state.message }
               onChange={ this.handleChange }
               onKeyPress={ this.handleKeyPress }></input>
@@ -117,7 +128,7 @@ class ChatRoomFooter extends Component {
           <div className={ 'chatroom__input__submit' }>
             <button
               className={ buttonClass }
-              title={ 'send' /* TODO: use i18n support */  }
+              title={ t('button.title')  }
               onClick={ this.handleButtonClick }>
               <i className="fas fa-paper-plane fa-fw"></i>
             </button>
