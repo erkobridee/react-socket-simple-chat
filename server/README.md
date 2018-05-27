@@ -54,6 +54,8 @@ Must have the `start` script defined on the `package.json`
 
   * `now alias <ID> <ALIAS>` ([Aliases and Domains | now docs](https://zeit.co/docs/features/aliases)) - define a custom URL
 
+  * `now alias rm <ALIAS>` - remove a given alias
+
   * `now scale <ID> sfo 1 1` ([Global Scaling | now docs](https://zeit.co/docs/features/scaling)) - make sure to have only one instance of deployment
 
   * `now remove <ID>` - ([Deployment Inactivity | now docs](https://zeit.co/docs/deployment-types/node#deployment-inactivity)) remove the given instance by its <ID>
