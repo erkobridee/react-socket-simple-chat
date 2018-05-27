@@ -1,0 +1,28 @@
+{
+  "navbar": {
+    "chat": "Chat",
+    "settings": "Settings"
+  },
+  "messages": {
+    "welcome": "Welcome to the {{value}}.",
+    "time": "{{date, MM/DD/YYYY}}"
+  },
+  "settings": {
+    "username": "User name",
+    "interface.color": "Interface color",
+    "color.light": "Light",
+    "color.dark": "Dark",
+    "clock.display": "Clock display",
+    "clock.hours": "{{value}} Hours",
+    "send.messages": "Send messages on {{value}}",
+    "send.messages.on": "On",
+    "send.messages.off": "Off",
+    "language": "Language",
+    "language.english": "English",
+    "language.portuguese": "Portuguese",
+    "language.spanish": "Spanish",
+    "cached.messages": "Cached messages ( total {{value}} )",
+    "cleanup.messages": "Clenup",
+    "restore.default": "Reset to Default"
+  }
+}

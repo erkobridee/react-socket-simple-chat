@@ -1,0 +1,28 @@
+{
+  "navbar": {
+    "chat": "Bate-Papo",
+    "settings": "Configurações"
+  },
+  "messages": {
+    "welcome": "Bem vindo ao {{value}}.",
+    "time": "{{date, MM/DD/YYYY}}"
+  },
+  "settings": {
+    "username": "Nome do usuário",
+    "interface.color": "Cor da interface",
+    "color.light": "Claro",
+    "color.dark": "Escuro",
+    "clock.display": "Formato das horas",
+    "clock.hours": "{{value}} Horas",
+    "send.messages": "Enviar mensagem ao pressionar {{value}}",
+    "send.messages.on": "Ativar",
+    "send.messages.off": "Desativar",
+    "language": "Linguagem",
+    "language.english": "Inglês",
+    "language.portuguese": "Português",
+    "language.spanish": "Espanhol",
+    "cached.messages": "Mensagens em cache ( total {{value}} )",
+    "cleanup.messages": "Limpar",
+    "restore.default": "Restaurar Padrão"
+  }
+}

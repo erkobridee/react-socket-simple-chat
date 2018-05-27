@@ -1,0 +1,28 @@
+{
+  "navbar": {
+    "chat": "Charla",
+    "settings": "Configuraciones"
+  },
+  "messages": {
+    "welcome": "Bienvenido al {{value}}.",
+    "time": "{{date, MM/DD/YYYY}}"
+  },
+  "settings": {
+    "username": "Nombre del usuario",
+    "interface.color": "Color de la interfaz",
+    "color.light": "Claro",
+    "color.dark": "Oscuro",
+    "clock.display": "Formato de las horas",
+    "clock.hours": "{{value}} Horas",
+    "send.messages": "Enviar mensaje al presionar {{value}}",
+    "send.messages.on": "Activar",
+    "send.messages.off": "Desactivar",
+    "language": "Lenguaje",
+    "language.english": "Inglés",
+    "language.portuguese": "Portugués",
+    "language.spanish": "Español",
+    "cached.messages": "Mensajes en caché ( total {{value}} )",
+    "cleanup.messages": "Limpiar",
+    "restore.default": "Restaurar el Estándar"
+  }
+}
