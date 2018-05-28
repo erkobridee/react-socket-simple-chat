@@ -1,5 +1,9 @@
 # React Socket Simple Chat - Documentation
 
+- [Versioning system](#versioning-system)
+- [Application requirements](#application-requirements)
+- [About the project](#about-the-project)
+
 ## Versioning system
 
 * This project follows the [Semantic Versioning](https://semver.org/) pattern

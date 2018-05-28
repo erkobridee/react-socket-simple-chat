@@ -2,6 +2,12 @@
 
 A simple chat application that uses react.js, redux and socket.io.
 
+- [Prerequisites](#prerequisites)
+- [Recommended](#recommended)
+- [Commands](#commands)
+  - [After cloned from the github repository](#after-cloned-from-the-github-repository)
+  - [Available commands](#available-commands)
+- [Documentation](#documentation)
 
 ## Prerequisites
 

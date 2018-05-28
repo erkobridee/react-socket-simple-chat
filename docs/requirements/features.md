@@ -1,5 +1,9 @@
 # Features requirements by versions
 
+- [1.0.0](#100)
+  - [UI mockups](#ui-mockups)
+- [next](#next)
+
 ## 1.0.0
 
 * The application should have a navigation bar and two pages
@@ -42,9 +46,16 @@
 
     * When the user selected the settings page, the application should display the number of the unread messages over the chat link/tab and then, when the user returns to the chat page that number should disappear
 
-* Mobile UI mockups
 
-![mobile ui mockups](../assets/mobile-ui-mockups.png)
+### UI mockups
+
+* Mobile
+
+![mobile ui mockups](../assets/mobile-ui-mockups-rf.png)
+
+* Desktop
+
+![desktop ui mockups](../assets/desktop-ui-mockups-rf.png)
 
 
 ## next
@@ -65,6 +76,6 @@
 
 * Settings page
 
-  * Add a dropdown to defines the lenght of the cached messages [1000, 500, 300, 100]
+  * Add a dropdown to defines the length of the cached messages [1000, 500, 300, 100]
 
   

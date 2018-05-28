@@ -1,5 +1,9 @@
 # Project features by versions
 
+- [1.0.0](#100)
+  - [UI mockups](#ui-mockups)
+- [next](#next)
+
 ## 1.0.0
 
 * Simple chat application which uses a socket.io server to handle and deliver its messages
@@ -29,6 +33,17 @@
 * It has a socket.io server connection status, online or offline, displayed on the navigation bar at right
 
 * It has an unread counter displayed over the chat tab when the user is on the settings page
+
+
+### UI mockups
+
+* Mobile
+
+![mobile ui mockups](../assets/mobile-ui-mockups-af.png)
+
+* Desktop
+
+![desktop ui mockups](../assets/desktop-ui-mockups-af.png)
 
 ## next
 
