@@ -1,5 +1,11 @@
 # Useful references
 
+- [Versioning](#versioning)
+- [Styles (CSS and SASS)](#styles-css-and-sass)
+- [Webpack](#webpack)
+- [React and Redux( middleware( thunk ) )](#react-and-redux-middleware-thunk--)
+  - [Code Style Guide](#code-style-guide)
+
 ## Versioning
 
 * [Semantic Versioning](https://semver.org/)

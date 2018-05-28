@@ -1,5 +1,12 @@
 # Project
 
+- [Architecture](#architecture)
+  - [Frontend](#frontend)
+  - [Backend - socket.io server](#backend---socketio-server)
+  - [Tools](#tools)
+- [Folders](#folders)
+- [Code](#code)
+- [Dependencies](#dependencies)
 
 ## Architecture
 

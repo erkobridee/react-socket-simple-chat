@@ -1,5 +1,8 @@
 # Technical requirements by versions
 
+- [1.0.0](#100)
+- [next](#next)
+
 ## 1.0.0
 
 * Single page application that must be mobile first
