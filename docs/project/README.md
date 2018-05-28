@@ -88,30 +88,30 @@
 
 * overview map
 
-```
-./
-  package.json
-  .env
-  .babelrc
-  .browserlistrc
-  webpack.config.js
-  src/
-    chat/
-      components/
-      containers/
-      services/
-      states/
-      _styles.scss
-      constants.js
-      Routes.js
-      Chat.js
+  ```
+  ./
+    package.json
+    .env
+    .babelrc
+    .browserlistrc
+    webpack.config.js
+    src/
+      chat/
+        components/
+        containers/
+        services/
+        states/
+        _styles.scss
+        constants.js
+        Routes.js
+        Chat.js
+        index.js
+      styles/
+      app.js
+      index.scss
+      index.html
       index.js
-    styles/
-    app.js
-    index.scss
-    index.html
-    index.js
-```
+  ```
 
 * `./` - root
 
