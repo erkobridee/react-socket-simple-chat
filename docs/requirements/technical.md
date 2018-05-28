@@ -8,7 +8,7 @@
 
   * CSS Flexbox to handle the layout
 
-  * Use a popular CSS preprocessor (for example: SASS)
+  * Use a popular CSS preprocessor ( for example: SASS )
 
 * Should be writed using the JavaScript ( [ES6](http://es6-features.org/)+ ), "compiled" to the actual web browsers javascript using the [BabelJS](https://babeljs.io/)
 
