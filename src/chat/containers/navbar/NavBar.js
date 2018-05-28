@@ -28,13 +28,13 @@ export class NavBar extends Component {
   static propTypes = {
     theme: PropTypes.string,
     locale: PropTypes.string,
-    unreadedCount: PropTypes.number,
+    unreadCount: PropTypes.number,
     isConnected: PropTypes.bool,
     t: PropTypes.func.isRequired
   };
 
   render() {
-    const { t, theme, locale, unreadedCount, isConnected } = this.props;
+    const { t, theme, locale, unreadCount, isConnected } = this.props;
 
     const navbarClass = classNames(
       componentUtils.plusTheme( 'navbar', theme )
@@ -57,7 +57,7 @@ export class NavBar extends Component {
             </SafeNavLink>
             <div className={ navbarSupClass }>
               <span className="navbar__sup__text">
-                { unreadedCount > 0 && unreadedCount }
+                { unreadCount > 0 && unreadCount }
               </span>
             </div>
           </li>
@@ -83,7 +83,7 @@ export class NavBar extends Component {
 const mapStateToProps = state => ({
   theme: settingsSelectors.getTheme( state ),
   locale: settingsSelectors.getLocale( state ),
-  unreadedCount: messagesSelectors.getUnreadedCount( state ),
+  unreadCount: messagesSelectors.getUnreadCount( state ),
   isConnected: connectionOperations.isConnected( state )
 });
 
