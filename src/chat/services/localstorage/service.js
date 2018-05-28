@@ -122,32 +122,12 @@ const DATA_KEY = 'data@app';
 // with its initial defined state
 const TO_INITIALIZE = undefined;
 
-// export const loadState = () => {
-//   try {
-//     const serializedState = localStorage.getItem( DATA_KEY );
-//     if( serializedState === null ) {
-//       return TO_INITIALIZE;
-//     }
-//     return deserialize( serializedState );
-//   } catch( e ) {
-//     return TO_INITIALIZE;
-//   }
-// };
 /*
   load the previous persisted version of the redux states object
 
   return {object} state
 */
 export const loadState = () => loadData( DATA_KEY, TO_INITIALIZE );
-
-// export const saveState = ( state ) => {
-//   try {
-//     const serializedState = serialize( state );
-//     localStorage.setItem( DATA_KEY,  serializedState );
-//   } catch( e ) {
-//     // ignore the error
-//   }
-// };
 
 /*
   persists one version pre-defined of the redux states object
