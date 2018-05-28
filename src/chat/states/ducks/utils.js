@@ -1,6 +1,7 @@
 // utils for all the ducks modules (global utils)
 
 import { operations as messagesOperations } from './messages';
+import { operations as connectionOperations } from './connection';
 
 //----------------------------------------------------------------------------//
 
@@ -19,6 +20,26 @@ export const listenSocketEvents = ( socketClient, storeDispatch ) => {
       messagesOperations.receive( message )
     );
   });
+
+  // listen the connections events
+  [
+    'connect',
+    'connect_error',
+    'connect_timeout',
+    'reconnect',
+    'reconnect_attempt',
+    'reconnecting',
+    'reconnect_error',
+    'reconnect_failed'
+  ].forEach( event => (
+    socketClient.on( event, () => (
+      storeDispatch(
+        connectionOperations.setConnectionState(
+          event, socketClient.connected
+        )
+      )
+    ))
+  ));
 
 };
 

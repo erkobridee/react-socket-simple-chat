@@ -13,6 +13,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 //----------------------------------------------------------------------------//
 
+const package = require('./package.json');
+
+//----------------------------------------------------------------------------//
+
 const SERVER_PORT = 1337;
 
 //----------------------------------------------------------------------------//
@@ -131,6 +135,12 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         inject: true,
         template: PATHS.htmlTemplate
+      }),
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: JSON.stringify('development'),
+          APP_VERSION: JSON.stringify(package.version)
+        }
       })
     ];
   } else  {
@@ -156,7 +166,8 @@ module.exports = (env, argv) => {
       new MiniCssExtractPlugin(PATHS.css),
       new webpack.DefinePlugin({
         'process.env': {
-          NODE_ENV: JSON.stringify('production')
+          NODE_ENV: JSON.stringify('production'),
+          APP_VERSION: JSON.stringify(package.version)
         }
       })
     ];

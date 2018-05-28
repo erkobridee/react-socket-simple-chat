@@ -3,13 +3,18 @@ import { hash, checkIsMobile, i18n } from 'chat/services';
 //----------------------------------------------------------------------------//
 // mobile devide check
 
+// should be executed first of all
 export const isMobile = checkIsMobile.any();
 
 //----------------------------------------------------------------------------//
 // socket server
 
-export const socketURL = ( process.env.SOCKET_SERVER || 'http://localhost:3001' );
+export const socketURL = ( process.env.SOCKET_SERVER || 'http://localhost:3000' );
 export const mockSocket = ( process.env.MOCK_SOCKET === 'true' );
+
+//----------------------------------------------------------------------------//
+
+export const appVersion = ( process.env.APP_VERSION || '0.0.0' );
 
 //----------------------------------------------------------------------------//
 // messages
@@ -51,6 +56,9 @@ export const keysToListenLabel = isMobile ? 'ENTER' : 'CTRL + ENTER';
 //----------------------------------------------------------------------------//
 
 export default {
+  appVersion,
+  socketURL,
+  mockSocket,
   isMobile,
   welcomeMessage,
   defaultSettings,

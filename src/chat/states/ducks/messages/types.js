@@ -7,10 +7,13 @@ export const MESSAGE_ADD = `${namespace}add`;
 
 export const MESSAGES_REMOVE = `${namespace}remove`;
 
+export const MESSAGES_AWAY = `${namespace}away`;
+
 export default {
   MESSAGE_LOAD,
   MESSAGE_SEND,
   MESSAGE_RECEIVE,
   MESSAGE_ADD,
-  MESSAGES_REMOVE
+  MESSAGES_REMOVE,
+  MESSAGES_AWAY
 };

@@ -29,7 +29,7 @@ A simple chat application that uses react.js, redux and socket.io.
 
 - [x] add i18n (internationalization) support
 
-- [ ] add the unreaded messages to the chat tab when user is on the settings tab
+- [x] add the unreaded messages to the chat tab when user is on the settings tab
 
 - [ ] write down the documentation under the `docs/` directory
 

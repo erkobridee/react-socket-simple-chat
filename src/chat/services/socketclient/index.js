@@ -1,9 +1,8 @@
 import io from 'socket.io-client';
 
-import { mockSocket, socketURL } from 'chat/constants';
 import mockClient from './mockClient';
 
-const getSocketClient = () => {
+const getSocketClient = socketURL => {
   let client;
   if( typeof WebSocket === 'function' ) {
     client = io.connect( socketURL );
@@ -13,6 +12,15 @@ const getSocketClient = () => {
   return client;
 }
 
-const client = mockSocket ? mockClient : getSocketClient();
+let instance;
+export const init = ({ mockSocket, socketURL }) => {
+  instance =  mockSocket ? mockClient : getSocketClient( socketURL );
+  return instance;
+};
 
-export default client;
+export const getInstance = () => instance;
+
+export default {
+  init,
+  getInstance
+};

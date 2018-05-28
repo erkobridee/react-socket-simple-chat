@@ -3,7 +3,8 @@
 
 import { combineReducers } from 'redux';
 
-import messages from './messages'
+import connection from './connection';
+import messages from './messages';
 import settings from './settings';
 
 import selectors from './selectors'
@@ -15,6 +16,7 @@ export {
 };
 
 export default combineReducers({
+  connection,
   messages,
   ...settings
 });
