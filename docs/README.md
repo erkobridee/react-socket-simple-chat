@@ -7,7 +7,7 @@
 
 ## Application requirements
 
-* [Features](requirements/features.md#100)
+* [Features](requirements/features.md)
 
 * [Techinal](requirements/techinal.md)
 
