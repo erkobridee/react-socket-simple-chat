@@ -19,7 +19,7 @@
 
 ### Tools
 
-* It uses the node.js LTS (v8)
+* It uses the [node.js](https://nodejs.org/) LTS (v8)
 
 * It uses the [Webpack](https://webpack.js.org/) v4 with the HMR support and is tunned to enable a multi devices development ([useful references](useful-references.md#webpack))
 
