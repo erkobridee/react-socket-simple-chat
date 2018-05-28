@@ -1,5 +1,7 @@
 # Useful references
 
+## Versioning
+
 * [Semantic Versioning](https://semver.org/)
 
   * [Semantic Versioning: Why You Should Be Using it | SitePoint](https://www.sitepoint.com/semantic-versioning-why-you-should-using/)
