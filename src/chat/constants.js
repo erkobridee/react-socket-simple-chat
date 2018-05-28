@@ -1,4 +1,4 @@
-import { hash, checkIsMobile } from 'chat/services';
+import { hash, checkIsMobile, i18n } from 'chat/services';
 
 //----------------------------------------------------------------------------//
 // mobile devide check
@@ -39,7 +39,11 @@ export const defaultSettings = {
   theme: process.env.THEME || 'light',
   clockDisplay: process.env.CLOCK_DISPLAY || '12',
   listenSendKeys: (process.env.LISTEN_SEND_KEYS === 'true'),
-  locale: process.env.LOCALE || 'en' // i18n default language
+  // i18n default language
+  locale: (
+    // priority to use the browser detected language, followed by fallbacks
+    i18n.detectLanguage() || process.env.LOCALE || 'en'
+  )
 };
 
 export const keysToListenLabel = isMobile ? 'ENTER' : 'CTRL + ENTER';
