@@ -21,7 +21,7 @@
 
 * It uses the node.js LTS (v8)
 
-* It uses the Webpack v4 with the HMR support and is tunned to enable a multi devices development ([useful references](useful-references.md#webpack))
+* It uses the [Webpack](https://webpack.js.org/) v4 with the HMR support and is tunned to enable a multi devices development ([useful references](useful-references.md#webpack))
 
   * It is also has a configuration to make it possible to do imports where the `./src/` is the root folder, so we can do imports like `import constants from 'chat/constants';` from anywhere in the project code
 
