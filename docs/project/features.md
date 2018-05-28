@@ -1,5 +1,9 @@
 # Project features by versions
 
+<!-- omit in toc -->## Summary
+- [1.0.0](#100)
+- [next](#next)
+
 ## 1.0.0
 
 * Simple chat application which uses a socket.io server to handle and deliver its messages
