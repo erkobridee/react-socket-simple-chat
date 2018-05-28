@@ -46,6 +46,10 @@
 
 ![mobile ui mockups](../assets/mobile-ui-mockups-rf.png)
 
+* Desktop UI mockups
+
+![desktop ui mockups](../assets/desktop-ui-mockups-rf.png)
+
 
 ## next
 

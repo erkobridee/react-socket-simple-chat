@@ -34,6 +34,10 @@
 
 ![mobile ui mockups](../assets/mobile-ui-mockups-af.png)
 
+* Desktop UI mockups
+
+![desktop ui mockups](../assets/desktop-ui-mockups-af.png)
+
 ## next
 
 * Improve the documentation
