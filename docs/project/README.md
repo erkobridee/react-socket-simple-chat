@@ -9,6 +9,8 @@
 
 * It follows the redux re-ducks pattern and try to follow some react + redux code style guide ([useful references](useful-references.md#code-style-guide) about it)
 
+* It uses SASS to handle the styles, follows the BEM pattern and uses the flexbox to handle the layout ([useful references](useful-references.md#styles-css-and-sass))
+
 
 ### Backend - socket.io server
 
@@ -17,7 +19,7 @@
 
 ### Tools
 
-* This projects uses the Webpack v4 with the HMR support and is tunned to enable a multi devices development
+* This projects uses the Webpack v4 with the HMR support and is tunned to enable a multi devices development ([useful references](useful-references.md#webpack))
 
 
 ## Folders
