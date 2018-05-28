@@ -19,7 +19,11 @@
 
 ### Tools
 
+* It uses the node.js LTS (v8)
+
 * It uses the Webpack v4 with the HMR support and is tunned to enable a multi devices development ([useful references](useful-references.md#webpack))
+
+  * It is also has a configuration to make it possible to do imports where the `./src/` is the root folder, so we can do imports like `import constants from 'chat/constants';` from anywhere in the project code
 
 * It has support for dotenv files to configure the application variables through them
 
@@ -36,27 +40,88 @@
 
 ## Folders
 
-**TODO:** define
+* main folders
+
+  ```
+  ./
+    docs/
+    server/
+    src/
+  ```
+  
+  * `docs/` - documentation
+
+  * `server/` - socket.io server code
+
+  * `src/` - project code
+
+* build folder
+
+  * when executes a command `yarn build` or `npm run build` the build content will be placed at the `./dist` folder
+
 
 ## Code
 
-* It uses the ES6+ through Webpack + Babel (.babelrc file)
+* on the root `./`
 
+  * It uses the ES6+ through Webpack + Babel ([.babelrc](/.babelrc) file)
 
+  * It defines the web browsers support on the [.browserslistrc](/.browserslistrc) file, that is loaded and used by the Webpack to generate the production build
 
-**TODO:** define
+* on the `./src/`
+
+  * `index.html` - html template, where is define the injection point to be used by the `ReactDOM.render`
+
+  * `index.scss` - main scss (SASS) file
+
+  * `index.js` - loads the main scss file, the application component and inject it on the html
+
+  * each inner folder has it own `index.js` file that exposes its content as a module, to be imported like `import localStorageService from 'chat/services/localstorage';`
+
+* sass styles
+
+  * global definitions `./src/styles/`
+
+    * main file `_all.scss` - has the imports of all `.scss` files on the folder
+
+  * all others scss files area placed with each module/component folder
+
+    * `./src/index.scss` imports `./src/styles/_all.scss` and `./src/chat/_styles.scss` files
+
+    * `./src/chat/_styles.scss` imports `./src/chat/(components/containers)/_styles.scss`
+
+    * and so one, where each `_style.scss` will import the `_styles.scss` from it's inner folders
+
+* dumb/presentation components: `./src/chat/components/`
+
+  * only used to presentation, where most of them are stateless/functional components
+
+* container components: `./src/chat/container`
+
+  * components that will receive data through injection, following the HOC ([Hight-Order Components](https://reactjs.org/docs/higher-order-components.html)): Redux > React Router > i18next (internationalization)
+
+* services: `./src/chat/services`
+
+  * hash - used to generate a random id to the initial user name, following the pattern `Guest_{random}`
+
+  * i18n - internationalization config and resources
+
+  * is-mobile - check if the application was loaded over a device mobile/tablet
+
+  * localstorage - handle and manages the web browser localstorage to persist the application data/states
+
+  * socketclient - uses socket.io client to connect or uses a mock client that emulates the socket.io client expected behaviors
+
+* states - redux re-ducks modules ([useful references](useful-references.md#code-style-guide) about it): `./src/chat/states`
+
+  * each redux module should expose its reducer by default
+
+  * those modules are imported on the `./src/chat/states/store.js`
+
+  * it manage 3 datasets/states of the application: connection, messages, settings (this last one has all of its inner reducers assigned at the redux root state)
 
 ## Dependencies
 
-**TODO:** define
+* defined on the [package.json](/package.json) file
 
-* React 16+
-
-  * React DOM 16+
-
-  * PropTypes 15+
-
-  * React redux 5+
-
-  * ?
-
+**TODO:** list them and its links
