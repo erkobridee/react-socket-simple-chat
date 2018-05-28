@@ -30,3 +30,8 @@
 
 * It has an unread counter displayed over the chat tab when the user is on the settings page
 
+## next
+
+* Improve the documentation
+
+* Review/improve services
