@@ -122,6 +122,6 @@
 
 ## Dependencies
 
-* defined on the [package.json](/package.json) file
+* defined on the [package.json](/package.json#L27-L74) file
 
 **TODO:** list them and its links
