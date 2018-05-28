@@ -14,16 +14,16 @@ export const receive = ( message ) => ( dispatch, getState, api ) => {
 
   message = processMessage( message );
 
-  dispatch(actions.add(message));
+  dispatch( actions.add( message ) );
 }
 
-export const remove = () => ( dispatch, getState, api ) => {
+export const remove = actions.remove;
 
-  dispatch( actions.remove() );
-}
+export const setAway = actions.setAway;
 
 export default {
   send,
   receive,
-  remove
+  remove,
+  setAway
 };

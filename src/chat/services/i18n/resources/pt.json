@@ -1,7 +1,9 @@
 {
   "navbar": {
-    "chat": "Bate-Papo",
-    "settings": "Configurações"
+    "chat": "Chat",
+    "settings": "Configurações",
+    "online": "Conectado",
+    "offline": "Desconectado"
   },
   "messages": {
     "welcome": "Bem vindo a aplicação de bate-papo simples.",

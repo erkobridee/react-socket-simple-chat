@@ -3,7 +3,7 @@
   a {
     color: $base-color;
     text-decoration: none;
-  
+
     &.active {
       font-weight: bold;
       text-decoration: underline;
@@ -31,7 +31,7 @@
 
   &__sup {
     display: inline-flex;
-    
+
     margin-left: 0.2rem;
 
     line-height: 1;
@@ -39,7 +39,7 @@
     direction: ltr;
     unicode-bidi: isolate;
     vertical-align: super;
-    
+
     font-size: smaller;
 
     font-weight: bold;
@@ -52,5 +52,10 @@
       min-width: 2.3rem;
       text-align: left;
     }
+  }
+
+  &__connection {
+    // display: inline-block;
+    float: right;
   }
 }

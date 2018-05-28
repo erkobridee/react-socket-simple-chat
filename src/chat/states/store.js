@@ -1,8 +1,10 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
+import constants from 'chat/constants';
+
 import localStorageService from 'chat/services/localstorage';
-import socketClient from 'chat/services/socketclient';
+import SocketClientService from 'chat/services/socketclient';
 import { changeLanguage } from 'chat/services/i18n';
 
 import ducksReducers, {
@@ -12,8 +14,21 @@ import ducksReducers, {
 
 //----------------------------------------------------------------------------//
 
+/*
+  init socket.io client and get its connection to the server
+*/
+SocketClientService.init( constants );
+const socketClient = SocketClientService.getInstance();
+
+/*
+  handles the data stored reset when the application version changes
+  if that is needed
+*/
+localStorageService.init( constants.appVersion );
+
 const persistedState = localStorageService.loadState();
 
+// update the usec locale by the i18next from the localstorage
 changeLanguage( persistedState && persistedState.locale );
 
 //----------------------------------------------------------------------------//
@@ -37,9 +52,12 @@ if( module.hot ){
 }
 
 //----------------------------------------------------------------------------//
+// listeners
 
+// listen socket.io event and trigger the needed redux operation
 ducksUtils.listenSocketEvents( socketClient, store.dispatch );
 
+// listen the changes on the redux store and persist them on the localstorage
 localStorageService.subscribe(
   store.subscribe,
   // defines a callback to get the data which will be persisted

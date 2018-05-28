@@ -1,16 +1,19 @@
-import { MESSAGE_ADD, MESSAGES_REMOVE } from './types';
-import { getInitialMessage } from './utils';
+import {
+  MESSAGE_ADD, MESSAGES_REMOVE, MESSAGES_AWAY
+} from './types';
 
-const initialState = [
-  getInitialMessage()
-];
+import {
+  getInitialState, addMessageToState, setMessagesAwayStatus
+} from './utils';
 
-const messages = (state = initialState, action) => {
+const messages = ( state = getInitialState(), action ) => {
   switch( action.type ) {
     case MESSAGE_ADD:
-      return [ ...state, action.payload ];
+      return addMessageToState( state, action.payload );
     case MESSAGES_REMOVE:
-      return initialState;
+      return getInitialState();
+    case MESSAGES_AWAY:
+      return setMessagesAwayStatus( state, action.payload );
     default:
       return state;
   }

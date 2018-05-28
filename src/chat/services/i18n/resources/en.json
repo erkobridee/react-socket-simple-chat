@@ -1,7 +1,9 @@
 {
   "navbar": {
     "chat": "Chat",
-    "settings": "Settings"
+    "settings": "Settings",
+    "online": "Online",
+    "offline": "Offline"
   },
   "messages": {
     "welcome": "Welcome to the simple chat application.",

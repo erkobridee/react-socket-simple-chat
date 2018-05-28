@@ -1,7 +1,9 @@
 {
   "navbar": {
     "chat": "Charla",
-    "settings": "Configuraciones"
+    "settings": "Configuraciones",
+    "online": "Conectado",
+    "offline": "Desconectado"
   },
   "messages": {
     "welcome": "Bienvenido a la applicacion de charla simples.",

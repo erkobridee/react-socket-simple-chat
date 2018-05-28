@@ -40,9 +40,19 @@ export class ChatRoom extends Component {
     isMobile: constants.isMobile
   };
 
-  handleSubmit = ( message ) => {
+  handleSubmit = message => {
     const { sendMessage, userName } = this.props;
     sendMessage( message, userName );
+  }
+
+  componentDidMount() {
+    const { setAwayFromMessages } = this.props;
+    setAwayFromMessages( false );
+  }
+
+  componentWillUnmount() {
+    const { setAwayFromMessages } = this.props;
+    setAwayFromMessages( true );
   }
 
   render() {
@@ -82,8 +92,8 @@ export class ChatRoom extends Component {
 
 //----------------------------------------------------------------------------//
 
-const mapStateToProps = ( state ) => ({
-  messages: messagesSelectors.getMessages(state),
+const mapStateToProps = state => ({
+  messages: messagesSelectors.getMessages( state ),
   userName: settingsSelectors.getUserName( state ),
   theme: settingsSelectors.getTheme( state ),
   clockDisplay: settingsSelectors.getClockDisplay( state ),
@@ -92,14 +102,15 @@ const mapStateToProps = ( state ) => ({
 
 // https://egghead.io/lessons/javascript-redux-using-mapdispatchtoprops-shorthand-notation
 const mapDispatchToProps = {
-  sendMessage: messagesOperations.send
+  sendMessage: messagesOperations.send,
+  setAwayFromMessages: messagesOperations.setAway
 }
 
-const ChatRoomRedux = connect(mapStateToProps, mapDispatchToProps)(ChatRoom);
+const ChatRoomRedux = connect( mapStateToProps, mapDispatchToProps )( ChatRoom );
 
 // https://reacttraining.com/react-router/web/guides/redux-integration
-const ChatRoomRouter = withRouter(ChatRoomRedux);
+const ChatRoomRouter = withRouter( ChatRoomRedux );
 
-const ChatRoomI18N = translate('messages')(ChatRoomRouter);
+const ChatRoomI18N = translate( 'messages' )( ChatRoomRouter );
 
 export default ChatRoomI18N;
