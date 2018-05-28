@@ -19,14 +19,30 @@
 
 ### Tools
 
-* This projects uses the Webpack v4 with the HMR support and is tunned to enable a multi devices development ([useful references](useful-references.md#webpack))
+* It uses the Webpack v4 with the HMR support and is tunned to enable a multi devices development ([useful references](useful-references.md#webpack))
 
+* It has support for dotenv files to configure the application variables through them
+
+  * [.env.example](/.env.example) (present on the repository and serve as model)
+
+  * [load](/webpack.config.js#L45-L85) the file following the search order
+
+```
+1. .env.(production|development)
+2. .env.local
+3. .env
+4. .env.example
+```
 
 ## Folders
 
 **TODO:** define
 
 ## Code
+
+* It uses the ES6+ through Webpack + Babel (.babelrc file)
+
+
 
 **TODO:** define
 
