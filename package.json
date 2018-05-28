@@ -1,6 +1,6 @@
 {
   "name": "react-socket-simple-chat",
-  "version": "0.6.0",
+  "version": "1.0.0",
   "description": "a simple chat application that uses react.js, redux and socket.io",
   "scripts": {
     "socket-server": "nodemon server/index.js",
