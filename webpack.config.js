@@ -12,6 +12,10 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 //----------------------------------------------------------------------------//
+
+const SERVER_PORT = 1337;
+
+//----------------------------------------------------------------------------//
 // important to be possible to use the local network ip address on the
 // webpack-dev-server and with that access the application through the
 // cellphone or/and tablet
@@ -89,7 +93,7 @@ function getDotenvPlugin(mode = 'not-defined'){
 const PATHS = {
   app: './src/index.js',
   htmlTemplate: './src/index.html',
-  
+
   srcDir: path.resolve(__dirname, 'src'),
   nodeModulesDir: path.resolve(__dirname, 'node_modules'),
 
@@ -114,7 +118,7 @@ module.exports = (env, argv) => {
   const isProduction = (argv.mode === 'production');
   const isDevelopment = !isProduction;
   const shouldUseSourceMap = isDevelopment;
-  
+
   const dotenvFile = './.env';
   const isDotenvPresent = checkDotenv(dotenvFile);
   const dotenvPlugin = getDotenvPlugin(argv.mode);
@@ -153,7 +157,7 @@ module.exports = (env, argv) => {
       new webpack.DefinePlugin({
         'process.env': {
           NODE_ENV: JSON.stringify('production')
-        }        
+        }
       })
     ];
   }
@@ -171,7 +175,7 @@ module.exports = (env, argv) => {
     entry: {
       app: PATHS.app
     },
-    
+
     output: {
       path: path.join(__dirname, PATHS.output.dir),
       filename: PATHS.output.filenamePattern,
@@ -184,7 +188,7 @@ module.exports = (env, argv) => {
     },
 
     resolve: {
-      // enables to use imports with relative paths 
+      // enables to use imports with relative paths
       // (without ./ or ../../, starting from the ./src directory)
       modules: [
         PATHS.srcDir,
@@ -214,27 +218,27 @@ module.exports = (env, argv) => {
                 minimize: isProduction
               }
             }
-          ] 
+          ]
         },
         {
           test: /\.s?[ac]ss$/,
           use: [
             (
-              isDevelopment ? 
+              isDevelopment ?
                 // creates styles nodes from JS strings
                 'style-loader' :
                 // extracts the styles to a .css file
                 MiniCssExtractPlugin.loader
-            ), 
+            ),
             // translates CSS into CommonJS
             {
               // https://blog.pusher.com/css-modules-react/
               loader: 'css-loader',
               options: {
                 /*
-                  generates css modules, but that turns each css module 
+                  generates css modules, but that turns each css module
                   in one isolated scope, where the local component (HTML DOM element)
-                  doesn't have access to one style class defined in one parent above 
+                  doesn't have access to one style class defined in one parent above
                 */
                 // importLoaders: 1,
                 // modules: true,
@@ -310,7 +314,7 @@ module.exports = (env, argv) => {
 
     devServer: {
       host: ipAddress,
-      port: (process.env.PORT || 3000),
+      port: (process.env.PORT || SERVER_PORT),
       compress: true
     }
   };

@@ -14,10 +14,12 @@
   https://codesandbox.io/s/l4qrory2nl
 */
 
-import i18n from 'i18next';
+import i18next from 'i18next';
 import resources from './resources';
 
+//----------------------------------------------------------------------------//
 
+// read from the web browser which is the used language
 export const detectLanguage = () => {
   let lang = (
     navigator.languages
@@ -36,46 +38,56 @@ export const detectLanguage = () => {
   return lang;
 };
 
+// to be used on the settings page at the language selection
 export const availableLanguages = [
   { key: 'language.english', value: 'en' },
   { key: 'language.portuguese', value: 'pt' },
   { key: 'language.spanish', value: 'es' }
 ];
 
+// i18next config and initialization
 export const instance = (
-  i18n
-    .init({
+  i18next.init({
 
-      // init with the giver resources
-      resources,
+    // init with the given resources
+    resources,
 
-      lng: detectLanguage(), // default language
+    lng: detectLanguage(), // use the web browser default language
 
-      // if there is no language defined to use, here the default one : english
-      fallbackLng: 'en',
+    // if there is no language defined to use, here the default one : english
+    fallbackLng: 'en',
 
-      // list of namespaces
-      ns: [ 'navbar', 'messages', 'settings' ],
+    // list of namespaces
+    ns: [ 'navbar', 'messages', 'settings' ],
 
-      keySeparator: false,
+    // allows keys defined like "key.name" at the `.json` files
+    // under the resouces directory
+    keySeparator: false,
 
-      interpolation: {
-        escapeValue: false // because react will handle it
-      },
+    interpolation: {
+      escapeValue: false // because react will handle it
+    },
 
-      react: {
-        wait: true
-      },
+    react: {
+      wait: true
+    },
 
-      debug: false
-    })
+    debug: false
+  })
 );
 
+/*
+  safe way to change the language used by the i18next instance
+
+  @param {string} locale
+*/
 export const changeLanguage = ( locale ) => {
   if( locale && locale !== instance.language ) {
     instance.changeLanguage( locale );
   }
 };
+
+//----------------------------------------------------------------------------//
 
 export default {
   detectLanguage,
