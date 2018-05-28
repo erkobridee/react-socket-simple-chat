@@ -1,6 +1,5 @@
 # Project features by versions
 
-## Summary <!-- omit in toc --> 
 - [1.0.0](#100)
 - [next](#next)
 
