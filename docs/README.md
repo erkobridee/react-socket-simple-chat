@@ -1,25 +1,27 @@
 # React Socket Simple Chat - Documentation
 
-* Versioning system
+## Versioning system
 
-  * This project follows the [Semantic Versioning](https://semver.org/) pattern
+* This project follows the [Semantic Versioning](https://semver.org/) pattern
 
-* Application requirements
 
-  * [Features](requirements/features.md#100)
+## Application requirements
 
-  * [Techinal](requirements/techinal.md)
+* [Features](requirements/features.md#100)
 
-* [Project](project)
+* [Techinal](requirements/techinal.md)
 
-  * [Architecture](project/README.md#architecture)
 
-  * [Folders](project/README.md#folders)
+## [Project](project)
 
-  * [Code](project/README.md#code)
+* [Architecture](project/README.md#architecture)
 
-  * [Dependencies](project/README.md#dependencies)
+* [Folders](project/README.md#folders)
 
-  * [Features](project/features.md)
+* [Code](project/README.md#code)
 
-  * [Useful references](useful-references.md)
+* [Dependencies](project/README.md#dependencies)
+
+* [Features](project/features.md)
+
+* [Useful references](useful-references.md)
