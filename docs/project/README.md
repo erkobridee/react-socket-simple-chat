@@ -97,7 +97,7 @@
 
     * `./src/chat/_styles.scss` imports `./src/chat/(components/containers)/_styles.scss`
 
-    * and so one, where each `_style.scss` will import the `_styles.scss` from it's inner folders
+    * and so one, where each `_style.scss` will import the `_styles.scss` files from its inner folders
 
 * dumb/presentation components: `./src/chat/components/`
 
