@@ -11,6 +11,7 @@ import { SafeNavLink } from 'chat/components/navlink';
 
 import { utils as componentUtils } from 'chat/components';
 
+import { selectors as connectionOperations } from 'chat/states/ducks/connection';
 import { selectors as settingsSelectors } from 'chat/states/ducks/settings';
 import { selectors as messagesSelectors } from 'chat/states/ducks/messages';
 
@@ -28,11 +29,12 @@ export class NavBar extends Component {
     theme: PropTypes.string,
     locale: PropTypes.string,
     unreadedCount: PropTypes.number,
+    isConnected: PropTypes.bool,
     t: PropTypes.func.isRequired
   };
 
   render() {
-    const { t, theme, locale, unreadedCount } = this.props;
+    const { t, theme, locale, unreadedCount, isConnected } = this.props;
 
     const navbarClass = classNames(
       componentUtils.plusTheme( 'navbar', theme )
@@ -40,6 +42,10 @@ export class NavBar extends Component {
 
     const navbarSupClass = classNames(
       componentUtils.plusTheme( 'navbar__sup', theme )
+    );
+
+    const connectionClass = classNames(
+      'fas', ( isConnected ? 'fa-rocket' : 'fa-ban' )
     );
 
     return (
@@ -60,6 +66,12 @@ export class NavBar extends Component {
               { t('settings') }
             </SafeNavLink>
           </li>
+
+          <li className="navbar__connection">
+            {
+              isConnected ? t('online') : t('offline')
+            } <i className={ connectionClass }></i>
+          </li>
         </ul>
       </div>
     );
@@ -71,7 +83,8 @@ export class NavBar extends Component {
 const mapStateToProps = state => ({
   theme: settingsSelectors.getTheme( state ),
   locale: settingsSelectors.getLocale( state ),
-  unreadedCount: messagesSelectors.getUnreadedCount( state )
+  unreadedCount: messagesSelectors.getUnreadedCount( state ),
+  isConnected: connectionOperations.isConnected( state )
 });
 
 const NavBarRedux = connect( mapStateToProps )( NavBar );
