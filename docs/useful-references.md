@@ -1,10 +1,20 @@
-# Useful links
+# Useful references
 
 ## Styles (CSS and SASS)
 
+* Flexbox
+
+  * [CSS - flexbox](http://learnlayout.com/flexbox.html) - Learn CSS Layout
+
+  * [A Visual Guide to CSS3 Flexbox Properties | Scotch](https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties)
+
+  * [A Complete Guide to Flexbox | CSS-Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+
 * [Understanding and Using rem Units in CSS — SitePoint](https://www.sitepoint.com/understanding-and-using-rem-units-in-css/)
 
-* [Sass's `@content` Directive Use Cases](https://robots.thoughtbot.com/sasss-content-directive)
+* [Sass: Syntactically Awesome Style Sheets](https://sass-lang.com/)
+
+  * [Sass's `@content` Directive Use Cases](https://robots.thoughtbot.com/sasss-content-directive)
 
 * [BEM](http://getbem.com/)
 
