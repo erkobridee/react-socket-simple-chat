@@ -44,7 +44,7 @@
 
 * Mobile UI mockups
 
-![mobile ui mockups](../assets/mobile-ui-mockups.png)
+![mobile ui mockups](../assets/mobile-ui-mockups-rf.png)
 
 
 ## next
