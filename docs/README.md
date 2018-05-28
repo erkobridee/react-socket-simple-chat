@@ -12,7 +12,7 @@
 * [Techinal](requirements/techinal.md)
 
 
-## [Project](project)
+## [About the project](project)
 
 * [Architecture](project/README.md#architecture)
 
