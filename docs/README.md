@@ -24,4 +24,4 @@
 
 * [Features](project/features.md)
 
-* [Useful references](useful-references.md)
+* [Useful references](project/useful-references.md)
