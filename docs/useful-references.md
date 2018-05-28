@@ -1,5 +1,10 @@
 # Useful references
 
+* [Semantic Versioning](https://semver.org/)
+
+  * [Semantic Versioning: Why You Should Be Using it | SitePoint](https://www.sitepoint.com/semantic-versioning-why-you-should-using/)
+
+
 ## Styles (CSS and SASS)
 
 * Flexbox
@@ -64,11 +69,17 @@
 
     * [[SandBox Editor] react i18n next example](https://codesandbox.io/s/l4qrory2nl)
 
---
+---
 
-* [Redux Integration | React Router Docs](https://reacttraining.com/react-router/web/guides/redux-integration)
+* React Router
 
---
+  * [[GitHub] ReactTraining / react-router](https://github.com/ReactTraining/react-router) - Declarative routing for React
+
+  * [React Router Docs](https://reacttraining.com/react-router/web/)
+
+  * [Redux Integration | React Router Docs](https://reacttraining.com/react-router/web/guides/redux-integration)
+
+---
 
 * [Redux](https://redux.js.org/)
 
