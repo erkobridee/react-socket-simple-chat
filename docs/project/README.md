@@ -190,6 +190,32 @@
 
 ## Dependencies
 
-* defined on the [package.json](/package.json#L27-L74) file
+* [classnames](https://www.npmjs.com/package/classnames)
 
-**TODO:** list them and its links
+* [dayjs](https://www.npmjs.com/package/dayjs)
+
+* [hashids](https://www.npmjs.com/package/hashids)
+
+* [lodash](https://www.npmjs.com/package/lodash)
+
+* [prop-types](https://www.npmjs.com/package/prop-types)
+
+* [i18next](https://www.npmjs.com/package/i18next)
+
+* [react-i18next](https://www.npmjs.com/package/react-i18next)
+
+* [react](https://www.npmjs.com/package/react)
+
+* [react-dom](https://www.npmjs.com/package/react-dom)
+
+* [react-router-dom](https://www.npmjs.com/package/react-router-dom)
+
+* [react-redux](https://www.npmjs.com/package/react-redux)
+
+* [redux](https://www.npmjs.com/packageredux)
+
+* [redux-thunk](https://www.npmjs.com/package/redux-thunk)
+
+* [socket.io-client](https://www.npmjs.com/package/socket.io-client)
+
+* [uuid](https://www.npmjs.com/package/uuid)
