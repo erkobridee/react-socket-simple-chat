@@ -1,8 +1,22 @@
 # React Socket Simple Chat - Documentation
 
-**TODO:** define
+* Versioning
 
+  * This project follows the [Semantic Versioning](https://semver.org/) pattern
 
+* Application requirements
+
+  * [Features](requirements/features.md#100)
+
+  * [Techinal](requirements/techinal.md)
+
+* Project
+
+  * Architecture
+
+  * Code
+
+  * [Useful references](useful-references.md)
 
 
 ## things left to have the v1
