@@ -12,23 +12,23 @@
 
 ### Frontend
 
-* It uses React to build the UI, React Router to handle its pages, Redux to manage its data/states, Redux Thunk to have a middleware where is possible to inject the socket.io client to send the messages and the function to switch between languages. ([useful references](useful-references.md#react-and-redux-middleware-thunk---) about them)
+* It uses React to build the UI, React Router to handle its pages, Redux to manage its data/states, Redux Thunk to have a middleware where is possible to inject the socket.io client to send the messages and the function to switch between languages. ( [useful references](useful-references.md#react-and-redux-middleware-thunk---) )
 
-* It follows the redux re-ducks pattern and try to follow some react + redux code style guide ([useful references](useful-references.md#code-style-guide) about it)
+* It follows the redux re-ducks pattern and try to follow some react + redux code style guide ( [useful references](useful-references.md#code-style-guide) )
 
-* It uses SASS to handle the styles, follows the BEM pattern and uses the flexbox to handle the layout ([useful references](useful-references.md#styles-css-and-sass))
+* It uses SASS to handle the styles, follows the BEM pattern and uses the flexbox to handle the layout ( [useful references](useful-references.md#styles-css-and-sass) )
 
 
 ### Backend - socket.io server
 
-* It has it own socket.io server and also has a deployed version of it over the now.sh ([read more about](../../server/README.md))
+* It has it own socket.io server and also has a deployed version of it over the now.sh ( [read more about it](../../server/README.md) )
 
 
 ### Tools
 
 * It uses the [node.js](https://nodejs.org/) LTS (v8)
 
-* It uses the [Webpack](https://webpack.js.org/) v4 with the HMR support and is tunned to enable a multi devices development ([useful references](useful-references.md#webpack))
+* It uses the [Webpack](https://webpack.js.org/) v4 with the HMR support and is tunned to enable a multi devices development ( [useful references](useful-references.md#webpack) )
 
   * It is also has a configuration to make it possible to do imports where the `./src/` is the root folder, so we can do imports like `import constants from 'chat/constants';` from anywhere in the project code
 
@@ -38,19 +38,36 @@
 
   * [load](/webpack.config.js#L45-L85) the file following the search order
 
-```
-1. .env.(production|development)
-2. .env.local
-3. .env
-4. .env.example
-```
+    ```
+    1. .env.(production|development)
+    2. .env.local
+    3. .env
+    4. .env.example
+    ```
 
 ## Folders
+
+* overview map
+
+  ```
+  ./
+    dist/
+    docs/
+    server/
+    src/
+      chat/
+        components/
+        container/
+        services/
+        states/
+      styles/ 
+  ```
 
 * main folders
 
   ```
   ./
+    dist/
     docs/
     server/
     src/
@@ -62,20 +79,53 @@
 
   * `src/` - project code
 
-* build folder
+  * `dist/` production build
 
-  * when executes a command `yarn build` or `npm run build` the build content will be placed at the `./dist` folder
+    * created by the command `yarn build` or `npm run build` 
 
 
 ## Code
 
-* on the root `./`
+* overview map
 
-  * It uses the ES6+ through Webpack + Babel ([.babelrc](/.babelrc) file)
+```
+./
+  package.json
+  .env
+  .babelrc
+  .browserlistrc
+  webpack.config.js
+  src/
+    chat/
+      components/
+      containers/
+      services/
+      states/
+      _styles.scss
+      constants.js
+      Routes.js
+      Chat.js
+      index.js
+    styles/
+    app.js
+    index.scss
+    index.html
+    index.js
+```
 
-  * It defines the web browsers support on the [.browserslistrc](/.browserslistrc) file, that is loaded and used by the Webpack to generate the production build
+* `./` - root
 
-* on the `./src/`
+  * `package.json` - defines the project dependencies
+
+  * `.env` ( `.env.examples` available on the repository ) - define some set of environments to be used following the target build
+
+  * `[.babelrc](/.babelrc)` - it defines the support to the ES6 syntax through the Webpack + Babel
+
+  * `[.browserslistrc](/.browserslistrc)` - it defines the web browser supported by the application and is used by the Webpack on the production build flow
+
+  * `webpack.config.js` - defines the configuration to the webpack development and production flows
+
+* `./src/`
 
   * `index.html` - html template, where is define the injection point to be used by the `ReactDOM.render`
 
@@ -87,7 +137,7 @@
 
 * sass styles
 
-  * global definitions `./src/styles/`
+  * `./src/styles/` - global definitions
 
     * main file `_all.scss` - has the imports of all `.scss` files on the folder
 
@@ -99,33 +149,44 @@
 
     * and so one, where each `_style.scss` will import the `_styles.scss` files from its inner folders
 
-* dumb/presentation components: `./src/chat/components/`
+* `./src/chat/components/` - dumb/presentation components
 
   * only used to presentation, where most of them are stateless/functional components
 
-* container components: `./src/chat/container`
+* `./src/chat/container` - container components
 
   * components that will receive data through injection, following the HOC ([Hight-Order Components](https://reactjs.org/docs/higher-order-components.html)): Redux > React Router > i18next (internationalization)
 
-* services: `./src/chat/services`
+* `./src/chat/services` - services
 
-  * hash - used to generate a random id to the initial user name, following the pattern `Guest_{random}`
+  * `hash/` - used to generate a random id to the initial user name, following the pattern `Guest_{random}`
 
-  * i18n - internationalization config and resources
+    * uses [hashids.js](https://hashids.org/javascript/)
 
-  * is-mobile - check if the application was loaded over a device mobile/tablet
+  * `i18n/` - internationalization config and resources
 
-  * localstorage - handle and manages the web browser localstorage to persist the application data/states
+    * uses [i18next](https://www.i18next.com/) and [react-i18next](https://react.i18next.com/)
 
-  * socketclient - uses socket.io client to connect or uses a mock client that emulates the socket.io client expected behaviors
+  * `is-mobile/` - check if the application was loaded over a device mobile/tablet
 
-* states - redux re-ducks modules ([useful references](useful-references.md#code-style-guide) about it): `./src/chat/states`
+    * uses regex over the web browser [navigator.userAgent](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorID/userAgent)
+
+  * `localstorage/` - handle and manages the web browser localstorage to persist the application data/states
+
+    * uses the web browser [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) support
+
+  * `socketclient/` - uses socket.io client to connect or uses a mock client that emulates the socket.io client expected behaviors
+
+    * uses [socket.io-client](https://socket.io/docs/client-api/)
+
+* `./src/chat/states` - redux re-ducks modules ([useful references](useful-references.md#code-style-guide) about it): `./src/chat/states`
 
   * each redux module should expose its reducer by default
 
-  * those modules are imported on the `./src/chat/states/store.js`
+  * `store.js` - import re-ducks modules (its reducers) from the `ducks/` folder
 
-  * it manage 3 datasets/states of the application: connection, messages, settings (this last one has all of its inner reducers assigned at the redux root state)
+  * it manages 3 datasets/states of the application: connection, messages, settings (this last one has all of its inner reducers assigned at the redux root state)
+
 
 ## Dependencies
 
