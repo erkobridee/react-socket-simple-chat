@@ -1,6 +1,6 @@
 # React Socket Simple Chat - Documentation
 
-* Versioning
+* Versioning system
 
   * This project follows the [Semantic Versioning](https://semver.org/) pattern
 
