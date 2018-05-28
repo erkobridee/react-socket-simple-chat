@@ -65,6 +65,6 @@
 
 * Settings page
 
-  * Add a dropdown to defines the lenght of the cached messages [1000, 500, 300, 100]
+  * Add a dropdown to defines the length of the cached messages [1000, 500, 300, 100]
 
   
