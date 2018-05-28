@@ -14,7 +14,7 @@
 
   * The application detects which is the users language and apply it as the default settings
 
-* It has a shortcut keyboard to submit the messages, where on the mobile/table devices is `ENTER` and on the desktop is `CTRL + ENTER``
+* It has a shortcut keyboard to submit the messages, where on the mobile/table devices is `ENTER` and on the desktop is `CTRL + ENTER`
 
   * By default it is active, but the user can disable it on the settings page
 
